@@ -3,154 +3,114 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SUPERSTORE 007 — Licensed to Act</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+  <title>Nobody Beats the Viz</title>
+  <meta name="description" content="The Viz makes bits for fun. No fakes. Full stack. Action on the other side." />
 
-    body {
-      background-color: #0a0a0f;
-      color: #e8e8e8;
-      font-family: 'Georgia', serif;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-    }
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://nobodybeatstheviz.com/" />
+  <meta property="og:title" content="Nobody Beats the Viz" />
+  <meta property="og:description" content="The Viz makes bits for fun. No fakes. Full stack. Action on the other side." />
+  <meta property="og:image" content="https://nobodybeatstheviz.com/assets/nbtv-logo-chevron.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Nobody Beats the Viz" />
+  <meta name="twitter:description" content="The Viz makes bits for fun. No fakes. Full stack. Action on the other side." />
+  <meta name="twitter:image" content="https://nobodybeatstheviz.com/assets/nbtv-logo-chevron.png" />
 
-    .badge {
-      font-family: 'Courier New', monospace;
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: #b8860b;
-      margin-bottom: 1.5rem;
-    }
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/favicon.png" />
 
-    h1 {
-      font-size: clamp(2rem, 6vw, 4rem);
-      letter-spacing: 0.1em;
-      color: #ffffff;
-      text-align: center;
-      line-height: 1.1;
-    }
-
-    h1 span {
-      color: #d4af37;
-    }
-
-    .tagline {
-      font-family: 'Courier New', monospace;
-      font-size: clamp(0.85rem, 2vw, 1rem);
-      color: #d4af37;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      margin-top: 0.75rem;
-      text-align: center;
-    }
-
-    .divider {
-      width: 60px;
-      height: 2px;
-      background: #d4af37;
-      margin: 2rem auto;
-    }
-
-    .pitch {
-      max-width: 680px;
-      text-align: center;
-      font-size: clamp(1rem, 2.5vw, 1.2rem);
-      line-height: 1.8;
-      color: #cccccc;
-    }
-
-    .pitch strong {
-      color: #ffffff;
-    }
-
-    .stack {
-      margin-top: 2.5rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      justify-content: center;
-    }
-
-    .stack span {
-      font-family: 'Courier New', monospace;
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      border: 1px solid #333;
-      color: #888;
-      padding: 0.3rem 0.75rem;
-      border-radius: 2px;
-    }
-
-    .links {
-      margin-top: 3rem;
-      display: flex;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .links a {
-      font-family: 'Courier New', monospace;
-      font-size: 0.85rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: #d4af37;
-      text-decoration: none;
-      border-bottom: 1px solid #d4af37;
-      padding-bottom: 2px;
-      transition: color 0.2s;
-    }
-
-    .links a:hover { color: #ffffff; border-color: #ffffff; }
-
-    .footer {
-      margin-top: 4rem;
-      font-family: 'Courier New', monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      color: #444;
-      text-align: center;
-    }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cascadia+Code:wght@400;700&family=Inter:wght@400;500;700&display=swap" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <div class="badge">Tableau Next Hackathon 2026</div>
+  <!-- Section 1 — Hero -->
+  <header class="hero">
+    <img src="assets/nbtv-logo-chevron.png" alt="Nobody Beats the Viz — chevron logo with VIZ wordmark and Total Analytics Solutions tagline" />
+    <h1>Nobody Beats the Bits.</h1>
+    <div class="hero-photo-slot">
+      <img class="persona-photo" src="assets/p3-placeholder-jedi.png" alt="George 'Wax' Weatherwax with Samzoni, the Providence Bruins mascot dressed as a Jedi master" />
+    </div>
+  </header>
 
-  <h1><span>SUPERSTORE</span> 007</h1>
-  <div class="tagline">Licensed to Act</div>
+  <main>
 
-  <div class="divider"></div>
+    <!-- Section 2 — What is this -->
+    <section class="what">
+      <h2><span class="hash">#</span>What is this</h2>
+      <p>The Viz makes bits for fun.</p>
+      <p>No fakes. Full stack. Action on the other side.</p>
+      <p>If you're hiring &mdash; no surprises.</p>
+      <p>If you're building, sample the beats.</p>
+    </section>
 
-  <p class="pitch">
-    <strong>Classic Superstore tells you what happened.</strong> SUPERSTORE 007 is Licensed to Act —
-    unifying orders, service cases, and social sentiment in Data Cloud so account managers can
-    investigate trends, create Salesforce cases, and get team confirmation without ever leaving Slack.
-  </p>
+    <!-- Section 3 — On Stage -->
+    <section class="on-stage">
+      <h2><span class="hash">#</span>On Stage</h2>
+      <p class="section-sub">Bits below. Some on wax, some still WIP.</p>
 
-  <div class="stack">
-    <span>Tableau Next</span>
-    <span>Agentforce</span>
-    <span>Salesforce Data Cloud</span>
-    <span>Slack</span>
-    <span>Salesforce Flows</span>
-  </div>
+      <div class="bit-of-the-moment-label">Viz's Bit of the Moment</div>
 
-  <div class="links">
-    <a href="https://github.com/nobodybeatstheviz/superstore-007" target="_blank">View on GitHub</a>
-    <a href="https://devpost.com" target="_blank">Devpost Submission</a>
-  </div>
+      <a class="bit-card" href="bits/superstore-007/">
+        <div class="bit-badge">Tableau Next Hackathon 2026</div>
+        <div class="bit-title"><span>SUPERSTORE</span> 007</div>
+        <div class="bit-tagline">Licensed to Act</div>
+        <p class="bit-blurb">Classic Superstore tells you what happened. SUPERSTORE 007 is Licensed to Act &mdash; unifying orders, service cases, and social sentiment in Data Cloud so account managers can investigate, create cases, and get team confirmation without leaving Slack.</p>
+        <div class="bit-tags">
+          <span class="bit-tag">Tableau Next</span>
+          <span class="bit-tag">Agentforce</span>
+          <span class="bit-tag">Data Cloud</span>
+          <span class="bit-tag">Slack</span>
+          <span class="bit-tag">Flows</span>
+        </div>
+      </a>
 
-  <div class="footer">
-    nobodybeatstheviz.com &nbsp;|&nbsp; george@nobodybeatstheviz.com
-  </div>
+      <p class="bit-grid-empty">More bits on the way. Some finished, some still working themselves out.</p>
+    </section>
+
+    <!-- Section 5 — Who plays The Viz -->
+    <section class="about">
+      <h2><span class="hash">#</span>Who plays The Viz</h2>
+
+      <p>A guy named Wax. Real name George Weatherwax.</p>
+
+      <p>Made his debut in '09. With a Stephen Few training and a chart that wasn't Excel. Same question every day since: <strong>here's the data, now what?</strong></p>
+
+      <p>The tools keep changing. Excel, SQL, Tableau, Salesforce, Agentforce. The question never does. Most recently Principal BI Architect at CodaMetrix.</p>
+
+      <p>The Viz is what happens when that work gets to be fun.</p>
+
+      <div class="about-photo-slot">
+        <img class="persona-photo" src="assets/p1-placeholder-2011.jpg" alt="George Weatherwax — 2011 Tableau Conference photobooth shot with 'I see Data' speech bubble" />
+      </div>
+
+      <p class="closer">If you're hiring, the resume side lives on LinkedIn &rarr; <a href="https://linkedin.com/in/georgeweatherwax">linkedin.com/in/georgeweatherwax</a><br />
+      If you're building, you already know where to find him.</p>
+    </section>
+
+    <!-- Section 6 — Footer -->
+    <footer>
+      <h3><span class="hash">#</span>Sample the beats. Make em clap to this.</h3>
+
+      <hr class="footer-divider" />
+
+      <ul class="link-list">
+        <li><span class="dash">-</span><span class="label">website:</span><a class="pill" href="https://nobodybeatstheviz.com">nobodybeatstheviz.com</a></li>
+        <li><span class="dash">-</span><span class="label">linkedin:</span><a class="pill" href="https://linkedin.com/in/georgeweatherwax">/in/georgeweatherwax</a></li>
+        <li><span class="dash">-</span><span class="label">github:</span><a class="pill" href="https://github.com/nobodybeatstheviz">/nobodybeatstheviz</a></li>
+        <li><span class="dash">-</span><span class="label">tableau public:</span><a class="pill" href="https://public.tableau.com/app/profile/wax2368">/wax2368</a></li>
+        <li><span class="dash">-</span><span class="label">trailblazer:</span><a class="pill" href="https://www.salesforce.com/trailblazer/georgeweatherwax">/me/georgeweatherwax</a></li>
+        <li><span class="dash">-</span><span class="label">email:</span><a class="pill" href="mailto:info@nobodybeatstheviz.com">info@nobodybeatstheviz.com</a></li>
+      </ul>
+
+      <hr class="footer-divider" />
+
+      <p class="colophon">&copy; Nobody Beats the Viz &middot; Made on Wax</p>
+    </footer>
+
+  </main>
 
 </body>
 </html>

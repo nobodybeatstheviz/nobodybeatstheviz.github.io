@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SUPERSTORE 007 — Licensed to Act · Nobody Beats the Viz</title>
+  <meta name="description" content="Classic Superstore tells you what happened. SUPERSTORE 007 is Licensed to Act — orders, service cases, and social sentiment unified in Data Cloud, with action surfaced in Slack." />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://nobodybeatstheviz.com/bits/superstore-007/" />
+  <meta property="og:title" content="SUPERSTORE 007 — Licensed to Act" />
+  <meta property="og:description" content="Classic Superstore tells you what happened. 007 tells you what to do about it — and lets you do it without leaving the room." />
+  <meta property="og:image" content="https://nobodybeatstheviz.com/assets/nbtv-logo-chevron.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="SUPERSTORE 007 — Licensed to Act" />
+  <meta name="twitter:description" content="Classic Superstore tells you what happened. 007 tells you what to do about it — and lets you do it without leaving the room." />
+  <meta name="twitter:image" content="https://nobodybeatstheviz.com/assets/nbtv-logo-chevron.png" />
+
+  <link rel="icon" type="image/png" href="../../assets/favicon.png" />
+  <link rel="apple-touch-icon" href="../../assets/favicon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cascadia+Code:wght@400;700&family=Inter:wght@400;500;700&display=swap" />
+  <link rel="stylesheet" href="../../styles.css" />
+</head>
+<body>
+
+  <div class="bit-page">
+
+    <!-- Block 1 — Marquee -->
+    <header class="bit-marquee">
+      <span class="status-tag on-wax">on wax</span>
+      <h1>SUPERSTORE 007</h1>
+      <p class="hook">Licensed to Act.</p>
+      <p>Classic Superstore tells you what happened. 007 tells you what to do about it &mdash; and lets you do it without leaving the room.</p>
+      <div class="stack">
+        <span>Tableau Next</span>
+        <span>Agentforce</span>
+        <span>Data Cloud</span>
+        <span>Slack</span>
+        <span>Flows</span>
+      </div>
+    </header>
+
+    <!-- Block 2 — What it is -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>What it is</h2>
+
+      <p>SUPERSTORE 007 is a Tableau Next Hackathon 2026 build that takes the most-used demo dataset in analytics and pushes it past the dashboard. Orders, service cases, and social sentiment all land in Salesforce Data Cloud. Account managers see the trend, ask why, create the case, and get team confirmation &mdash; without ever leaving Slack.</p>
+
+      <p>The pitch is in the name. <strong>Classic Superstore tells you what happened.</strong> Bar charts, line charts, the question "why is the West region down again?" SUPERSTORE 007 is licensed to act on it. The dashboard raises the question, the agent and the flow take it the rest of the way.</p>
+
+      <p>What it demonstrates: agentic analytics on a dataset every Tableau person already knows by heart. Same data, different outcome. The "now what" gets answered.</p>
+    </section>
+
+    <!-- Block 3 — How it works -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>How it works</h2>
+
+      <p>Five layers, each doing one job:</p>
+
+      <ul>
+        <li><strong>Tableau Next</strong> &mdash; the surface where trends become questions. Same Superstore visuals you've seen a thousand times, wired to a Data Cloud source instead of a flat extract.</li>
+        <li><strong>Salesforce Data Cloud</strong> &mdash; the unification layer. Orders + service cases + social sentiment live in one place so the agent has actual context, not just a single fact.</li>
+        <li><strong>Agentforce</strong> &mdash; the investigator. Asks follow-up questions, pulls supporting records, drafts the next action.</li>
+        <li><strong>Salesforce Flows</strong> &mdash; the case creator. Turns the conversation into an actual record with the right owner, the right priority, the right links.</li>
+        <li><strong>Slack</strong> &mdash; where it all lives. The team sees the case, confirms the action, moves on. No tab-switching, no "did anyone follow up on that?"</li>
+      </ul>
+
+      <p><strong>The move here:</strong> stop building dashboards that end in questions. Build for the action on the other side. The dataset doesn't have to be exotic &mdash; the question handoff does. You can use this pattern on any operational dataset where "what should we do about it" has a real answer.</p>
+    </section>
+
+    <!-- Block 4 — Try this (FIRST-PASS DRAFT) -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>Try this</h2>
+
+      <p>If you've got a Salesforce dev org and a 2-hour block, the recipe is short:</p>
+
+      <ol>
+        <li><strong>Pick the boring dataset on purpose.</strong> Superstore. Or whatever your org's equivalent is &mdash; the one everyone already understands. The point isn't novelty; it's that the action layer becomes the whole story.</li>
+        <li><strong>Land it in Data Cloud, not in a flat extract.</strong> Even one source is enough to start. The unification matters more once a second source shows up &mdash; service cases, support tickets, anything that gives the agent context the dashboard alone can't carry.</li>
+        <li><strong>Wire one Tableau Next view to it.</strong> Doesn't need to be pretty. Needs to be the surface where a real question gets asked.</li>
+        <li><strong>Build one Agentforce action that picks up that question.</strong> Start narrow &mdash; one trend, one follow-up, one case template. Resist the urge to make the agent omniscient on day one.</li>
+        <li><strong>Hand the case to a Flow that creates the record and posts to Slack.</strong> This is where it stops being a demo and starts being a thing a team would actually use.</li>
+      </ol>
+
+      <p>The whole loop is the bit. You can extend any layer afterwards &mdash; richer sentiment, smarter routing, multi-step agent reasoning &mdash; but the loop has to close first. Question on the dashboard, action in Slack, no tabs in between.</p>
+
+      <p>What I learned building it: the dashboard doesn't have to be impressive. The handoff does.</p>
+    </section>
+
+    <!-- Block 5 — Footer / nav back -->
+    <footer class="bit-footer">
+      <p><a href="https://github.com/nobodybeatstheviz/superstore-007">View on GitHub</a></p>
+      <p>&larr; <a href="../../">back to On Stage</a></p>
+    </footer>
+
+  </div>
+
+</body>
+</html>
