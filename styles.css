@@ -224,6 +224,33 @@ code, .pill {
   font-size: 0.9rem;
 }
 
+/* ---------------- Section 4 — The Viz is Goin' Off ---------------- */
+
+.goin-off .section-sub {
+  color: var(--muted);
+  font-style: italic;
+  margin-top: -0.5rem;
+  margin-bottom: 2rem;
+}
+
+.goin-off-empty {
+  font-family: var(--mono);
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin: 1.5rem 0;
+}
+
+.goin-off-more {
+  margin-top: 2rem;
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  text-align: right;
+}
+
+.goin-off-more a {
+  color: var(--red);
+}
+
 /* ---------------- Section 5 — Who plays The Viz ---------------- */
 
 .about p:nth-of-type(1) { font-size: 1.2rem; }
