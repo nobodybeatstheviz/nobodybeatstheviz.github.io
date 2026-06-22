@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KEEPING SCORE — From the Stands to the Semantic Layer · Nobody Beats the Viz</title>
+  <meta name="description" content="178 games I attended, joined to the historical record and modeled in dbt on BigQuery. My grandfather kept score by hand; I carried the tradition. Same questions every baseball fan ever asked — new tools answering them." />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://nobodybeatstheviz.com/bits/wax-baseball/" />
+  <meta property="og:title" content="KEEPING SCORE — From the Stands to the Semantic Layer" />
+  <meta property="og:description" content="178 games I was in the stands for, modeled in dbt on BigQuery, tested, and documented down to the lineage graph. Scorecard, box score, now agentic." />
+  <meta property="og:image" content="https://nobodybeatstheviz.com/assets/nbtv-logo-chevron.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="KEEPING SCORE — From the Stands to the Semantic Layer" />
+  <meta name="twitter:description" content="178 games I was in the stands for, modeled in dbt on BigQuery, tested, and documented down to the lineage graph. Scorecard, box score, now agentic." />
+  <meta name="twitter:image" content="https://nobodybeatstheviz.com/assets/nbtv-logo-chevron.png" />
+
+  <link rel="icon" type="image/png" href="../../assets/favicon.png" />
+  <link rel="apple-touch-icon" href="../../assets/favicon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cascadia+Code:wght@400;700&family=Inter:wght@400;500;700&display=swap" />
+  <link rel="stylesheet" href="../../styles.css" />
+</head>
+<body>
+
+  <div class="bit-page">
+
+    <!-- Block 1 — Marquee -->
+    <header class="bit-marquee baseball">
+      <span class="status-tag on-wax">on wax</span>
+      <h1>KEEPING SCORE</h1>
+      <p class="hook">From the stands to the semantic layer.</p>
+      <p>178 games I was actually in the stands for &mdash; joined to the historical record, modeled in dbt on BigQuery, tested, and documented down to the lineage graph. My grandfather kept score by hand. I carried the tradition. This is the same diamond, a generation later, answered with new tools.</p>
+      <div class="stack">
+        <span>dbt</span>
+        <span>BigQuery</span>
+        <span>Retrosheet</span>
+        <span>Semantic Layer</span>
+        <span>Baseball</span>
+      </div>
+    </header>
+
+    <!-- Block 1.5 — Live docs CTA -->
+    <section class="bit-demo">
+      <p class="demo-caption">The whole project is live and browsable &mdash; models, tests, and the full lineage graph.</p>
+      <p><a class="docs-cta" href="../../wax-baseball-dbt/">Explore the live dbt docs &rarr;</a></p>
+    </section>
+
+    <!-- Block 2 — What it is -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>What it is</h2>
+
+      <p>KEEPING SCORE is a personal data project: every MLB game I've ever attended &mdash; 178 of them, going back to childhood &mdash; turned into a queryable, tested, documented dataset. My attendance record joined to <strong>Retrosheet's</strong> historical game logs, modeled in <strong>dbt</strong> on <strong>Google BigQuery</strong>, with a semantic layer on top so the questions can be asked in plain language.</p>
+
+      <p>It started analog. My grandfather kept score by hand at the ballpark, and I grew up doing the same &mdash; pencil, scorecard, the little diamond you fill in when someone reaches base. Those scorecards, his and mine, are the seed. This is what happens when you point modern data tooling at a shoebox full of them.</p>
+    </section>
+
+    <!-- Block 3 — How it works -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>How it works</h2>
+
+      <p>Five pieces, each doing one job:</p>
+
+      <ul>
+        <li><strong>The attendance record</strong> &mdash; 178 games, hand-assembled from tickets, scorecards, and memory. The one source no database could give me.</li>
+        <li><strong>Retrosheet</strong> &mdash; the historical truth. Every MLB game ever played, with box-score detail. I match my games to it on date and teams to pull the full record of each one I was at.</li>
+        <li><strong>dbt on BigQuery</strong> &mdash; staging views clean and curate the raw data; a fact table joins my attendance to the historical record, with derived columns like who won, the margin, and whether it was a Yankees game.</li>
+        <li><strong>26 dbt tests</strong> &mdash; not there to always pass. They're there to surface what the data is actually doing. One of them found ~1,800 duplicate game IDs hiding in the historical source &mdash; the kind of thing you only learn by testing.</li>
+        <li><strong>Docs + lineage</strong> &mdash; every model documented, the full lineage graph generated, and the whole thing auto-published on every push. That's the button up top.</li>
+      </ul>
+
+      <p><strong>The move here:</strong> treat a personal archive like production data. Sources, staging, marts, tests, docs &mdash; the same discipline a team would use, applied to a shoebox of scorecards. The dataset is sentimental; the engineering is real.</p>
+    </section>
+
+    <!-- Block 4 — Same questions, new tools -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>Same questions, new tools</h2>
+
+      <p>A scorecard answers questions. Who's up? What did he do last time? How did this game actually go? Fans have asked the same handful of questions for a hundred years.</p>
+
+      <p>The tools to answer them keep changing. First the scorecard in your lap. Then the box score in the morning paper. Then the stat sites. Now: a semantic model an agent can query in plain English.</p>
+
+      <p>Same questions every baseball fan ever asked. New tools answering them &mdash; <strong>scorecard, box score, now agentic.</strong> This project is the literal proof of that thesis. The same diamond my grandfather filled in by hand, now a tested data model with a lineage graph of its own.</p>
+    </section>
+
+    <!-- Block 5 — Footer / nav back -->
+    <footer class="bit-footer">
+      <p><a href="https://github.com/nobodybeatstheviz/wax-baseball-dbt">View the dbt project on GitHub</a></p>
+      <p>&larr; <a href="../../">back to On Stage</a></p>
+    </footer>
+
+  </div>
+
+</body>
+</html>

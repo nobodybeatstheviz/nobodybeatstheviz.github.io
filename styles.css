@@ -217,6 +217,25 @@ code, .pill {
   border-radius: 2px;
 }
 
+/* Baseball bit variant — Yankee Stadium feel: outfield-wall navy + grass green */
+.bit-card.baseball {
+  background: #0C2340;
+  border-color: #1b3a5e;
+}
+
+.bit-card.baseball:hover { border-color: #5fb446; }
+
+.bit-card.baseball .bit-badge { color: #84c759; }
+.bit-card.baseball .bit-title { color: #f4f6fb; }
+.bit-card.baseball .bit-title span { color: #5fbf48; }
+.bit-card.baseball .bit-tagline { color: #9fd86a; }
+.bit-card.baseball .bit-blurb { color: #cdd9e6; }
+
+.bit-card.baseball .bit-tag {
+  border-color: #2e4d6e;
+  color: #93a8c2;
+}
+
 .bit-grid-empty {
   margin-top: 2.5rem;
   font-family: var(--mono);
@@ -409,6 +428,49 @@ footer h3 .hash {
   color: var(--muted);
   padding: 0.25rem 0.6rem;
   border-radius: 2px;
+}
+
+/* Baseball detail page — navy hero band + grass accents */
+.bit-marquee.baseball {
+  background: #0C2340;
+  border: 1px solid #1b3a5e;
+  border-radius: 4px;
+  padding: 3rem 2rem;
+  margin-top: 2rem;
+}
+
+.bit-marquee.baseball h1 { color: #f4f6fb; }
+.bit-marquee.baseball p { color: #cdd9e6; }
+.bit-marquee.baseball .hook { color: #9fd86a; }
+
+.bit-marquee.baseball .status-tag.on-wax {
+  color: #84c759;
+  border-color: #84c759;
+}
+
+.bit-marquee.baseball .stack span {
+  border-color: #2e4d6e;
+  color: #93a8c2;
+}
+
+.docs-cta {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+  color: #0C2340;
+  background: #84c759;
+  border: 1px solid #5fb446;
+  border-radius: 3px;
+  padding: 0.7rem 1.2rem;
+  border-bottom: 1px solid #5fb446;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.docs-cta:hover {
+  background: #9fd86a;
+  border-color: #9fd86a;
+  transform: translateY(-1px);
 }
 
 .bit-demo {
