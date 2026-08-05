@@ -39,6 +39,8 @@
         <span>BigQuery</span>
         <span>Retrosheet</span>
         <span>Semantic Layer</span>
+        <span>Agentforce</span>
+        <span>Snowflake Cortex</span>
         <span>Baseball</span>
       </div>
     </header>
@@ -62,7 +64,7 @@
     <section class="bit-section">
       <h2><span class="hash">#</span>How it works</h2>
 
-      <p>Five pieces, each doing one job:</p>
+      <p>The foundation is five pieces, each doing one job:</p>
 
       <ul>
         <li><strong>The attendance record</strong> &mdash; 178 games, hand-assembled from tickets, scorecards, and memory. The one source no database could give me.</li>
@@ -84,6 +86,25 @@
       <p>The tools to answer them keep changing. First the scorecard in your lap. Then the box score in the morning paper. Then the stat sites. Now: a semantic model an agent can query in plain English.</p>
 
       <p>Same questions every baseball fan ever asked. New tools answering them &mdash; <strong>scorecard, box score, now agentic.</strong> This project is the literal proof of that thesis. The same diamond my grandfather filled in by hand, now a tested data model with a lineage graph of its own.</p>
+    </section>
+
+    <!-- Block 4.5 — Now agentic -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>Now agentic</h2>
+
+      <p>"Now agentic" isn't the tagline anymore &mdash; it's the build log. The same 178 games now answer questions three ways, on three stacks:</p>
+
+      <ul>
+        <li><strong>Baseball Scout (Agentforce)</strong> &mdash; an agent written as code, not clicks: Agent Script, deployed and live on a Salesforce dev org. The attendance record federates from BigQuery into Data 360 zero-copy &mdash; the data never moves &mdash; and two Apex actions do the counting. The agent is under standing orders to never state a number an action didn't return. Ask "how many games at Yankee Stadium?" and it queries: <strong>100.</strong> Ask "did I see Jeter play?" and it declines &mdash; the data is team-level, and a guess would be a made-up play on the scorecard.</li>
+        <li><strong>A Hall of Fame argument, as a Skill (Snowflake Cortex)</strong> &mdash; the full Lahman historical database under a hand-built semantic view: players, batting, fielding, awards, ballots. On top of it, a written Skill that teaches an agent how to build any player's Hall of Fame case &mdash; the case for, the honest case against, every stat traced to its source table. Never from memory.</li>
+        <li><strong>The warehouse, over MCP</strong> &mdash; Claude Code talking straight to the BigQuery models through Model Context Protocol. First real question: did anyone homer at a game I attended on my birthday? <strong>Twelve home runs</strong> say yes.</li>
+      </ul>
+
+      <p>Best bugs so far &mdash; there are two, and they failed in opposite directions. The first test answer was "9" &mdash; a number from nowhere. The session trace showed the agent never called its action; it just guessed. One instruction rewrite later &mdash; <em>you have no knowledge of your own, call the action first</em> &mdash; it answers 100, from the query, every time.</p>
+
+      <p>The second: ask what percentage of games were Yankees games, and it said <strong>0%</strong>. Not a hallucination this time &mdash; the trace showed the agent doing everything right: action called, result reported faithfully. The bug lived a layer down, in the Apex filter &mdash; it demanded an exact match, and "Yankees" isn't "New York Yankees" in the data, so the query returned zero and the agent honestly repeated it. One matching fix later: <strong>143 of 178 &mdash; 80.3%</strong>, verified at the action layer and again at the agent layer. Two failure modes &mdash; an agent guessing without its data, and an honest agent handed bad data logic &mdash; two different fixes. That's the whole job now: agents are only as honest as the boundary you build around them, and the trace is how you find out which side broke.</p>
+
+      <p><strong>The move here:</strong> the semantic layer wasn't the finish line &mdash; it was the prerequisite. Answer what the data supports, decline what it doesn't, and let every declined question write the roadmap. My grandfather's scorecard never invented a play. Neither do these.</p>
     </section>
 
     <!-- Block 5 — Footer / nav back -->
