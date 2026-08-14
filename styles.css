@@ -236,6 +236,8 @@ code, .pill {
   color: #93a8c2;
 }
 
+.bit-card + .bit-card { margin-top: 1.25rem; }
+
 .bit-grid-empty {
   margin-top: 2.5rem;
   font-family: var(--mono);
@@ -397,6 +399,14 @@ footer h3 .hash {
   border-color: var(--red);
 }
 
+.bit-marquee .bit-mark {
+  display: block;
+  width: 100%;
+  max-width: 340px;
+  height: auto;
+  margin: 0 0 1.75rem;
+}
+
 .bit-marquee h1 {
   font-family: var(--mono);
   font-size: clamp(2rem, 6vw, 3.25rem);
@@ -510,6 +520,29 @@ footer h3 .hash {
 
 .bit-section h2 {
   font-size: clamp(1.3rem, 3vw, 1.6rem);
+}
+
+.bit-figure {
+  margin: 0 0 2rem;
+}
+
+.bit-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: var(--paper);
+  border: 1px solid var(--cream);
+  border-radius: 4px;
+}
+
+.bit-figure a { border-bottom: none; }
+
+.bit-figure figcaption {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+  margin-top: 0.6rem;
 }
 
 .bit-footer {

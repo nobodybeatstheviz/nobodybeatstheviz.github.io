@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SUPERSTORE FORTY-NINE — Data, Signal, Action · Nobody Beats the Viz</title>
+  <meta name="description" content="Five sources, three ingestion patterns, 804 unified profiles, and a router agent that turns an anonymous social post into a review case in the CRM. Built on Salesforce Data 360 and Agentforce." />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://nobodybeatstheviz.com/bits/superstore-49/" />
+  <meta property="og:title" content="SUPERSTORE FORTY-NINE — Data, Signal, Action" />
+  <meta property="og:description" content="An anonymous complaint finds the customer, the order, and the account owner — then opens the case. Agentic analytics on Data 360 and Agentforce." />
+  <meta property="og:image" content="https://nobodybeatstheviz.com/assets/ss49-mark.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="SUPERSTORE FORTY-NINE — Data, Signal, Action" />
+  <meta name="twitter:description" content="An anonymous complaint finds the customer, the order, and the account owner — then opens the case. Agentic analytics on Data 360 and Agentforce." />
+  <meta name="twitter:image" content="https://nobodybeatstheviz.com/assets/ss49-mark.png" />
+
+  <link rel="icon" type="image/png" href="../../assets/favicon.png" />
+  <link rel="apple-touch-icon" href="../../assets/favicon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cascadia+Code:wght@400;700&family=Inter:wght@400;500;700&display=swap" />
+  <link rel="stylesheet" href="../../styles.css" />
+</head>
+<body>
+
+  <div class="bit-page">
+
+    <!-- Block 1 — Marquee -->
+    <header class="bit-marquee">
+      <span class="status-tag on-wax">on wax</span>
+      <img class="bit-mark" src="../../assets/ss49-mark.png" alt="Superstore 49 mark — DATA, SIGNAL, ACTION" />
+      <h1>SUPERSTORE FORTY-NINE</h1>
+      <p class="hook">The signal knows who you are.</p>
+      <p>A customer complains publicly and signs it with a handle nobody's system recognizes. Meanwhile returns of that same product are climbing in a lakehouse a different team owns. Forty-Nine is the loop that connects the two &mdash; and opens the case.</p>
+      <div class="stack">
+        <span>Data 360</span>
+        <span>Agentforce</span>
+        <span>Identity Resolution</span>
+        <span>Databricks</span>
+        <span>Apex</span>
+        <span>Slack</span>
+      </div>
+    </header>
+
+    <!-- Block 2 — What it is -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>What it is</h2>
+
+      <p>Superstore Forty-Nine is an agentic analytics system built on Salesforce Data 360 and Agentforce. It takes a business whose customer picture is split across five silos in three systems, and closes the loop those silos structurally can't close: an external signal arrives, identity resolution attaches it to a real customer, an agent investigates it against a governed model, and a review case lands in the CRM with the evidence chain attached.</p>
+
+      <p>The scenario is a national office-supplies retailer with a big B2B side. Susan runs purchasing for one of its accounts. She bought a line of office chairs, the chairs started failing, and she said so publicly &mdash; <em>"broke after a week. Seriously?"</em> The post carries only her social handle. Nothing connects that handle to a customer record, an order, or the account owner. Returns of the same chair are climbing in the ops team's lakehouse, invisible to sales. <strong>Every fact needed to save that relationship already exists inside the company. No system holds them at the same time.</strong></p>
+
+      <p>So the problem isn't the dashboard, and it isn't the data. It's <strong>signal-to-action latency</strong> &mdash; how long it takes something true out in the world to become a decision somebody can act on. Today that gap is a person swivel-chairing between three systems, per account, per incident. Forty-Nine closes it in one conversation.</p>
+    </section>
+
+    <!-- Block 3 — How it works -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>How it works</h2>
+
+      <figure class="bit-figure">
+        <a href="../../assets/ss49-architecture.png"><img src="../../assets/ss49-architecture.png" alt="Superstore Forty-Nine architecture — ingestion, transformation, storage, AI model, and output zones left to right" /></a>
+        <figcaption>The whole system on one page. Click to open it full size.</figcaption>
+      </figure>
+
+      <ul>
+        <li><strong>Five sources, three ingestion patterns.</strong> Batch file loads for customers, products, orders, and the social listening feed. <strong>Zero-copy federation</strong> for returns data that belongs to another team's Databricks lakehouse &mdash; queried where it lives, never copied. And a derived SQL transform that materializes the author dimension out of the social event stream. Three patterns because the silos are the premise: staging everything into one lake would refute the problem the build is solving.</li>
+        <li><strong>Identity resolution over 804 unified profiles.</strong> Twenty-six percent of social posts arrive with no customer ID at all. The ruleset unifies CRM identities and social authors into one key &mdash; 1,041 links, zero orphans &mdash; so <code>@handle &rarr; customer &rarr; order &rarr; SKU &rarr; account owner</code> is a walk, not a research project. The unified profile is a key, not a golden record.</li>
+        <li><strong>A router agent, not one agent that does everything.</strong> Superstore Signal dispatches to two specialists: an <strong>Investigator</strong> that answers "what's actually driving returns on this account," and an <strong>Early-Warning</strong> subagent that ranks SKUs on negative-sentiment volume against return rate &mdash; leading indicator against lagging. Bounded tool sets per job means each one is testable.</li>
+        <li><strong>Bounded, least-privilege actions.</strong> Three named Apex actions, and nothing else. The agent cannot free-query the data model. The consequential one opens a standard Case carrying the full evidence chain, assigned for a human to work. Human-in-the-loop by construction, not by policy memo.</li>
+        <li><strong>LLM reasons; code decides.</strong> Thresholds, filters, and routing are deterministic. The model handles language and judgment calls, and it does that inside the Trust Layer &mdash; masking, audit trail, zero retention.</li>
+        <li><strong>It lives in Slack.</strong> The agent runs where the account team already works, and the same agent runs headless over the Agent API with no UI at all. Its reach was bounded before the first prompt arrived: named OAuth scopes, a pinned run-as user, and an admin-granted doorway.</li>
+      </ul>
+
+      <p><strong>The claim I'd defend in any room:</strong> the semantic layer isn't the finish line, it's the prerequisite. An agent's answer is exactly as trustworthy as the governed definitions underneath it. That's why the modeling and identity work is most of this build and the agent is the small part sitting on top.</p>
+    </section>
+
+    <!-- Block 4 — What it taught me -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>What it taught me</h2>
+
+      <ol>
+        <li><strong>The zero-copy claim is real because I checked.</strong> The helper tool for creating that data stream hardcoded an ingest mode &mdash; it would have silently batch-copied the returns data while I said "federated" out loud. I read the tool's source and hand-built the federation request instead. An Apex class now reaches through Data 360 into the lakehouse at query time. Federation, not migration, from application code.</li>
+        <li><strong>Agents narrate intent convincingly.</strong> The first time I asked for a case, the agent replied that it would open one &mdash; and created nothing. The CRM said so. The tell is beautiful: a real creation quotes the case number back at you, a narrated one never does. Verify actions against the system of record, never against the narration. That rule is now written into the agent's own instructions.</li>
+        <li><strong>Constraints are the design.</strong> The org gated the object that should semantically carry a social handle for matching. Rather than fake it, the handle rides a contact point, the match rule is exact-normalized, and the trade-off is documented in the open &mdash; production would use custom party identifiers. Constraint hit, diagnosed, routed around, narrated. That sequence is the job.</li>
+        <li><strong>Observability is designed in, not bolted on.</strong> The agent emits its full reasoning trace by design &mdash; router handoffs, tool calls with latencies, safety gates, the case number it got back. You can only claim an agent behaves if you can watch it behave.</li>
+      </ol>
+
+      <p><strong>Honest scope:</strong> this is portfolio-scale and built solo. The environment holds a deliberately demo-sized slice of the company &mdash; 10,000 orders, 804 customers, 840 federated returns, 510 social posts. Big enough that identity resolution has real work to do and the defect signal has to emerge from noise; small enough that every claim in it can be verified live in one SQL statement. The <em>architecture</em> is the part that holds at national scale. The build proves the decisions, not the user count.</p>
+    </section>
+
+    <!-- Block 5 — Footer / nav back -->
+    <footer class="bit-footer">
+      <p>&larr; <a href="../../">back to On Stage</a></p>
+    </footer>
+
+  </div>
+
+</body>
+</html>
