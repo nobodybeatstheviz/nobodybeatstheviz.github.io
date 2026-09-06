@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>THE THREE-LAYER LESSON — Eight Writes for One Change · Nobody Beats the Viz</title>
+  <meta name="description" content="Source, analysis, presentation. A rule I held for clients for two decades, broken in my own system the moment the tool became an agent. The arithmetic that made it undeniable, and the fix." />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://nobodybeatstheviz.com/bits/three-layer-lesson/" />
+  <meta property="og:title" content="THE THREE-LAYER LESSON — Eight Writes for One Change" />
+  <meta property="og:description" content="The VLOOKUPs were in the printed tab. Same mistake, new tool, measured cost, and the one line I'd give any client adopting AI." />
+  <meta property="og:image" content="https://nobodybeatstheviz.com/assets/nbtv-logo-chevron.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="THE THREE-LAYER LESSON — Eight Writes for One Change" />
+  <meta name="twitter:description" content="The VLOOKUPs were in the printed tab. Same mistake, new tool, measured cost, and the one line I'd give any client adopting AI." />
+  <meta name="twitter:image" content="https://nobodybeatstheviz.com/assets/nbtv-logo-chevron.png" />
+
+  <link rel="icon" type="image/png" href="../../assets/favicon.png" />
+  <link rel="apple-touch-icon" href="../../assets/favicon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cascadia+Code:wght@400;700&family=Inter:wght@400;500;700&display=swap" />
+  <link rel="stylesheet" href="../../styles.css" />
+  <!-- Cloudflare Web Analytics (privacy-first, no cookies). -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "0766fadf140d4e1f95096f0bf3a6f10d"}'></script>
+</head>
+<body>
+
+  <div class="bit-page">
+
+    <!-- Block 1 — Marquee -->
+    <header class="bit-marquee">
+      <span class="status-tag on-wax">on wax</span>
+      <h1>THE THREE-LAYER LESSON</h1>
+      <p class="hook">The VLOOKUPs were in the printed tab.</p>
+      <p>Source, analysis, presentation. Three layers that never touch &mdash; the first page of every data-modeling book, and a line I held for clients for two decades. Then I built my own operating system with an agent, and broke it in exactly the way I'd flag in anyone else's work. This is the arithmetic, and the fix.</p>
+      <div class="stack">
+        <span>Claude Code</span>
+        <span>git</span>
+        <span>Markdown</span>
+        <span>Python generators</span>
+        <span>Architecture</span>
+      </div>
+    </header>
+
+    <!-- Block 2 — What it is -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>What it is</h2>
+
+      <p>Every bad spreadsheet I have ever been handed breaks the same rule: <strong>somebody put the VLOOKUPs in the tab they print.</strong> Analysis and presentation fused into one artifact. One input changes and there is no way to regenerate &mdash; only to repair, by hand, forever. That was never a spreadsheet problem. It's an architecture problem that shows up in spreadsheets first.</p>
+
+      <p>Over four months I built a personal operating system in markdown, run through Claude Code &mdash; job search, builds, practices, the whole life. The <strong>Source</strong> layer was right: one canonical file per fact. The <strong>Analysis</strong> layer was mostly missing. And the <strong>Presentation</strong> layer was twenty-five hand-maintained index files, a weekly dashboard, a cross-project tracker &mdash; each one restating facts that lived somewhere else.</p>
+
+      <p>The number that made it undeniable: <strong>one logical change cost eight file edits.</strong> Closing eleven job applications in a single day meant touching the eleven source files plus six derived ones. Two of the six were generated and corrected themselves. The other four were stale before the session ended. Not a discipline failure. Write amplification, and it's structural.</p>
+    </section>
+
+    <!-- Block 3 — How it works -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>How it works</h2>
+
+      <p>Why would somebody with receipts going back to &rsquo;09 suspend a model he'd trusted the whole time? Because I read the problem as new. &ldquo;Context engineering,&rdquo; &ldquo;memory,&rdquo; &ldquo;AI system&rdquo; &mdash; the vocabulary made it feel like a domain with its own physics, where the answer was <em>put everything somewhere the model can see it</em>. So every cleanup pass tightened the copies: more indexes, more cross-references, more summaries. The exact opposite of the fix. I was maintaining the caches instead of eliminating them.</p>
+
+      <p>The correction is the same three layers, with the new tools in their right seats:</p>
+
+      <ul>
+        <li><strong>Source &mdash; read, never own.</strong> git history plus each fact's one canonical home. A probabilistic writer against a system of record produces corruption you can't audit or unwind.</li>
+        <li><strong>Analysis &mdash; the sweet spot, and genuinely new.</strong> Judgment over unstructured input: reading two hundred job descriptions and deciding which bar is real. No prior tool did the interpretive half of analysis. Excel did arithmetic. SQL did set logic. This does judgment under ambiguity.</li>
+        <li><strong>Presentation &mdash; generate the view, never maintain it.</strong> Indexes, dashboards, registers: if a file has an upstream source, a script derives it. If it can't be generated, it shouldn't exist.</li>
+      </ul>
+
+      <p>Which collapses to one line: <strong>the agent's job is to write the generator, not to be the generator.</strong> Agents are a compiler, not a runtime. Every time I asked the agent to <em>be</em> the runtime &mdash; to re-derive state each session from prose instructions &mdash; I paid for a non-deterministic answer to a question that had a deterministic one.</p>
+
+      <p>The situational rule that falls out, and it explains which of my projects landed and which sprawled: <strong>does this repeat, and does it accumulate state?</strong> No &mdash; let the agent do all three layers; a one-off analysis, a draft, a decision. Yes &mdash; the agent's only job is to build the mechanism. Then the mechanism runs, not the agent.</p>
+    </section>
+
+    <!-- Block 4 — What it taught me -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>What it taught me</h2>
+
+      <ol>
+        <li><strong>The database era held the boundary for me, and I stopped noticing.</strong> You physically could not write to the warehouse from a dashboard. A whole career in a world where the tooling enforced the separation, then a tool with file-write access to all three layers in any order &mdash; and I kept the assumption that separation was handled. Agentic tooling returns you to Excel's fused-layer world at machine speed. Excel let you make this mistake one workbook at a time. An agent makes it across twenty-five files in a session, cheerfully, while you're grateful for the help.</li>
+        <li><strong>One home is not the same as correct.</strong> Single-home eliminates drift. It does not make the fact true. The first production run of the fixed machinery pulled a wrong transcription from the right place and propagated it straight into a build. What caught it was re-reading the external source at the moment it became load-bearing. The tooling can enforce separation; it cannot enforce accuracy. That still costs a measurement.</li>
+        <li><strong>Convert prescription into mechanism.</strong> Where a rule kept getting skipped, prose never fixed it. Writing &ldquo;do the dedup properly&rdquo; into a procedure failed on the very next run. Making the dedup a script that either ran or didn't could not fail the same way. That's the line I'd give a client.</li>
+        <li><strong>Git is the Source layer for history.</strong> Not a backup: an append-only log of every state the work has been in, with a human note on each entry saying why. So no document carries its own changelog. The doc holds what's true today; the commit message holds how it got that way.</li>
+      </ol>
+
+      <p><strong>Why it's the story and not just a cleanup:</strong> the thesis, demonstrated on myself. <em>Same questions. New tools.</em> The question &mdash; how do you separate source from derivation from presentation &mdash; did not change because the tool became a model and the storage became markdown. Every organization adopting AI right now is making this mistake at scale: dumping context into retrieval layers, hand-maintaining summaries, calling the drift a prompt problem. The correction isn't a better prompt. It's the layering they already know and stopped applying the moment the tool changed.</p>
+    </section>
+
+    <!-- Block 5 — Footer / nav back -->
+    <footer class="bit-footer">
+      <p><a href="https://github.com/nobodybeatstheviz">The operating system is a private repo. The README tells the git half of the story.</a></p>
+      <p>&larr; <a href="../../">back to On Stage</a></p>
+    </footer>
+
+  </div>
+
+</body>
+</html>

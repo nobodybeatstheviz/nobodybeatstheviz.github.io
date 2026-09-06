@@ -238,6 +238,25 @@ code, .pill {
 
 .bit-card + .bit-card { margin-top: 1.25rem; }
 
+/* Grid of the non-featured bits — evergreen: auto-fills as bits are added,
+   reflows from one column (mobile) to two-plus without a fixed row/column count. */
+.bit-grid {
+  margin-top: 1.25rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
+  align-items: stretch;
+}
+
+.bit-grid .bit-card {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0;
+}
+
+/* tags settle to the bottom so uneven blurbs still line up */
+.bit-grid .bit-card .bit-tags { margin-top: auto; }
+
 .bit-grid-empty {
   margin-top: 2.5rem;
   font-family: var(--mono);
@@ -245,34 +264,7 @@ code, .pill {
   font-size: 0.9rem;
 }
 
-/* ---------------- Section 4 — The Viz is Goin' Off ---------------- */
-
-.goin-off .section-sub {
-  color: var(--muted);
-  font-style: italic;
-  margin-top: -0.5rem;
-  margin-bottom: 2rem;
-}
-
-.goin-off-empty {
-  font-family: var(--mono);
-  color: var(--muted);
-  font-size: 0.95rem;
-  margin: 1.5rem 0;
-}
-
-.goin-off-more {
-  margin-top: 2rem;
-  font-family: var(--mono);
-  font-size: 0.9rem;
-  text-align: right;
-}
-
-.goin-off-more a {
-  color: var(--red);
-}
-
-/* ---------------- Section 5 — Who plays The Viz ---------------- */
+/* ---------------- Section 4 — Who plays The Viz ---------------- */
 
 .about p:nth-of-type(1) { font-size: 1.2rem; }
 .about p:nth-of-type(2) { font-size: 1.05rem; }
