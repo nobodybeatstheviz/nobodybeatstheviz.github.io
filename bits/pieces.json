@@ -1,0 +1,151 @@
+{
+  "_readme": "Source for the homepage card spans (build_bits.py) and, later, the technology index. One row per piece. kind: inning | away | notes. status: wip | on-wax ('on wax' is earned-only — set it when the piece is done). url blank = a slot, rendered as a non-link card. Inning rows are seeded from the run's proposed lineup (wax-system: nbtv-brand/shares/keeping-score-content-map.md § 8, 9/16); edit here as each inning is ruled, then rerun the generator. [[word]] in a title renders as the gold span.",
+  "pieces": [
+    {
+      "kind": "notes",
+      "n": 0,
+      "slug": "wax-baseball",
+      "label": "The game notes",
+      "question": "How to keep score",
+      "title": "Keeping Score: the game notes",
+      "tools": ["dbt", "BigQuery", "Retrosheet", "Claude Code"],
+      "status": "on-wax",
+      "url": "bits/wax-baseball/",
+      "date": ""
+    },
+    {
+      "kind": "inning",
+      "n": 1,
+      "slug": "1st-inning",
+      "label": "1st inning",
+      "question": "Can you trust the number on the chart?",
+      "title": "The bar chart an agent made",
+      "tools": ["Tableau Cloud", "Claude Code", "Tableau MCP"],
+      "status": "wip",
+      "url": "",
+      "date": ""
+    },
+    {
+      "kind": "inning",
+      "n": 2,
+      "slug": "2nd-inning",
+      "label": "2nd inning",
+      "question": "What is a home run?",
+      "title": "The contract",
+      "tools": ["dbt", "BigQuery", "Looker Studio"],
+      "status": "wip",
+      "url": "",
+      "date": ""
+    },
+    {
+      "kind": "inning",
+      "n": 3,
+      "slug": "3rd-inning",
+      "label": "3rd inning",
+      "question": "Who is “I”?",
+      "title": "Confident zeros",
+      "tools": ["Tableau Next", "Tableau Agent"],
+      "status": "wip",
+      "url": "",
+      "date": ""
+    },
+    {
+      "kind": "inning",
+      "n": 4,
+      "slug": "4th-inning",
+      "label": "4th inning",
+      "question": "Is the trace the new dashboard QA?",
+      "title": "Three failures, three fixes",
+      "tools": ["Agentforce", "Agent Script"],
+      "status": "wip",
+      "url": "",
+      "date": ""
+    },
+    {
+      "kind": "inning",
+      "n": 5,
+      "slug": "5th-inning",
+      "label": "5th inning",
+      "question": "Where does the fan-out hide?",
+      "title": "Three clouds, one org",
+      "tools": ["Data 360"],
+      "status": "wip",
+      "url": "",
+      "date": ""
+    },
+    {
+      "kind": "inning",
+      "n": 6,
+      "slug": "6th-inning",
+      "label": "6th inning",
+      "question": "Same seven answers. Which door?",
+      "title": "Two front doors",
+      "tools": ["Snowflake Cortex", "Databricks Genie", "Streamlit", "AI/BI"],
+      "status": "wip",
+      "url": "",
+      "date": ""
+    },
+    {
+      "kind": "inning",
+      "n": 7,
+      "slug": "7th-inning-stretch",
+      "label": "7th-inning stretch",
+      "question": "What’s in the system?",
+      "title": "GEORGE GEORGE",
+      "tools": ["The archive", "box_score.py", "Retrosheet"],
+      "status": "wip",
+      "url": "",
+      "date": ""
+    },
+    {
+      "kind": "inning",
+      "n": 8,
+      "slug": "8th-inning",
+      "label": "8th inning",
+      "question": "One number, six agents. What does each trace hide?",
+      "title": "The matrix",
+      "tools": ["Claude SDK", "Hosted MCP", "Agentforce", "Tableau Next"],
+      "status": "wip",
+      "url": "",
+      "date": ""
+    },
+    {
+      "kind": "inning",
+      "n": 9,
+      "slug": "9th-inning",
+      "label": "9th inning · the closer",
+      "question": "Why do people like us keep score?",
+      "title": "The thesis",
+      "tools": ["The 1984 card", "The 2026 trace"],
+      "status": "wip",
+      "url": "",
+      "date": ""
+    },
+    {
+      "kind": "away",
+      "n": 1,
+      "slug": "superstore-49",
+      "label": "Agentic Analytics Build",
+      "question": "[[SUPERSTORE]] FORTY-NINE",
+      "title": "Data → Signal → Action",
+      "blurb": "An anonymous complaint finds the customer, the order, and the account owner — then opens the case. Five sources across three ingestion patterns, 804 profiles unified by identity resolution, and a router agent whose actions are bounded by design.",
+      "tools": ["Data 360", "Agentforce", "Identity Resolution", "Databricks", "Apex", "Slack"],
+      "status": "on-wax",
+      "url": "bits/superstore-49/",
+      "date": "2026-08"
+    },
+    {
+      "kind": "away",
+      "n": 2,
+      "slug": "superstore-007",
+      "label": "Tableau Next Hackathon 2026",
+      "question": "[[SUPERSTORE]] 007",
+      "title": "Licensed to Act",
+      "blurb": "Classic Superstore tells you what happened. SUPERSTORE 007 is Licensed to Act — unifying orders, service cases, and social sentiment in Data Cloud so account managers can investigate, create cases, and get team confirmation without leaving Slack.",
+      "tools": ["Tableau Next", "Agentforce", "Data Cloud", "Slack", "Flows"],
+      "status": "on-wax",
+      "url": "bits/superstore-007/",
+      "date": "2026-04"
+    }
+  ]
+}

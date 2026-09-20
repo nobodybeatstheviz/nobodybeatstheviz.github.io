@@ -4,16 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nobody Beats the Viz</title>
-  <meta name="description" content="The Viz makes bits for fun. No fakes. Full stack. Action on the other side." />
+  <meta name="description" content="Same questions. New tools. Nine innings of agentic analytics on one dataset, kept by a Tableau practitioner — every tool made to show its work." />
 
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://nobodybeatstheviz.com/" />
   <meta property="og:title" content="Nobody Beats the Viz" />
-  <meta property="og:description" content="The Viz makes bits for fun. No fakes. Full stack. Action on the other side." />
+  <meta property="og:description" content="Same questions. New tools. Nine innings of agentic analytics on one dataset, kept by a Tableau practitioner — every tool made to show its work." />
   <meta property="og:image" content="https://nobodybeatstheviz.com/assets/nbtv-logo-chevron.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Nobody Beats the Viz" />
-  <meta name="twitter:description" content="The Viz makes bits for fun. No fakes. Full stack. Action on the other side." />
+  <meta name="twitter:description" content="Same questions. New tools. Nine innings of agentic analytics on one dataset, kept by a Tableau practitioner — every tool made to show its work." />
   <meta name="twitter:image" content="https://nobodybeatstheviz.com/assets/nbtv-logo-chevron.png" />
 
   <link rel="icon" type="image/png" href="assets/favicon.png" />
@@ -32,6 +32,7 @@
   <header class="hero">
     <img src="assets/nbtv-logo-chevron.png" alt="Nobody Beats the Viz — chevron logo with VIZ wordmark and Total Analytics Solutions tagline" />
     <h1>Nobody Beats the Bits.</h1>
+    <p class="hero-thesis">Same questions. New tools.</p>
     <div class="hero-photo-slot">
       <img class="persona-photo" src="assets/p3-wax-crown.jpg" alt="George Weatherwax as The Viz headshot wearing a crown" />
     </div>
@@ -39,44 +40,145 @@
 
   <main>
 
-    <!-- Section 2 — What is this -->
-    <section class="what">
-      <h2><span class="hash">#</span>What is this</h2>
-      <p>The Viz makes bits for fun.</p>
-      <p>No fakes. Full stack. Action on the other side.</p>
-      <p>If you're hiring &mdash; no surprises.</p>
-      <p>If you're building, sample the beats.</p>
+    <!-- Section 2 — The game notes -->
+    <section class="game-notes">
+      <h2><span class="hash">#</span>The game notes</h2>
+      <p>My grandfather taught me to keep score by hand. The card was the first clean dataset I ever held. Who was at the game, what happened, written down so it stayed true.</p>
+      <p>This is the same card, one dataset later. 178 games I was in the stands for, joined to the official record. Seven questions a fan asks, put through every tool you're being told will change everything. Each one made to show its work.</p>
+      <p>The tools: dbt on BigQuery holds the contract. Tableau, Tableau Next, Agentforce, Data 360, Snowflake, and Databricks are the doors. Claude Code kept the card with me. This site was made with the tools it describes.</p>
+      <p class="how-to"><a href="bits/wax-baseball/">How to keep score &rarr;</a> the seven questions, the parity harness, how to read a trace.</p>
     </section>
 
-    <!-- Section 3 — On Stage -->
-    <section class="on-stage">
-      <h2><span class="hash">#</span>On Stage</h2>
-      <p class="section-sub">Bits below. Some on wax, some still WIP.</p>
+    <!-- Section 3 — The lineup: nine innings, in order. Cards are generated — edit bits/pieces.json, then `py build_bits.py`. -->
+    <section class="lineup">
+      <h2><span class="hash">#</span>The lineup</h2>
+      <p class="section-sub">Nine innings, in order. One dataset, one question each, every tool made to show its work.</p>
 
-      <div class="bit-of-the-moment-label">Viz's Bit of the Moment</div>
-
-      <a class="bit-card baseball" href="bits/wax-baseball/">
-        <div class="bit-badge">178 Games, Hand-Scored to Modeled</div>
-        <div class="bit-title">KEEPING <span>SCORE</span></div>
-        <div class="bit-tagline">From the Stands to the Semantic Layer</div>
-        <p class="bit-blurb">My grandfather kept score by hand. I carried the tradition &mdash; same pencil-and-paper ritual, a generation later. These are the 178 games I was actually in the stands for, now joined to the historical record, modeled in dbt on BigQuery, tested, and documented down to the lineage graph. Same questions every baseball fan ever asked. New tools answering them &mdash; scorecard, box score, now agentic.</p>
+      <!-- INNINGS:START -->
+      <div class="bit-grid">
+      <div class="bit-card baseball wip">
+        <div class="bit-badge">1st inning</div>
+        <div class="bit-title">Can you trust the number on the chart?</div>
+        <div class="bit-tagline">The bar chart an agent made</div>
         <div class="bit-tags">
+          <span class="bit-tag status wip">WIP</span>
+          <span class="bit-tag">Tableau Cloud</span>
+          <span class="bit-tag">Claude Code</span>
+          <span class="bit-tag">Tableau MCP</span>
+        </div>
+      </div>
+
+      <div class="bit-card baseball wip">
+        <div class="bit-badge">2nd inning</div>
+        <div class="bit-title">What is a home run?</div>
+        <div class="bit-tagline">The contract</div>
+        <div class="bit-tags">
+          <span class="bit-tag status wip">WIP</span>
           <span class="bit-tag">dbt</span>
           <span class="bit-tag">BigQuery</span>
-          <span class="bit-tag">Retrosheet</span>
-          <span class="bit-tag">Semantic Layer</span>
-          <span class="bit-tag">Agentforce</span>
-          <span class="bit-tag">Baseball</span>
+          <span class="bit-tag">Looker Studio</span>
         </div>
-      </a>
+      </div>
 
+      <div class="bit-card baseball wip">
+        <div class="bit-badge">3rd inning</div>
+        <div class="bit-title">Who is “I”?</div>
+        <div class="bit-tagline">Confident zeros</div>
+        <div class="bit-tags">
+          <span class="bit-tag status wip">WIP</span>
+          <span class="bit-tag">Tableau Next</span>
+          <span class="bit-tag">Tableau Agent</span>
+        </div>
+      </div>
+
+      <div class="bit-card baseball wip">
+        <div class="bit-badge">4th inning</div>
+        <div class="bit-title">Is the trace the new dashboard QA?</div>
+        <div class="bit-tagline">Three failures, three fixes</div>
+        <div class="bit-tags">
+          <span class="bit-tag status wip">WIP</span>
+          <span class="bit-tag">Agentforce</span>
+          <span class="bit-tag">Agent Script</span>
+        </div>
+      </div>
+
+      <div class="bit-card baseball wip">
+        <div class="bit-badge">5th inning</div>
+        <div class="bit-title">Where does the fan-out hide?</div>
+        <div class="bit-tagline">Three clouds, one org</div>
+        <div class="bit-tags">
+          <span class="bit-tag status wip">WIP</span>
+          <span class="bit-tag">Data 360</span>
+        </div>
+      </div>
+
+      <div class="bit-card baseball wip">
+        <div class="bit-badge">6th inning</div>
+        <div class="bit-title">Same seven answers. Which door?</div>
+        <div class="bit-tagline">Two front doors</div>
+        <div class="bit-tags">
+          <span class="bit-tag status wip">WIP</span>
+          <span class="bit-tag">Snowflake Cortex</span>
+          <span class="bit-tag">Databricks Genie</span>
+          <span class="bit-tag">Streamlit</span>
+          <span class="bit-tag">AI/BI</span>
+        </div>
+      </div>
+
+      <div class="bit-card baseball wip">
+        <div class="bit-badge">7th-inning stretch</div>
+        <div class="bit-title">What’s in the system?</div>
+        <div class="bit-tagline">GEORGE GEORGE</div>
+        <div class="bit-tags">
+          <span class="bit-tag status wip">WIP</span>
+          <span class="bit-tag">The archive</span>
+          <span class="bit-tag">box_score.py</span>
+          <span class="bit-tag">Retrosheet</span>
+        </div>
+      </div>
+
+      <div class="bit-card baseball wip">
+        <div class="bit-badge">8th inning</div>
+        <div class="bit-title">One number, six agents. What does each trace hide?</div>
+        <div class="bit-tagline">The matrix</div>
+        <div class="bit-tags">
+          <span class="bit-tag status wip">WIP</span>
+          <span class="bit-tag">Claude SDK</span>
+          <span class="bit-tag">Hosted MCP</span>
+          <span class="bit-tag">Agentforce</span>
+          <span class="bit-tag">Tableau Next</span>
+        </div>
+      </div>
+
+      <div class="bit-card baseball wip">
+        <div class="bit-badge">9th inning · the closer</div>
+        <div class="bit-title">Why do people like us keep score?</div>
+        <div class="bit-tagline">The thesis</div>
+        <div class="bit-tags">
+          <span class="bit-tag status wip">WIP</span>
+          <span class="bit-tag">The 1984 card</span>
+          <span class="bit-tag">The 2026 trace</span>
+        </div>
+      </div>
+      </div>
+      <p class="bit-grid-empty">0 of 9 on wax. The rest are being played.</p>
+      <!-- INNINGS:END -->
+    </section>
+
+    <!-- Section 4 — The away games -->
+    <section class="away-games">
+      <h2><span class="hash">#</span>The away games</h2>
+      <p class="section-sub">The same questions on the vendor's diamond. Superstore, Salesforce's sample dataset, through the same tools.</p>
+
+      <!-- AWAY:START -->
       <div class="bit-grid">
       <a class="bit-card" href="bits/superstore-49/">
         <div class="bit-badge">Agentic Analytics Build</div>
         <div class="bit-title"><span>SUPERSTORE</span> FORTY-NINE</div>
-        <div class="bit-tagline">Data &rarr; Signal &rarr; Action</div>
-        <p class="bit-blurb">An anonymous complaint finds the customer, the order, and the account owner &mdash; then opens the case. Five sources across three ingestion patterns, 804 profiles unified by identity resolution, and a router agent whose actions are bounded by design.</p>
+        <div class="bit-tagline">Data → Signal → Action</div>
+        <p class="bit-blurb">An anonymous complaint finds the customer, the order, and the account owner — then opens the case. Five sources across three ingestion patterns, 804 profiles unified by identity resolution, and a router agent whose actions are bounded by design.</p>
         <div class="bit-tags">
+          <span class="bit-tag status on-wax">on wax</span>
           <span class="bit-tag">Data 360</span>
           <span class="bit-tag">Agentforce</span>
           <span class="bit-tag">Identity Resolution</span>
@@ -90,8 +192,9 @@
         <div class="bit-badge">Tableau Next Hackathon 2026</div>
         <div class="bit-title"><span>SUPERSTORE</span> 007</div>
         <div class="bit-tagline">Licensed to Act</div>
-        <p class="bit-blurb">Classic Superstore tells you what happened. SUPERSTORE 007 is Licensed to Act &mdash; unifying orders, service cases, and social sentiment in Data Cloud so account managers can investigate, create cases, and get team confirmation without leaving Slack.</p>
+        <p class="bit-blurb">Classic Superstore tells you what happened. SUPERSTORE 007 is Licensed to Act — unifying orders, service cases, and social sentiment in Data Cloud so account managers can investigate, create cases, and get team confirmation without leaving Slack.</p>
         <div class="bit-tags">
+          <span class="bit-tag status on-wax">on wax</span>
           <span class="bit-tag">Tableau Next</span>
           <span class="bit-tag">Agentforce</span>
           <span class="bit-tag">Data Cloud</span>
@@ -99,34 +202,19 @@
           <span class="bit-tag">Flows</span>
         </div>
       </a>
-
-      <a class="bit-card" href="bits/three-layer-lesson/">
-        <div class="bit-badge">Architecture, Demonstrated On Myself</div>
-        <div class="bit-title">THE <span>THREE-LAYER</span> LESSON</div>
-        <div class="bit-tagline">Eight Writes for One Change</div>
-        <p class="bit-blurb">Source, analysis, presentation &mdash; a rule I held for clients for two decades and broke in my own system the moment the tool became an agent. The VLOOKUPs were in the printed tab. The arithmetic that made it undeniable, and the one line I'd give any client adopting AI.</p>
-        <div class="bit-tags">
-          <span class="bit-tag">Claude Code</span>
-          <span class="bit-tag">git</span>
-          <span class="bit-tag">Markdown</span>
-          <span class="bit-tag">Python generators</span>
-          <span class="bit-tag">Architecture</span>
-        </div>
-      </a>
       </div>
-
-      <p class="bit-grid-empty">More bits on the way. Some finished, some still working themselves out.</p>
+      <!-- AWAY:END -->
     </section>
 
-    <!-- Section 4 — Who plays The Viz -->
+    <!-- Section 5 — Who keeps score -->
     <section class="about">
-      <h2><span class="hash">#</span>Who plays The Viz</h2>
+      <h2><span class="hash">#</span>Who keeps score</h2>
 
       <p>A guy named Wax. Real name George Weatherwax.</p>
 
       <p>Made his debut in '09. With a Stephen Few training and a chart that wasn't Excel. Same question every day since: <strong>here's the data, now what?</strong></p>
 
-      <p>The tools keep changing. Excel, SQL, Tableau, Salesforce, now Agentforce and Claude Code. The question never does. Building agentic analytics in the open &mdash; the bits above are the receipts.</p>
+      <p>Tableau people have been building context since before anyone called it that. The tools keep changing &mdash; Excel, SQL, Tableau, Salesforce, now Agentforce and Claude Code. The muscle doesn't. The innings above are the scorecard.</p>
 
       <p>The Viz is what happens when that work gets to be fun.</p>
 
@@ -134,11 +222,11 @@
         <img class="persona-photo" src="assets/p1-wax-2011.jpg" alt="George Weatherwax Professional Headshot" />
       </div>
 
-      <p class="closer">If you're hiring, the resume side lives on LinkedIn &rarr; <a href="https://linkedin.com/in/georgeweatherwax">linkedin.com/in/georgeweatherwax</a><br />
-      If you're building, you already know where to find him.</p>
+      <p class="closer">The r&eacute;sum&eacute; side lives on LinkedIn &rarr; <a href="https://linkedin.com/in/georgeweatherwax">linkedin.com/in/georgeweatherwax</a><br />
+      The rest of him is in the stands, one row over.</p>
     </section>
 
-    <!-- Section 5 — Footer -->
+    <!-- Section 6 — Footer -->
     <footer>
       <h3><span class="hash">#</span>Sample the beats. Make em clap to this.</h3>
 
