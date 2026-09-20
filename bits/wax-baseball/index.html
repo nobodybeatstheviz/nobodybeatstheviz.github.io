@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KEEPING SCORE — From the Stands to the Semantic Layer · Nobody Beats the Viz</title>
-  <meta name="description" content="178 games I attended, joined to the historical record and modeled in dbt on BigQuery. My grandfather kept score by hand; I carried the tradition. Same questions every baseball fan ever asked — new tools answering them." />
+  <title>KEEPING SCORE — The game notes · Nobody Beats the Viz</title>
+  <meta name="description" content="The game notes for Keeping Score: 178 games I was in the stands for, seven questions a fan asks, one governed definition each, proved on six surfaces. How to keep score on the agentic turn." />
 
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://nobodybeatstheviz.com/bits/wax-baseball/" />
-  <meta property="og:title" content="KEEPING SCORE — From the Stands to the Semantic Layer" />
-  <meta property="og:description" content="178 games I was in the stands for, modeled in dbt on BigQuery, tested, and documented down to the lineage graph. Scorecard, box score, now agentic." />
-  <meta property="og:image" content="https://nobodybeatstheviz.com/assets/nbtv-logo-chevron.png" />
+  <meta property="og:title" content="KEEPING SCORE — The game notes" />
+  <meta property="og:description" content="178 games, seven questions, one definition each, proved on six surfaces. What this is, the tools and why, and how to keep score." />
+  <meta property="og:image" content="https://nobodybeatstheviz.com/assets/keeping-score-hr-by-year-strip.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="KEEPING SCORE — From the Stands to the Semantic Layer" />
-  <meta name="twitter:description" content="178 games I was in the stands for, modeled in dbt on BigQuery, tested, and documented down to the lineage graph. Scorecard, box score, now agentic." />
-  <meta name="twitter:image" content="https://nobodybeatstheviz.com/assets/nbtv-logo-chevron.png" />
+  <meta name="twitter:title" content="KEEPING SCORE — The game notes" />
+  <meta name="twitter:description" content="178 games, seven questions, one definition each, proved on six surfaces. What this is, the tools and why, and how to keep score." />
+  <meta name="twitter:image" content="https://nobodybeatstheviz.com/assets/keeping-score-hr-by-year-strip.png" />
 
   <link rel="icon" type="image/png" href="../../assets/favicon.png" />
   <link rel="apple-touch-icon" href="../../assets/favicon.png" />
@@ -30,88 +30,99 @@
 
   <div class="bit-page">
 
-    <!-- Block 1 — Marquee -->
+    <!-- Block 1 — Marquee: inning zero -->
     <header class="bit-marquee baseball">
       <span class="status-tag on-wax">on wax</span>
       <h1>KEEPING SCORE</h1>
-      <p class="hook">From the stands to the semantic layer.</p>
-      <p>178 games I was actually in the stands for &mdash; joined to the historical record, modeled in dbt on BigQuery, tested, and documented down to the lineage graph. My grandfather kept score by hand. I carried the tradition. This is the same diamond, a generation later, answered with new tools.</p>
+      <p class="hook">The game notes. Read these before first pitch.</p>
+      <p>My grandfather taught me to keep score by hand. The card that came out of it was the clean record &mdash; who was at the game, what happened, memories that held because they were written down. That was accurate data before I had a word for it. I kept the spreadsheet next. This year I asked the same seven questions through every tool you're being told about, and made each one show its work.</p>
       <div class="stack">
         <span>dbt</span>
         <span>BigQuery</span>
         <span>Retrosheet</span>
-        <span>Semantic Layer</span>
+        <span>Snowflake</span>
+        <span>Databricks</span>
+        <span>Data 360</span>
         <span>Agentforce</span>
-        <span>Snowflake Cortex</span>
-        <span>Baseball</span>
+        <span>Tableau Next</span>
+        <span>Claude Code</span>
       </div>
     </header>
 
-    <!-- Block 1.5 — Live docs CTA -->
+    <!-- Block 1.5 — The picture + the live docs -->
     <section class="bit-demo">
-      <p class="demo-caption">The whole project is live and browsable &mdash; models, tests, and the full lineage graph.</p>
+      <figure class="bit-figure">
+        <a href="../../assets/keeping-score-hr-by-year-strip.png"><img src="../../assets/keeping-score-hr-by-year-strip.png" alt="The same bar chart, 400 home runs witnessed by year, rendered on each door of the stack side by side" /></a>
+        <figcaption>The lineup card: 400 home runs witnessed, by year &mdash; the same chart on every door the run walks through. Two of six doors captured; the strip regenerates as the rest land.</figcaption>
+      </figure>
+      <!-- Family archive slot — the 1984-06-10 box score beside Poppa's card (Wax's image, Drive). Drop it in as a second .bit-figure when ready. -->
+      <p class="demo-caption">The whole contract is live and browsable &mdash; models, tests, and the full lineage graph.</p>
       <p><a class="docs-cta" href="../../wax-baseball-dbt/">Explore the live dbt docs &rarr;</a></p>
     </section>
 
-    <!-- Block 2 — What it is -->
+    <!-- Block 2 — What this is -->
     <section class="bit-section">
-      <h2><span class="hash">#</span>What it is</h2>
+      <h2><span class="hash">#</span>What this is</h2>
 
-      <p>KEEPING SCORE is a personal data project: every MLB game I've ever attended &mdash; 178 of them, going back to childhood &mdash; turned into a queryable, tested, documented dataset. My attendance record joined to <strong>Retrosheet's</strong> historical game logs, modeled in <strong>dbt</strong> on <strong>Google BigQuery</strong>, with a semantic layer on top so the questions can be asked in plain language.</p>
+      <p>178 major-league games I was in the stands for, 1984 to 2025, every one verified against the record. Each game joins to Retrosheet, the official play-by-play, on one clean key &mdash; no fuzzy matching. That single join is the reason any of this works.</p>
 
-      <p>It started analog. My grandfather kept score by hand at the ballpark, and I grew up doing the same &mdash; pencil, scorecard, the little diamond you fill in when someone reaches base. Those scorecards, his and mine, are the seed. This is what happens when you point modern data tooling at a shoebox full of them.</p>
+      <p>On top of the games sit seven questions a fan asks. How many games. How many home runs did I see. Who I went with. My win rate when I go. Which Hall of Famers I saw. Each one is written down once, as a governed definition, and every tool in the stack has to answer through that definition instead of writing its own.</p>
+
+      <p>Then the nine innings on the front page take one question through one door at a time &mdash; a chart an agent made, an agent that guessed, a join graph with the fan-out showing &mdash; and every trace is kept. The innings are the box score of the agentic turn, kept by someone who was in the stands for it.</p>
     </section>
 
-    <!-- Block 3 — How it works -->
+    <!-- Block 3 — The tools, and why -->
     <section class="bit-section">
-      <h2><span class="hash">#</span>How it works</h2>
+      <h2><span class="hash">#</span>The tools, and why</h2>
 
-      <p>The foundation is five pieces, each doing one job:</p>
+      <p>Because these are the tools you're being told about. Not a bake-off &mdash; one dataset, one set of definitions, and each tool asked to show what it does with them.</p>
 
       <ul>
-        <li><strong>The attendance record</strong> &mdash; 178 games, hand-assembled from tickets, scorecards, and memory. The one source no database could give me.</li>
-        <li><strong>Retrosheet</strong> &mdash; the historical truth. Every MLB game ever played, with box-score detail. I match my games to it on date and teams to pull the full record of each one I was at.</li>
-        <li><strong>dbt on BigQuery</strong> &mdash; staging views clean and curate the raw data; a fact table joins my attendance to the historical record, with derived columns like who won, the margin, and whether it was a Yankees game.</li>
-        <li><strong>26 dbt tests</strong> &mdash; not there to always pass. They're there to surface what the data is actually doing. One of them found ~1,800 duplicate game IDs hiding in the historical source &mdash; the kind of thing you only learn by testing.</li>
-        <li><strong>Docs + lineage</strong> &mdash; every model documented, the full lineage graph generated, and the whole thing auto-published on every push. That's the button up top.</li>
+        <li><strong>dbt on BigQuery &mdash; the contract.</strong> 16 models, tested, documented, lineage published on every push. Five semantic models, nine metrics, seven of them the governed questions. This is the reference. Every other engine is measured against what dbt says.</li>
+        <li><strong>Snowflake, Databricks, Data 360 &mdash; the engines.</strong> The same corpus ported to each, and the seven metrics expressed in each one's native semantic layer: a Snowflake semantic view, Databricks metric views, a Data 360 semantic data model federated zero-copy from the other two clouds.</li>
+        <li><strong>Agentforce, Claude, Tableau Agent &mdash; the agents.</strong> Each answers through the definitions, never through its own SQL. Baseball Scout is Agentforce written as code. The Claude agent has no SQL tool at all &mdash; its only path is the metric names. Tableau's agent answers through the same Salesforce model.</li>
+        <li><strong>Tableau Cloud, Tableau Next, Streamlit, Looker Studio &mdash; the doors.</strong> The surfaces a Tableau practitioner is being cut over to. The same chart, 400 home runs by year, made on each one; that's the strip up top.</li>
+        <li><strong>Claude Code &mdash; the one that kept the card with me.</strong> The models, the harness, the workbook XML, the agents, and this site were built in it. Show the trace is the whole thesis, so here's mine: The Viz is on the mic. Eric B. is on the cut.</li>
       </ul>
-
-      <p><strong>The move here:</strong> treat a personal archive like production data. Sources, staging, marts, tests, docs &mdash; the same discipline a team would use, applied to a shoebox of scorecards. The dataset is sentimental; the engineering is real.</p>
     </section>
 
-    <!-- Block 4 — Same questions, new tools -->
+    <!-- Block 4 — The family archive -->
     <section class="bit-section">
-      <h2><span class="hash">#</span>Same questions, new tools</h2>
+      <h2><span class="hash">#</span>The family archive</h2>
 
-      <p>A scorecard answers questions. Who's up? What did he do last time? How did this game actually go? Fans have asked the same handful of questions for a hundred years.</p>
-
-      <p>The tools to answer them keep changing. First the scorecard in your lap. Then the box score in the morning paper. Then the stat sites. Now: a semantic model an agent can query in plain English.</p>
-
-      <p>Same questions every baseball fan ever asked. New tools answering them &mdash; <strong>scorecard, box score, now agentic.</strong> This project is the literal proof of that thesis. The same diamond my grandfather filled in by hand, now a tested data model with a lineage graph of its own.</p>
+      <p>Poppa kept score at the ballpark with a pencil and a card, and taught me the marks &mdash; the little diamond you fill in when someone reaches, 5-3 for a groundout to third. He's on the card fourteen times. My first game is 1984, and the scorecard from it still reads clean forty years later, which is the whole argument for writing things down. The hand-kept cards, his and mine, are the seed. Everything below is what happens when you point the current tools at a shoebox of them and refuse to let any of them invent a play.</p>
     </section>
 
-    <!-- Block 4.5 — Now agentic -->
+    <!-- Block 5 — How to keep score -->
     <section class="bit-section">
-      <h2><span class="hash">#</span>Now agentic</h2>
+      <h2><span class="hash">#</span>How to keep score</h2>
 
-      <p>"Now agentic" isn't the tagline anymore &mdash; it's the build log. The same 178 games now answer questions three ways, on three stacks:</p>
+      <p>How to read a scorecard here. Three things: the questions, the harness, and the trace.</p>
+
+      <p><strong>The seven questions.</strong> One definition each, and the reference answer dbt gives:</p>
 
       <ul>
-        <li><strong>Baseball Scout (Agentforce)</strong> &mdash; an agent written as code, not clicks: Agent Script, deployed and live on a Salesforce dev org. The attendance record federates from BigQuery into Data 360 zero-copy &mdash; the data never moves &mdash; and two Apex actions do the counting. The agent is under standing orders to never state a number an action didn't return. Ask "how many games at Yankee Stadium?" and it queries: <strong>100.</strong> Ask "did I see Jeter play?" and it declines &mdash; the data is team-level, and a guess would be a made-up play on the scorecard. <a href="https://github.com/nobodybeatstheviz/wax-baseball-agentforce">The Agent Script is public</a>.</li>
-        <li><strong>A Hall of Fame argument, as a Skill (Snowflake Cortex)</strong> &mdash; the full Lahman historical database under a hand-built semantic view: players, batting, fielding, awards, ballots. On top of it, a written Skill that teaches an agent how to build any player's Hall of Fame case &mdash; the case for, the honest case against, every stat traced to its source table. Never from memory.</li>
-        <li><strong>The warehouse, over MCP</strong> &mdash; Claude Code talking straight to the BigQuery models through Model Context Protocol. First real question: did anyone homer at a game I attended on my birthday? <strong>Twelve home runs</strong> say yes.</li>
+        <li>Games attended, and in how many stadiums &mdash; <strong>178 in 22</strong></li>
+        <li>Runs witnessed &mdash; <strong>1,706</strong></li>
+        <li>Games attended by year &mdash; <strong>34 seasons</strong>, peaks of 17 in 2001 and 2003</li>
+        <li>Home runs witnessed &mdash; <strong>400</strong></li>
+        <li>Who I went with, top five &mdash; <strong>Melissa 57, Bergan 27, Al 26, solo 16, Poppa 14</strong></li>
+        <li>My win rate when I go, Yankees &mdash; <strong>90&ndash;53</strong> in 143 decided</li>
+        <li>Hall of Famers seen &mdash; <strong>44</strong></li>
       </ul>
 
-      <p>Best bugs so far &mdash; there are two, and they failed in opposite directions. The first test answer was "9" &mdash; a number from nowhere. The session trace showed the agent never called its action; it just guessed. One instruction rewrite later &mdash; <em>you have no knowledge of your own, call the action first</em> &mdash; it answers 100, from the query, every time.</p>
+      <p><strong>The parity harness.</strong> A script asks the seven questions of every surface and diffs each answer against dbt. Four engines matched on 2026-09-01, 28 of 28. Six surfaces matched by 2026-09-05, <strong>42 of 42</strong>. When an inning says a number, that's the harness that says the number is the same number everywhere else. The receipts are generated, not typed.</p>
 
-      <p>The second: ask what percentage of games were Yankees games, and it said <strong>0%</strong>. Not a hallucination this time &mdash; the trace showed the agent doing everything right: action called, result reported faithfully. The bug lived a layer down, in the Apex filter &mdash; it demanded an exact match, and "Yankees" isn't "New York Yankees" in the data, so the query returned zero and the agent honestly repeated it. One matching fix later: <strong>143 of 178 &mdash; 80.3%</strong>, verified at the action layer and again at the agent layer. Two failure modes &mdash; an agent guessing without its data, and an honest agent handed bad data logic &mdash; two different fixes. That's the whole job now: agents are only as honest as the boundary you build around them, and the trace is how you find out which side broke.</p>
+      <p><strong>How to read a trace.</strong> Two bugs, and they failed in opposite directions. Baseball Scout's first answer to "how many games at Yankee Stadium" was <strong>9</strong> &mdash; a number from nowhere. The trace showed it never called its action; it guessed. Later, asked what share of games were Yankees games, it said <strong>0%</strong> &mdash; and the trace showed it doing everything right: action called, result reported faithfully. The bug lived a layer down, an exact-match filter where "Yankees" isn't "New York Yankees." One fix: <strong>143 of 178, 80.3%</strong>. A grounding failure and a data-logic failure look identical in chat and need opposite fixes. The trace is how you tell which side broke. That's the new dashboard QA, and an instruction is not a gate &mdash; gate structurally.</p>
 
-      <p><strong>The move here:</strong> the semantic layer wasn't the finish line &mdash; it was the prerequisite. Answer what the data supports, decline what it doesn't, and let every declined question write the roadmap. My grandfather's scorecard never invented a play. Neither do these.</p>
+      <p>The card is kept in three layers &mdash; source, analysis, presentation &mdash; and the presentation layer is regenerated, never patched. The one time I broke that rule in my own system is <a href="../three-layer-lesson/">its own lesson</a>.</p>
+
+      <p class="demo-caption">Now the innings. <a href="../../#the-lineup">Back to the lineup &rarr;</a></p>
     </section>
 
-    <!-- Block 5 — Footer / nav back -->
+    <!-- Block 6 — Footer / nav back -->
     <footer class="bit-footer">
-      <p><a href="https://github.com/nobodybeatstheviz/wax-baseball-dbt">View the dbt project on GitHub</a></p>
+      <p><a href="https://github.com/nobodybeatstheviz/wax-baseball-dbt">The dbt project on GitHub</a> &middot; <a href="https://github.com/nobodybeatstheviz/wax-baseball-agentforce">Baseball Scout, the Agent Script</a></p>
       <p>&larr; <a href="../../">back to the lineup</a></p>
     </footer>
 
