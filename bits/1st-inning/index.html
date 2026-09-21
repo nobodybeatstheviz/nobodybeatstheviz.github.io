@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KEEPING SCORE · 1st inning — The bar chart an agent made · Nobody Beats the Viz</title>
+  <meta name="description" content="A Tableau bar chart, 400 home runs by year, authored as XML by an agent and published through the Tableau MCP with no browser. The question the run answers: can you trust the number on it?" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://nobodybeatstheviz.com/bits/1st-inning/" />
+  <meta property="og:title" content="KEEPING SCORE · 1st inning — The bar chart an agent made" />
+  <meta property="og:description" content="Can you trust the number on the chart? 400 home runs by year, authored by an agent, published headlessly, and proved the same on every other door." />
+  <meta property="og:image" content="https://nobodybeatstheviz.com/assets/keeping-score-hr-by-year-tableau-cloud.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="KEEPING SCORE · 1st inning — The bar chart an agent made" />
+  <meta name="twitter:description" content="Can you trust the number on the chart? 400 home runs by year, authored by an agent, published headlessly, and proved the same on every other door." />
+  <meta name="twitter:image" content="https://nobodybeatstheviz.com/assets/keeping-score-hr-by-year-tableau-cloud.png" />
+
+  <link rel="icon" type="image/png" href="../../assets/favicon.png" />
+  <link rel="apple-touch-icon" href="../../assets/favicon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cascadia+Code:wght@400;700&family=Inter:wght@400;500;700&display=swap" />
+  <link rel="stylesheet" href="../../styles.css" />
+  <!-- Cloudflare Web Analytics (privacy-first, no cookies). -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "0766fadf140d4e1f95096f0bf3a6f10d"}'></script>
+</head>
+<body>
+
+  <div class="bit-page">
+
+    <!-- Block 1 — Marquee -->
+    <header class="bit-marquee baseball">
+      <span class="status-tag on-wax">1st inning</span>
+      <h1>THE BAR CHART AN AGENT MADE</h1>
+      <p class="hook">Can you trust the number on the chart?</p>
+      <p>You have made this chart a thousand times. Years across the bottom, a count up the side, sort by year, done before the coffee cools. This one you didn't make. An agent wrote the workbook as XML, a server checked it line by line, and it published to Tableau Cloud without a browser being open. The bars say 400. The only question worth asking is the one you'd ask of anyone else's chart: how do I know that's right?</p>
+      <div class="stack">
+        <span>Tableau Cloud</span>
+        <span>Claude Code</span>
+        <span>Tableau MCP</span>
+        <span>BigQuery</span>
+      </div>
+    </header>
+
+    <!-- Block 1.5 — The game, and the picture -->
+    <section class="bit-demo">
+      <p class="bit-game"><strong>The game.</strong> [GAME &mdash; Wax picks. Suggestion: 1988-08-07, Twins at Yankees. Poppa wrote four attendance guesses on the card &mdash; 49,000 / 48,000 / 54,875 / 51,500 &mdash; then the actual, 53,176, circled. Can you trust the number? He checked.]</p>
+      <figure class="bit-figure">
+        <a href="../../assets/keeping-score-hr-by-year-tableau-cloud.png"><img src="../../assets/keeping-score-hr-by-year-tableau-cloud.png" alt="Tableau Cloud bar chart: home runs witnessed by year, 1984 to 2025, 34 red bars summing to 400" /></a>
+        <figcaption>Tableau Cloud &middot; <em>Keeping Score - HR by Year</em> &middot; 34 bars, 400 home runs. Authored as XML, validated and published through the Tableau MCP, 2026-09-10. Restyled to the mark color 2026-09-17.</figcaption>
+      </figure>
+    </section>
+
+    <!-- Block 2 — What happened -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>What happened</h2>
+
+      <p>The spec was five lines: measure, by what, sort, title rule, color. From it the agent emitted a <code>.twb</code>, which is a workbook as XML, the same file Tableau Desktop writes when you hit save. The Tableau MCP server took the file, <strong>validated it server-side and returned line-level errors</strong> when it was wrong, and published it when it wasn't. The receipt is a PNG and a CSV that sums to 400. If the CSV doesn't sum to 400, the script exits and nothing publishes.</p>
+
+      <p>Two eras of the grammar showed up on the way. Tableau's newest strict workbook schema is blocked by two errors in Tableau's own published schema, and no content fixes them. The generator writes the older grammar instead, which is the one Tableau 2026.1 itself still writes when you download a workbook. That was measured, not assumed. The server's verdict on upload is the gate, not the local schema.</p>
+
+      <p>Where headless stopped: nowhere. The red bars took. The font rule was accepted by the server and didn't show in the render, which is the ceiling, not the floor. The floor is the number and the sort, and they held.</p>
+    </section>
+
+    <!-- Block 3 — How you know it's right -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>How you know it's right</h2>
+
+      <p>Not because the agent said so. The 400 on this chart is <strong>home runs witnessed</strong>, one governed definition written down once in dbt: a play in a game I attended whose event code is 23. Every bar is that definition grouped by year. And the same definition, asked of five other engines through each one's own semantic layer, comes back 400 every time. A harness asks the question of all six and diffs the answers. On 2026-09-06 it read <strong>42 of 42</strong>.</p>
+
+      <p>So the chart is the photo. The definition is the contract. The harness is the scorecard that says the number on the photo is the same number everywhere else. That's the whole run in one sentence, and it's why the 1st inning is a bar chart and not an agent: this is where you're standing, and the question is the one you already know how to ask.</p>
+
+      <p>The honest line: it's one workbook, one sheet, personal data at demo scale. No dashboards were built. The discipline is the point, not the volume.</p>
+    </section>
+
+    <!-- Block 4 — What it taught me -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>What it taught me</h2>
+
+      <ol>
+        <li><strong>The chart was never the hard part.</strong> An agent can make it in one pass from five lines. What it can't do is decide what a home run is, and that decision is the only thing on this page that took judgment. It lives upstream of every tool, in the 2nd inning.</li>
+        <li><strong>Validation belongs to the server, not the author.</strong> A local schema said the strict grammar was fine. The server said no, with a line number. Trust the door you're publishing through, not the file you're holding.</li>
+        <li><strong>Next to Tableau, never instead of.</strong> The same chart gets remade on every door the rest of the run walks through, Tableau Next and Streamlit and Databricks and Looker Studio and a plain Claude page. Tableau made it first, and the run measures the rest against it.</li>
+      </ol>
+
+      <p class="demo-caption">Next: what <em>is</em> a home run? <a href="../2nd-inning/">2nd inning &rarr;</a></p>
+    </section>
+
+    <!-- Block 5 — Footer / nav -->
+    <footer class="bit-footer">
+      <p><a href="https://github.com/nobodybeatstheviz/wax-baseball-dbt">The definitions, on GitHub</a> &middot; [LINK &mdash; the workbook generator repo, when it goes public]</p>
+      <p>&larr; <a href="../wax-baseball/">the game notes</a> &middot; <a href="../../#the-lineup">the lineup</a> &middot; <a href="../2nd-inning/">2nd inning</a> &rarr;</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KEEPING SCORE · 5th inning — Three clouds, one org · Nobody Beats the Viz</title>
+  <meta name="description" content="Salesforce Data 360, rebuilt from scripts with no GUI: Snowflake and Databricks zero-copy, Google Cloud Storage ingest, one semantic model. And the Hall of Fame count that came back 281, then 35, then 44." />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://nobodybeatstheviz.com/bits/5th-inning/" />
+  <meta property="og:title" content="KEEPING SCORE · 5th inning — Three clouds, one org" />
+  <meta property="og:description" content="Where does the fan-out hide? 281 → 35 → 44. A measure only joins the objects its formula names, and the Hall of Fame count proved it three ways." />
+  <meta property="og:image" content="https://nobodybeatstheviz.com/assets/nbtv-logo-chevron.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="KEEPING SCORE · 5th inning — Three clouds, one org" />
+  <meta name="twitter:description" content="Where does the fan-out hide? 281 → 35 → 44. A measure only joins the objects its formula names, and the Hall of Fame count proved it three ways." />
+  <meta name="twitter:image" content="https://nobodybeatstheviz.com/assets/nbtv-logo-chevron.png" />
+
+  <link rel="icon" type="image/png" href="../../assets/favicon.png" />
+  <link rel="apple-touch-icon" href="../../assets/favicon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cascadia+Code:wght@400;700&family=Inter:wght@400;500;700&display=swap" />
+  <link rel="stylesheet" href="../../styles.css" />
+  <!-- Cloudflare Web Analytics (privacy-first, no cookies). -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "0766fadf140d4e1f95096f0bf3a6f10d"}'></script>
+</head>
+<body>
+
+  <div class="bit-page">
+
+    <!-- Block 1 — Marquee -->
+    <header class="bit-marquee baseball">
+      <span class="status-tag on-wax">5th inning</span>
+      <h1>THREE CLOUDS, ONE ORG</h1>
+      <p class="hook">Where does the fan-out hide?</p>
+      <p>You know the fan-out. Two tables, a join on the wrong grain, and suddenly revenue is triple what it should be and nobody can say why the total on the dashboard doesn't match the one in the report. Tableau's relationship model was built to stop that. A semantic model in Salesforce Data 360 is the same idea with the agents standing on top of it, and it fanned out on me anyway. Three times, with three different numbers, and the difference between them is the whole lesson.</p>
+      <div class="stack">
+        <span>Data 360</span>
+        <span>Snowflake</span>
+        <span>Databricks</span>
+        <span>Google Cloud Storage</span>
+        <span>Salesforce CLI</span>
+      </div>
+    </header>
+
+    <!-- Block 1.5 — The game, and the picture -->
+    <section class="bit-demo">
+      <p class="bit-game"><strong>The game.</strong> [GAME &mdash; Wax picks. Suggestion: 1989-05-28, A's at Yankees. McGwire homers in the 4th, circled on Poppa's card; Rickey Henderson leads off for the Yankees, weeks before the trade. Two future Hall of Famers on one card. Which players count is the question this inning asks the engine.]</p>
+      <figure class="bit-figure">
+        <div class="placeholder-box">[SCREENSHOT &mdash; Data 360: the <code>Keeping_Score</code> semantic data model canvas, seven objects, five relationships. Capture before the scratch org expires 2026-10-03.]</div>
+        <figcaption>The model as the picture. Seven objects federated from two clouds and ingested from a third, five relationships, seven governed measures. Every one of the 44 Hall of Famers walks a path through this graph, and 237 of the 281 inductees don't.</figcaption>
+      </figure>
+    </section>
+
+    <!-- Block 2 — What happened -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>281, then 35, then 44</h2>
+
+      <p>The question was &ldquo;how many Hall of Famers have I seen play?&rdquo; The contract's answer is <strong>44</strong>: every inducted batter or pitcher who appeared in a game I attended. The first measure I wrote in Data 360 joined People to the Hall of Fame table and came back <strong>281</strong>. Every inducted player in history. Nothing in the formula forced the path through my games, so the engine didn't walk it. A measure's query joins only the objects its expression names.</p>
+
+      <p>Add Plays to the formula and it drops to <strong>35</strong>. Better, and still wrong: the graph has one edge from People to Plays, the batter, so pitchers never enter. The 44 rides a pre-built sightings mart that already knows batters and pitchers both count. All three numbers are kept queryable so the lesson stays measurable. Corollary found the same day: two metrics from unrelated fact tables can't share one query. The engine throws <code>NO_PATH</code>, and Tableau Next inherits the same limit, because it's the same model.</p>
+
+      <p>The comparison that matters to you: the same cross-table formula that Data 360 fanned out to 281, Tableau Cloud refused outright. &ldquo;Only one upstream base table.&rdquo; Different engines make different bets about whether to stop you or trust you. Neither one knows what a Hall of Famer sighting is. That's yours.</p>
+    </section>
+
+    <!-- Block 3 — How it works -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>How it works</h2>
+
+      <p>Data 360 pulls data in from other warehouses, either copying it or reading it in place, and lets you define a semantic model on top that Salesforce's agents and Tableau Next both read. The whole layer was built into a fresh scratch org from scripts: two connections, Snowflake by key-pair and Databricks by token, seven data streams reading the data where it sits, one model with seven objects and five relationships and the seven measures. Verified seven of seven through the semantic engine on 2026-09-04. The docs said the connectors needed the browser. They didn't. <strong>Two Setup toggles were the only clicks in the sprint.</strong></p>
+
+      <p>Then the third cloud. BigQuery's connector is walled in that org by an entitlement no API would name, so the marts were exported to Parquet in Google Cloud Storage and ingested through the storage connector: seven more streams, a second model. <strong>Ingest, not zero-copy.</strong> That's the honest label, and it appears everywhere the GCP leg does. Two zero-copy legs and one copy. Three clouds in one org.</p>
+
+      <p>The ingest leg found its own bug. A total-replace load keyed on player id kept one Hall of Fame ballot per player, 1,543 of 6,426 rows, and the graph measure silently read 24 instead of 35. Fix: a composite ballot key in the export. The number that told me was the parity harness, which is the only reason the wrong 24 lasted a day instead of a quarter.</p>
+    </section>
+
+    <!-- Block 4 — What it taught me -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>What it taught me</h2>
+
+      <ol>
+        <li><strong>The fan-out hides in the path the engine chose not to walk.</strong> 281 wasn't a join that doubled rows; it was a join that never happened. Your relationship-model instincts transfer exactly. What's new is that an agent will state the 281 in a full sentence, and nobody downstream is looking at a join diagram.</li>
+        <li><strong>Keep the wrong numbers.</strong> 281, 35, 44 are all still queryable. The lesson is only real while all three can be reproduced.</li>
+        <li><strong>The GUI floor wasn't a floor.</strong> Connections, streams, objects, model, all from the CLI. When a doc says something needs the browser, measure it. In this system measuring is cheap.</li>
+      </ol>
+
+      <p class="demo-caption">Next: the same seven answers through two more front doors. <a href="../6th-inning/">6th inning &rarr;</a></p>
+    </section>
+
+    <!-- Block 5 — Footer / nav -->
+    <footer class="bit-footer">
+      <p>[LINK &mdash; the Data 360 deploy repo with the replay runbook, when it goes public]</p>
+      <p>&larr; <a href="../4th-inning/">4th inning</a> &middot; <a href="../../#the-lineup">the lineup</a> &middot; <a href="../6th-inning/">6th inning</a> &rarr;</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>

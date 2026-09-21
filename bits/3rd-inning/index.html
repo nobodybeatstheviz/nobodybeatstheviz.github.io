@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KEEPING SCORE · 3rd inning — Confident zeros · Nobody Beats the Viz</title>
+  <meta name="description" content="Ask Tableau Agent how many home runs you've seen and it says zero, confidently. The trace shows why: it decided 'I' meant your user id. Two eras of Tableau, and the fix that lives on the model." />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://nobodybeatstheviz.com/bits/3rd-inning/" />
+  <meta property="og:title" content="KEEPING SCORE · 3rd inning — Confident zeros" />
+  <meta property="og:description" content="Who is 'I'? Tableau Agent said zero home runs, called it a unique insight, and the query showed a silent filter on my user id. The fix is on the model, not in the prompt." />
+  <meta property="og:image" content="https://nobodybeatstheviz.com/assets/nbtv-logo-chevron.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="KEEPING SCORE · 3rd inning — Confident zeros" />
+  <meta name="twitter:description" content="Who is 'I'? Tableau Agent said zero home runs, called it a unique insight, and the query showed a silent filter on my user id. The fix is on the model, not in the prompt." />
+  <meta name="twitter:image" content="https://nobodybeatstheviz.com/assets/nbtv-logo-chevron.png" />
+
+  <link rel="icon" type="image/png" href="../../assets/favicon.png" />
+  <link rel="apple-touch-icon" href="../../assets/favicon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cascadia+Code:wght@400;700&family=Inter:wght@400;500;700&display=swap" />
+  <link rel="stylesheet" href="../../styles.css" />
+  <!-- Cloudflare Web Analytics (privacy-first, no cookies). -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "0766fadf140d4e1f95096f0bf3a6f10d"}'></script>
+</head>
+<body>
+
+  <div class="bit-page">
+
+    <!-- Block 1 — Marquee -->
+    <header class="bit-marquee baseball">
+      <span class="status-tag on-wax">3rd inning</span>
+      <h1>CONFIDENT ZEROS</h1>
+      <p class="hook">Who is &ldquo;I&rdquo;?</p>
+      <p>On Tableau Cloud, &ldquo;I&rdquo; was never a question. You were the one at the keyboard; the filters were the ones you dragged. On Tableau Next, I asked the agent how many home runs I'd seen and it said none. Then it called that a unique insight. The prose was fluent and wrong, and nothing in it told you why. The query underneath did.</p>
+      <div class="stack">
+        <span>Tableau Next</span>
+        <span>Tableau Agent</span>
+        <span>Data 360</span>
+        <span>Hosted MCP</span>
+        <span>Tableau Cloud</span>
+      </div>
+    </header>
+
+    <!-- Block 1.5 — The game, and the picture -->
+    <section class="bit-demo">
+      <p class="bit-game"><strong>The game.</strong> [GAME &mdash; Wax picks. Suggestion: 1987-06-15, Orioles at Yankees. Poppa's card, bottom margin: &ldquo;Got 2 balls &mdash; 1 from Winfield, 1 from Niedenfuer. Georgie's Birt'day shown on scoreboard.&rdquo; The stadium knew exactly who &ldquo;I&rdquo; was. The agent had to be told.]</p>
+      <figure class="bit-figure">
+        <div class="placeholder-box">[SCREENSHOT &mdash; Tableau Next: &ldquo;Home runs witnessed, by year&rdquo; in the Keeping Score workspace. Capture before the scratch org expires 2026-10-03. Build 2.5 to-do #1.]</div>
+        <figcaption>Tableau Next &middot; the same 400, by year, built through the Beta MCP with no browser: workspace, visualization, sort order. Where headless stopped: the capture (no image API) and the mark color (no edit operation reaches it). The tool default ships; the number and the sort hold.</figcaption>
+      </figure>
+    </section>
+
+    <!-- Block 2 — What happened -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>What happened</h2>
+
+      <p>Tableau Next reads the Salesforce Data 360 semantic model directly. There was nothing to rebuild: the <code>Keeping_Score</code> model from the 5th inning <em>is</em> the Tableau Next semantic model, seven objects, five relationships, the seven governed measures. Tableau Agent came on with one Setup toggle. No template, no wizard.</p>
+
+      <p>First question: how many home runs have I witnessed? <strong>Zero.</strong> &ldquo;You didn't witness any home runs &mdash; a unique insight!&rdquo; The response carries a troubleshooting field, and in it is the exact structured query the agent sent to the semantic engine. That query had a filter I never asked for: <code>attendee_key = &lt;my Salesforce user id&gt;</code>. It had resolved &ldquo;I&rdquo; to the running user's id and filtered the attendee table to it. On a one-person model that is always zero. Confidently.</p>
+
+      <p>The fix is not a better prompt. It's <strong>business preferences on the model</strong>: a short text, stored with the semantic model, saying what &ldquo;I&rdquo; and &ldquo;my&rdquo; mean here. Written headlessly through the hosted MCP, kept as source in git. Asked again: 400 home runs, 178 games. Four of four golden questions after. Seven of seven through the MCP's semantic-query tool, which made Tableau Next the fifth surface in the parity scorecard.</p>
+    </section>
+
+    <!-- Block 3 — Two eras of Tableau -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>Two eras of Tableau</h2>
+
+      <p>The comparison is the point. On Tableau Cloud, the classic product, the marts were published as five data sources and one relationship model with no GUI, and the seven questions ran through the query service: seven of seven. Visual, descriptive, yours. On Tableau Next, the same model is governed-metric-and-agent: you don't drag a filter, you tell the model what your words mean and the agent binds the question to a governed field.</p>
+
+      <p>Where the two eras disagreed, they disagreed usefully. A cross-table row-level formula that Data 360 silently fanned out to 281 rows, Tableau Cloud refused outright: &ldquo;only one upstream base table.&rdquo; Home runs and Hall of Famers in one query worked on Tableau Cloud where Data 360 threw <code>NO_PATH</code>, because the Tableau model has one more edge, not because the semantics differ. Same definitions, different engines, and the differences are in the joins each one is willing to walk.</p>
+
+      <p>The honest line: this is Tableau Next as a query and agent surface over a Data 360 model, plus the one chart above, built for this run. No dashboards. The org it lives in is a scratch org that expires 2026-10-03, so everything here lives in git or evaporates. That was the forcing function.</p>
+    </section>
+
+    <!-- Block 4 — What it taught me -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>What it taught me</h2>
+
+      <ol>
+        <li><strong>Read the query, not the prose.</strong> The prose said zero and sounded certain. The query showed the filter. Every agent surface in this run was measured on whether it shows you the query it ran, and this one does. That's the difference between a wrong answer you can diagnose and one you can't.</li>
+        <li><strong>The fix lives on the model.</strong> Not in a prompt, not in a conversation. Any personal-data model on Tableau Next needs business preferences saying who &ldquo;I&rdquo; is. Where does your knowledge of the data go in an agentic stack? Here is one of the places: a paragraph on the semantic model that every question passes through.</li>
+        <li><strong>Next to Tableau, never instead of.</strong> Tableau Cloud answered seven of seven too. The new era didn't replace the old one's answers; it changed who asks and how the meaning gets attached.</li>
+      </ol>
+
+      <p class="demo-caption">Next: three wrong answers, three different diseases. <a href="../4th-inning/">4th inning &rarr;</a></p>
+    </section>
+
+    <!-- Block 5 — Footer / nav -->
+    <footer class="bit-footer">
+      <p>[LINK &mdash; the Tableau Next repo with the business-preferences text, when it goes public]</p>
+      <p>&larr; <a href="../2nd-inning/">2nd inning</a> &middot; <a href="../../#the-lineup">the lineup</a> &middot; <a href="../4th-inning/">4th inning</a> &rarr;</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>

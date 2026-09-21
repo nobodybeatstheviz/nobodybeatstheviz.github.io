@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KEEPING SCORE · 2nd inning — The contract · Nobody Beats the Viz</title>
+  <meta name="description" content="What is a home run? Event code 23 stops being a magic number in a calculated field and becomes one governed definition every tool reads. dbt on BigQuery, and the test that failed on purpose." />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://nobodybeatstheviz.com/bits/2nd-inning/" />
+  <meta property="og:title" content="KEEPING SCORE · 2nd inning — The contract" />
+  <meta property="og:description" content="What is a home run? The calculated field that got a home. Seven questions, one definition each, and the test that failed with 1,872 duplicates on purpose." />
+  <meta property="og:image" content="https://nobodybeatstheviz.com/assets/nbtv-logo-chevron.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="KEEPING SCORE · 2nd inning — The contract" />
+  <meta name="twitter:description" content="What is a home run? The calculated field that got a home. Seven questions, one definition each, and the test that failed with 1,872 duplicates on purpose." />
+  <meta name="twitter:image" content="https://nobodybeatstheviz.com/assets/nbtv-logo-chevron.png" />
+
+  <link rel="icon" type="image/png" href="../../assets/favicon.png" />
+  <link rel="apple-touch-icon" href="../../assets/favicon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cascadia+Code:wght@400;700&family=Inter:wght@400;500;700&display=swap" />
+  <link rel="stylesheet" href="../../styles.css" />
+  <!-- Cloudflare Web Analytics (privacy-first, no cookies). -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "0766fadf140d4e1f95096f0bf3a6f10d"}'></script>
+</head>
+<body>
+
+  <div class="bit-page">
+
+    <!-- Block 1 — Marquee -->
+    <header class="bit-marquee baseball">
+      <span class="status-tag on-wax">2nd inning</span>
+      <h1>THE CONTRACT</h1>
+      <p class="hook">What is a home run?</p>
+      <p>You know the calculated field. <code>IF [Event Code] = 23 THEN 1 END</code>, or whatever it was called at your shop, written into a workbook, copied into the next one, drifting a little each time until two dashboards disagree and a VP asks which one is right. The 400 on the 1st-inning chart doesn't come from a calc. It comes from one definition, written once, in a place every tool has to read. This inning is where that definition lives, and why the test that failed was the best thing that happened here.</p>
+      <div class="stack">
+        <span>dbt</span>
+        <span>BigQuery</span>
+        <span>MetricFlow</span>
+        <span>Retrosheet</span>
+        <span>Looker Studio</span>
+      </div>
+    </header>
+
+    <!-- Block 1.5 — The game, and the pictures -->
+    <section class="bit-demo">
+      <p class="bit-game"><strong>The game.</strong> [GAME &mdash; Wax picks. Suggestion: 1992-05-24, Brewers at Yankees. Poppa's card scored the 1st inning and then just the highlights: &ldquo;Yanks win 8-7 &middot; Mattingly 3 doubles &middot; Nokes + Hayes HRs.&rdquo; A partial record, and every one of those facts checks against the play-by-play. What counts is what's written down.]</p>
+      <figure class="bit-figure">
+        <div class="placeholder-box">[SCREENSHOT &mdash; Looker Studio: one bar chart, Dimension <code>yr</code>, Metric <code>hr</code>, over the BigQuery view <code>v_hr_by_year</code>. Build 2.5 to-do #3.]</div>
+        <figcaption>Looker Studio on BigQuery &middot; the same 400, by year. The view and the report link were built headlessly; the chart itself was drawn in the GUI, because Looker Studio has no authoring API. That's where headless stops on this door, and this page says so.</figcaption>
+      </figure>
+      <p class="demo-caption">The contract is live and browsable &mdash; every model, every test, the full lineage graph.</p>
+      <p><a class="docs-cta" href="../../wax-baseball-dbt/">Explore the live dbt docs &rarr;</a></p>
+    </section>
+
+    <!-- Block 2 — What it is -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>What it is</h2>
+
+      <p>dbt runs SQL inside the warehouse, here BigQuery, and turns raw tables into tested, documented, reusable ones. The 178 games join to Retrosheet, the official play-by-play, on one clean key. From there: <strong>16 models</strong>, seven staging views that rename and cast and filter, eight marts that join and add meaning, one calendar table the metric engine needs. One fact table with 178 rows, one per game, carrying pre-computed answers like whether it was a Yankees game and who won.</p>
+
+      <p>On top of the marts sits the semantic layer, shipped 2026-08-31: <strong>five semantic models and nine metrics</strong>. Seven of the nine are the governed questions. Games attended. Unique stadiums. Home runs witnessed. Runs witnessed. Win rate when I'm there. Games per companion. Hall of Famers seen. Each is a few lines of YAML naming a measure and how to aggregate it. <code>home_runs_witnessed</code> is a count of plays where the event code is 23, filtered to games I attended. That's the whole definition, and it appears in exactly one file.</p>
+
+      <p>This is the reference. Every other engine in the run, Snowflake and Databricks and Data 360 and Tableau Next, is measured against what this layer says. The reference answers were recorded 2026-08-31: 178 games in 22 stadiums, 400 home runs, 1,706 runs, 44 Hall of Famers, Yankees 90&ndash;53 in the 143 decided games I sat through.</p>
+    </section>
+
+    <!-- Block 3 — The test that failed on purpose -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>The test that failed on purpose</h2>
+
+      <p>A uniqueness test on Retrosheet's game id failed with <strong>1,872 duplicates</strong>. That looked like a disaster for about ten minutes. Then it looked like the useful result: the public dataset includes Negro Leagues, exhibitions, and pre-MLB games for completeness, and some of them share ids with the modern schedule. My staging filter already kept only my 178, so nothing downstream was ever wrong.</p>
+
+      <p>The choice was about test granularity. Drop the test on the source I don't control, document the finding in the source's description, and keep the test where it applies, on the tables I do control. A test that fails and teaches you something about your source is doing its job. A test that fails on somebody else's data forever is noise.</p>
+
+      <p>Two smaller ones: an all-empty text column made dbt infer it as a number and broke a trim, fixed by pinning the type in the seed config. And the newest dbt engine turned out to have no local metric engine at all, so the metrics are queried through a side-by-side older install. Free, local, and in the same terminal as everything else.</p>
+    </section>
+
+    <!-- Block 4 — What it taught me -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>What it taught me</h2>
+
+      <ol>
+        <li><strong>The calculated field didn't go away. It got a home.</strong> Everything you know about what a home run is, what a decided game is, who counts as a companion, is exactly the knowledge the semantic layer is for. It moves upstream of the workbook and every tool reads it. Your fifteen years of knowing what the field means is the asset here, not the deprecated part.</li>
+        <li><strong>Filter early.</strong> Keeping only my 178 games in staging cuts each run to about 34 MB of scan instead of all of baseball history. The same push-down instinct you have with an extract filter, one layer earlier.</li>
+        <li><strong>The reference has to exist before parity means anything.</strong> Six engines agreeing is only interesting if one of them is the contract. This is the one.</li>
+      </ol>
+
+      <p class="demo-caption">Next: an agent that answered zero, confidently. <a href="../3rd-inning/">3rd inning &rarr;</a></p>
+    </section>
+
+    <!-- Block 5 — Footer / nav -->
+    <footer class="bit-footer">
+      <p><a href="https://github.com/nobodybeatstheviz/wax-baseball-dbt">The dbt project on GitHub</a> &middot; <a href="../../wax-baseball-dbt/">the live docs and lineage</a></p>
+      <p>&larr; <a href="../1st-inning/">1st inning</a> &middot; <a href="../../#the-lineup">the lineup</a> &middot; <a href="../3rd-inning/">3rd inning</a> &rarr;</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>

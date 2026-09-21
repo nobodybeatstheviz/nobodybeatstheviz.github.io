@@ -568,6 +568,30 @@ footer h3 .hash {
   margin-top: 0.6rem;
 }
 
+/* Placeholder for a capture that hasn't landed yet (Build 2.5 screenshots, the family-archive image).
+   Swap the div for an <img> when the PNG lands; the figcaption stays. */
+.bit-figure .placeholder-box {
+  border: 2px dashed var(--muted);
+  border-radius: 4px;
+  background: var(--paper);
+  padding: 3rem 1.5rem;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+
+/* The game each inning leads with — Wax's pick. */
+.bit-game {
+  font-family: var(--mono);
+  font-size: 0.95rem;
+  color: var(--muted);
+  border-left: 3px solid var(--red);
+  padding: 0.4rem 0 0.4rem 1rem;
+  margin: 0 0 1.5rem;
+}
+
 .bit-footer {
   padding: 2.5rem 0 1.5rem;
   font-family: var(--mono);

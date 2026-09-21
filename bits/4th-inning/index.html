@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KEEPING SCORE · 4th inning — Three failures, three fixes · Nobody Beats the Viz</title>
+  <meta name="description" content="Baseball Scout, an Agentforce agent written as code, gave three wrong answers: 9, 0%, and 'no highlights found.' Three different diseases, three different fixes, and the trace is how you tell them apart." />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://nobodybeatstheviz.com/bits/4th-inning/" />
+  <meta property="og:title" content="KEEPING SCORE · 4th inning — Three failures, three fixes" />
+  <meta property="og:description" content="Is the trace the new dashboard QA? 9, 0%, and a fabricated no-result. Same chat window, three opposite failures, and only the trace tells you which one you have." />
+  <meta property="og:image" content="https://nobodybeatstheviz.com/assets/nbtv-logo-chevron.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="KEEPING SCORE · 4th inning — Three failures, three fixes" />
+  <meta name="twitter:description" content="Is the trace the new dashboard QA? 9, 0%, and a fabricated no-result. Same chat window, three opposite failures, and only the trace tells you which one you have." />
+  <meta name="twitter:image" content="https://nobodybeatstheviz.com/assets/nbtv-logo-chevron.png" />
+
+  <link rel="icon" type="image/png" href="../../assets/favicon.png" />
+  <link rel="apple-touch-icon" href="../../assets/favicon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cascadia+Code:wght@400;700&family=Inter:wght@400;500;700&display=swap" />
+  <link rel="stylesheet" href="../../styles.css" />
+  <!-- Cloudflare Web Analytics (privacy-first, no cookies). -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "0766fadf140d4e1f95096f0bf3a6f10d"}'></script>
+</head>
+<body>
+
+  <div class="bit-page">
+
+    <!-- Block 1 — Marquee -->
+    <header class="bit-marquee baseball">
+      <span class="status-tag on-wax">4th inning</span>
+      <h1>THREE FAILURES, THREE FIXES</h1>
+      <p class="hook">Is the trace the new dashboard QA?</p>
+      <p>You've QA'd a dashboard. Open the workbook, check the filter, follow the calc back to the field, find the join that doubled the rows. There's a place to look. An agent gives you a sentence in a chat window, and when the sentence is wrong there's nothing to open. Baseball Scout gave me three wrong answers in three months. Nine. Zero percent. &ldquo;No highlights found.&rdquo; They looked identical from the chat. They were three different diseases, and only the trace could tell them apart.</p>
+      <div class="stack">
+        <span>Agentforce</span>
+        <span>Agent Script</span>
+        <span>Apex</span>
+        <span>Data 360</span>
+      </div>
+    </header>
+
+    <!-- Block 1.5 — The game, and the pictures -->
+    <section class="bit-demo">
+      <p class="bit-game"><strong>The game.</strong> [GAME &mdash; Wax picks. Suggestion: 2001 World Series Game 5, Yankee Stadium. Down two in the bottom of the 9th, Brosius ties it. The fix arrives late, and the card shows exactly when.]</p>
+      <figure class="bit-figure">
+        <div class="placeholder-box">[SCREENSHOT &mdash; Baseball Scout in preview: &ldquo;How many games at Yankee Stadium I?&rdquo; &rarr; the first answer, 9.]</div>
+        <figcaption>Agentforce preview, 2026-06-30. The answer was 9. The trace underneath it: <code>tool_invocations: null</code>. It never looked.</figcaption>
+      </figure>
+      <figure class="bit-figure">
+        <div class="placeholder-box">[SCREENSHOT &mdash; the session trace JSON: the action called, the result returned, the prose reporting 0%.]</div>
+        <figcaption>The 0% trace. Action called, result reported faithfully. The bug was one string comparison a layer down. No chart on this door, by nature: the trace is the picture.</figcaption>
+      </figure>
+    </section>
+
+    <!-- Block 2 — The three -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>Nine. Zero percent. No highlights found.</h2>
+
+      <p><strong>Nine.</strong> First preview, June 30. &ldquo;How many games at Yankee Stadium I?&rdquo; The agent said 9. The session trace showed <code>tool_invocations: null</code>. It never called its action. It guessed a plausible number and said it with a straight face. A <em>grounding failure</em>: the answer came from nowhere. The fix was in the instructions, you have no knowledge of your own, call an action first. Re-test: <strong>100</strong>, the right answer, and an even hundred at the old Stadium.</p>
+
+      <p><strong>Zero percent.</strong> &ldquo;What percentage of my games were Yankees games?&rdquo; 0%. The trace showed the action <em>was</em> called and its result reported honestly. The agent did everything right. The bug was one layer down, an exact-match filter in the Apex where &ldquo;Yankees&rdquo; is never equal to &ldquo;New York Yankees.&rdquo; A <em>data-logic failure</em>: the pipe was clean, the water was wrong. Ground truth first, with direct queries: home contains Yankees 123, away 20, either 143, exact 0. Which also caught that the obvious answer, 123, was wrong too, because the question means home <em>or</em> away. Fixed at both layers, August 4: <strong>143 of 178, 80.3%</strong>.</p>
+
+      <p><strong>No highlights found.</strong> A second agent with one job, fetch the YouTube highlights for a game, answered &ldquo;no highlights were found&rdquo; without calling its only action. The instruction said, in the strongest phrasing the platform offers, that it must call the action. It skipped it anyway and fabricated a no-result. An <em>instruction failure</em>, and the lesson that came out of it is the one I'd give any team: <strong>an instruction is not a gate. Gate structurally.</strong> Version 3 fires the search as a procedural step the model doesn't get to skip.</p>
+    </section>
+
+    <!-- Block 3 — How it works -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>How it works</h2>
+
+      <p>Baseball Scout is written in Agent Script, Salesforce's text format for an agent as code, not clicked together in a builder. It versions, it reviews, it's in a public repo. A router sends attended-game questions to one subagent with two Apex actions over the 178 rows, governed-metric questions to another that calls the Data 360 semantic model from the 5th inning, and everything vague or off-topic to two guardrail subagents. Scope is enforced structurally: the actions can only return attended-games data, so the agent physically cannot answer a question about Derek Jeter's career. It declines, honestly.</p>
+
+      <p>Version 1.2 answers the governed metrics through the same definitions as every other engine in the run, and its three golden cases, 400 home runs, 44 Hall of Famers, Yankees 90 of 143, passed topic, action, and output on three consecutive test runs. Then the observability pass measured the trace itself: 3 model calls, 21 plan steps, one action returning <code>homeRunsWitnessed: 400</code>, 4.7 seconds. And <strong>zero token fields in 85 KB of trace</strong>. That absence is a measured fact too; it's in the 8th inning.</p>
+
+      <p>The honest line: retrieval agents with one action each, on my own data, in a dev org's preview. No production channel, no customers. The customer engagement adds the channel, the identity model, and the evaluation suite. And one more: the test runner reported &ldquo;no results&rdquo; on an agent whose live preview passed the same utterance. A test runner's verdict is one surface, not the truth. Read the trace, not the score.</p>
+    </section>
+
+    <!-- Block 4 — What it taught me -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>What it taught me</h2>
+
+      <ol>
+        <li><strong>Yes, the trace is the new dashboard QA.</strong> It's the workbook you open when the sentence is wrong. Grounding failure, data-logic failure, instruction failure: same chat window, opposite fixes. The trace is the only thing that tells you which side broke, and a platform that hides it is asking you to QA blind.</li>
+        <li><strong>The 0% was the good one.</strong> The agent was honest and the data was wrong. That's the failure you already know how to fix, because it's the one you've been fixing in calcs and joins for years. The 9 is the new one.</li>
+        <li><strong>Gate structurally.</strong> Where a rule kept getting skipped, better wording never fixed it. Making the step something that runs or doesn't could not fail the same way. Convert prescription into mechanism.</li>
+      </ol>
+
+      <p class="demo-caption">Next: the model these agents stand on, and where the fan-out hides. <a href="../5th-inning/">5th inning &rarr;</a></p>
+    </section>
+
+    <!-- Block 5 — Footer / nav -->
+    <footer class="bit-footer">
+      <p><a href="https://github.com/nobodybeatstheviz/wax-baseball-agentforce">Baseball Scout on GitHub</a> &mdash; the Agent Script, the spec, the 9 and the 0% on the README</p>
+      <p>&larr; <a href="../3rd-inning/">3rd inning</a> &middot; <a href="../../#the-lineup">the lineup</a> &middot; <a href="../5th-inning/">5th inning</a> &rarr;</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>

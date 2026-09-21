@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KEEPING SCORE · 6th inning — Two front doors · Nobody Beats the Viz</title>
+  <meta name="description" content="Snowflake and Databricks, the two doors a Tableau practitioner is being walked toward. The same seven answers through each one's own semantic layer, the same chart on Streamlit and AI/BI, and what each agent did on the way." />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://nobodybeatstheviz.com/bits/6th-inning/" />
+  <meta property="og:title" content="KEEPING SCORE · 6th inning — Two front doors" />
+  <meta property="og:description" content="Same seven answers. Which door? Snowflake's SQL door read the view fine and its agent door rejected it. Databricks' agent queried the governed measure by name and stated its own assumption." />
+  <meta property="og:image" content="https://nobodybeatstheviz.com/assets/nbtv-logo-chevron.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="KEEPING SCORE · 6th inning — Two front doors" />
+  <meta name="twitter:description" content="Same seven answers. Which door? Snowflake's SQL door read the view fine and its agent door rejected it. Databricks' agent queried the governed measure by name and stated its own assumption." />
+  <meta name="twitter:image" content="https://nobodybeatstheviz.com/assets/nbtv-logo-chevron.png" />
+
+  <link rel="icon" type="image/png" href="../../assets/favicon.png" />
+  <link rel="apple-touch-icon" href="../../assets/favicon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cascadia+Code:wght@400;700&family=Inter:wght@400;500;700&display=swap" />
+  <link rel="stylesheet" href="../../styles.css" />
+  <!-- Cloudflare Web Analytics (privacy-first, no cookies). -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "0766fadf140d4e1f95096f0bf3a6f10d"}'></script>
+</head>
+<body>
+
+  <div class="bit-page">
+
+    <!-- Block 1 — Marquee -->
+    <header class="bit-marquee baseball">
+      <span class="status-tag on-wax">6th inning</span>
+      <h1>TWO FRONT DOORS</h1>
+      <p class="hook">Same seven answers. Which door?</p>
+      <p>If your org is moving, it's moving toward one of these two. Snowflake with Cortex and Streamlit. Databricks with Genie and AI/BI. You've been told both are where the chart goes next. So I put the same corpus in each, expressed the same seven definitions in each one's native semantic layer, asked each one's agent the same question, and drew the same bar chart on each one's front porch. Seven of seven, both. The interesting part is what each one did on the way to the right answer.</p>
+      <div class="stack">
+        <span>Snowflake</span>
+        <span>Cortex Agent</span>
+        <span>Streamlit</span>
+        <span>Databricks</span>
+        <span>Genie</span>
+        <span>AI/BI</span>
+      </div>
+    </header>
+
+    <!-- Block 1.5 — The game, and the pictures -->
+    <section class="bit-demo">
+      <p class="bit-game"><strong>The game.</strong> [GAME &mdash; Wax picks. A road game fits: the same team through a different front door. Wrigley (5 games), Fenway (4), Coors (4) are the candidates in the data.]</p>
+      <figure class="bit-figure">
+        <div class="placeholder-box">[SCREENSHOT &mdash; Streamlit in Snowflake: <code>KEEPING_SCORE_HR_BY_YEAR</code>, the bar chart over the semantic view. Build 2.5 to-do #2.]</div>
+        <figcaption>Streamlit in Snowflake &middot; the same 400, by year, deployed from the command line. The app reads the semantic view directly, the same object Cortex answers from, so the two front doors share one definition. Where headless stopped: the screenshot.</figcaption>
+      </figure>
+      <figure class="bit-figure">
+        <div class="placeholder-box">[SCREENSHOT &mdash; Databricks AI/BI: the published &ldquo;Keeping Score&rdquo; dashboard, one bar widget over the <code>mv_plays</code> metric view. Build 2.5 to-do #4, pending the warehouse.]</div>
+        <figcaption>Databricks AI/BI &middot; authored as JSON and published through the SDK. The serverless warehouse wouldn't start the morning it was built, so the render and its 400 are pending. That's the honest state until it wakes.</figcaption>
+      </figure>
+    </section>
+
+    <!-- Block 2 — Snowflake -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>Snowflake: one view, two validators</h2>
+
+      <p>The seven metrics went into a native <strong>semantic view</strong>, Snowflake's object for naming tables, dimensions, and metrics so tools can ask by name. Plain SQL against it passed the harness, seven of seven. Then a Cortex agent, one <code>CREATE AGENT</code> statement, bound to the same view. It couldn't query at all. The agent's path serializes the view to a YAML model and rejects quoted lowercase column names; the SQL path had accepted them fine. <strong>Same object, two front doors, one validator said yes and the other said no.</strong> The fix was a generated set of unquoted views underneath; the semantic view's logical names didn't change, so the harness never noticed.</p>
+
+      <p>On the run that worked, the agent's first SQL attempt failed in the open. Its retry re-derived the home run definition by hand, <code>SUM(CASE WHEN event_code = 23 …)</code>, instead of asking the governed metric by name. Right answer, 400. The one surface in the run that wrote SQL <em>over</em> a semantic layer it could have just called. And its platform log was the richest of any I measured: 12 rows for one question, per-step model, per-step tokens, the exact SQL, the query id, with no setup.</p>
+    </section>
+
+    <!-- Block 3 — Databricks -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>Databricks: the measure by name, and a stated assumption</h2>
+
+      <p>The seven metrics went into <strong>Unity Catalog metric views</strong>, YAML declaring dimensions and measures over the ported marts. Seven of seven. Then Genie, Databricks' natural-language agent, over those five views. Asked about home runs, it wrote <code>SELECT MEASURE(home_runs_witnessed) FROM mv_plays</code>. Not a hand-rolled sum. The governed measure, by name. Closest of every SQL-emitting surface in the run to what a semantic layer is for.</p>
+
+      <p>And its trace did something no other surface did. Four typed thoughts, one of them labeled <em>understanding</em>: &ldquo;the query assumes all games in the data are games Wax attended.&rdquo; It was right, and it said so. Every other agent in this run answered; this one volunteered its own caveat.</p>
+
+      <p>The honest line for this door: the Genie space can't be created by API, so it was made once in the UI. One click, then everything is scripts. The model is called twice per turn, once to plan and once to phrase, and at about 18 seconds it was the slowest surface, mostly warehouse cold start. And the dashboard above is authored and published but not yet rendered, because the warehouse wouldn't wake the morning it shipped.</p>
+    </section>
+
+    <!-- Block 4 — What it taught me -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>What it taught me</h2>
+
+      <ol>
+        <li><strong>The definitions traveled. Both doors gave the same seven answers.</strong> That's the thing to carry with you when someone says the migration will change the numbers. It changes the numbers if the definitions live in the workbook. It doesn't if they live in the model.</li>
+        <li><strong>Two front doors to one object can disagree about the object.</strong> Snowflake's SQL path and its agent path validated the same view differently. Check every door you plan to use, not just the one you built through.</li>
+        <li><strong>The chart came along on both.</strong> Streamlit reads the same semantic view Cortex does; AI/BI reads the same metric view Genie does. Your bar chart survives the move. What you should be asking is what the agent next to it did on the way to the number.</li>
+      </ol>
+
+      <p class="demo-caption">Next, the stretch: what's actually in the system, told as the family archive. <a href="../7th-inning-stretch/">7th-inning stretch &rarr;</a></p>
+    </section>
+
+    <!-- Block 5 — Footer / nav -->
+    <footer class="bit-footer">
+      <p>[LINK &mdash; the Snowflake repo (semantic view, agent DDL) and the parity repo (metric views, Genie capture, the viz generators), when they go public]</p>
+      <p>&larr; <a href="../5th-inning/">5th inning</a> &middot; <a href="../../#the-lineup">the lineup</a> &middot; <a href="../7th-inning-stretch/">7th-inning stretch</a> &rarr;</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>

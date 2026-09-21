@@ -22,3 +22,5 @@ py build_bits.py --check    # exit 1 if index.html is stale
 ```
 
 The technology index (a by-tool lens over the same pieces) reads this same file when the corpus earns it — deferred until ~12–13 tagged pieces.
+
+**Placeholders on inning pages:** a `<figure class="bit-figure">` holding a `div.placeholder-box` (dashed) stands in for a capture that hasn't landed. Swap the div for an `<img>` when the PNG lands in `assets/`; keep the figcaption. A `p.bit-game` line at the top of each inning is the game it leads with — Wax's pick; bracketed text there is a suggestion, not a ruling.

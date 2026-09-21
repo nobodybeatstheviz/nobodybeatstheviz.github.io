@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KEEPING SCORE · 7th-inning stretch — GEORGE GEORGE · Nobody Beats the Viz</title>
+  <meta name="description" content="What's in the system? Three generations of Georges written across the top of a 1984 scorecard. 178 games, 34 seasons, 400 home runs, and a box score generated from the play-by-play that agrees with my grandfather's pencil to the digit." />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://nobodybeatstheviz.com/bits/7th-inning-stretch/" />
+  <meta property="og:title" content="KEEPING SCORE · 7th-inning stretch — GEORGE GEORGE" />
+  <meta property="og:description" content="What's in the system? Bat Day, 1984. Mattingly homered in the third. My grandfather kept the card, and forty years later a script drew the box score from the official record and it matched his pencil." />
+  <meta property="og:image" content="https://nobodybeatstheviz.com/assets/nbtv-logo-chevron.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="KEEPING SCORE · 7th-inning stretch — GEORGE GEORGE" />
+  <meta name="twitter:description" content="What's in the system? Bat Day, 1984. Mattingly homered in the third. My grandfather kept the card, and forty years later a script drew the box score from the official record and it matched his pencil." />
+  <meta name="twitter:image" content="https://nobodybeatstheviz.com/assets/nbtv-logo-chevron.png" />
+
+  <link rel="icon" type="image/png" href="../../assets/favicon.png" />
+  <link rel="apple-touch-icon" href="../../assets/favicon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cascadia+Code:wght@400;700&family=Inter:wght@400;500;700&display=swap" />
+  <link rel="stylesheet" href="../../styles.css" />
+  <!-- Cloudflare Web Analytics (privacy-first, no cookies). -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "0766fadf140d4e1f95096f0bf3a6f10d"}'></script>
+</head>
+<body>
+
+  <div class="bit-page">
+
+    <!-- Block 1 — Marquee -->
+    <header class="bit-marquee baseball">
+      <span class="status-tag on-wax">7th-inning stretch</span>
+      <h1>GEORGE GEORGE</h1>
+      <p class="hook">What's in the system?</p>
+      <p>Stand up. Stretch. This one has no agent in it. June 10, 1984, Bat Day at Yankee Stadium, Blue Jays in town. Across the top of the scorecard, in my grandfather's hand: <em>1st</em>, circled. Then the names. Georgie. George. Roger. And me. Three generations of Georges on one card, and the card is the first row in everything the other eight innings query.</p>
+      <div class="stack">
+        <span>The archive</span>
+        <span>Retrosheet</span>
+        <span>box_score.py</span>
+        <span>BigQuery</span>
+      </div>
+    </header>
+
+    <!-- Block 1.5 — The game (fixed), and the picture -->
+    <section class="bit-demo">
+      <p class="bit-game"><strong>The game.</strong> 1984-06-10, Toronto at New York. Yankees 5, Blue Jays 3. Rawley started; Christiansen, circled, got the win; Righetti closed. Mattingly homered in the third. That's the card, and that's the record. They agree.</p>
+      <figure class="bit-figure">
+        <div class="placeholder-box">[IMAGE &mdash; Poppa's 1984-06-10 scorecard beside the generated box score, <code>boxscore-NYA198406100.png</code>. Wax's image, from Drive. The family-archive figure the game notes are also waiting on.]</div>
+        <figcaption>Left: the card, pencil, 1984. Right: the box score a script drew from Retrosheet's play-by-play in 2026, in the AP agate style the newspaper would have printed the next morning. Poppa's Rawley line and the generator's agree to the digit. The box score beside the card <em>is</em> the viz for this inning.</figcaption>
+      </figure>
+    </section>
+
+    <!-- Block 2 — What's in the system -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>What's in the system</h2>
+
+      <p><strong>178 games</strong>, 1984 to 2025, every one verified against the record. <strong>34 seasons</strong> with a game in them; the peaks are 2001 and 2003 at 17 each. <strong>22 stadiums.</strong> <strong>1,706 runs</strong> scored in front of me and <strong>400 home runs</strong>, which is the bar chart the run keeps redrawing. <strong>44 Hall of Famers</strong> seen playing. The Yankees are <strong>90&ndash;53</strong> when I'm in the building, .629, and the team is a dimension, not a hardcoded filter, so ask about anyone. <strong>30 playoff games</strong>, 16.9% of the total.</p>
+
+      <p>Who I went with, top five: <strong>Melissa 57, Bergan 27, Al 26, alone 16, Poppa 14</strong>. First names only, by rule. Poppa is on fourteen of the cards and kept score at most of them. The names were 101 different spellings before a cleanup pass made them 84 people. And a simple check, two values in one row can't be one person, caught six wrong game ids that had survived 41 years of copying. That check became the model for every gate an agent has to pass later.</p>
+
+      <p>The lineage runs backward from here. Tickets and programs and scorecards were the source I typed into a baseball-tracking app twenty-some years ago. The app exported to a spreadsheet. The spreadsheet became a BigQuery table. dbt modeled it. The agents stand on that. Scanning the cards closes the loop: it brings the physical artifacts back into the pipeline they seeded. <strong>This is not a data project. It's a multigenerational family archive that happens to be queryable.</strong></p>
+    </section>
+
+    <!-- Block 3 — The card and the record -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>The card and the record</h2>
+
+      <p>Thirteen cards are scanned so far, from a shoebox of fifty to a hundred. Eleven of them match a game in the 178. Two don't, and the rule for those is simple: if Poppa's card has a date that isn't in my games, it's a game he went to without me, because he'd surely have written &ldquo;Georgie.&rdquo; One of the two is July 7, 1991. &ldquo;Williams CF&rdquo; is scored in the Yankees lineup. Bernie Williams's major-league debut, in my grandfather's pencil, at a game I wasn't at. It stays in the archive and out of the data.</p>
+
+      <p>The box score above is generated. <code>box_score.py</code> takes any of the 178 game ids, pulls the play-by-play from Retrosheet, and renders the agate the way the AP wire would have. Batting lines, pitching lines, the line score. Set it beside the card and you're looking at two records of the same afternoon kept forty-two years apart by two different methods, and they agree. That agreement is the whole argument for writing things down.</p>
+
+      <p>The playoff cuts ride here, since it's October. Of the 30 playoff games, most of the 2001 postseason is in the set: every home game of the Division Series and the League Championship Series, and World Series Games 3 and 5. So the President's first pitch in Game 3 and Brosius's ninth-inning home run in Game 5, in person. Jeter's &ldquo;Mr. November&rdquo; walk-off was Game 4. I watched that one on TV like everyone else. The data knows the difference, and so does the card.</p>
+    </section>
+
+    <!-- Block 4 — What it taught me -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>What it taught me</h2>
+
+      <ol>
+        <li><strong>The hand-kept card was the first clean dataset.</strong> One row per game, one hand, one method, kept in real time by someone who cared whether it was right. Every governed definition in the 2nd inning is trying to be what that card already was.</li>
+        <li><strong>Provenance, not source.</strong> The cards don't feed the data; Retrosheet does. The cards are how you know the data is about something that happened to someone. An OCR pass would be low priority for exactly that reason.</li>
+        <li><strong>When a value looks odd, suspect a 1980s pencil before a mystery person.</strong> Some of the attendee names in the raw file are machine transcription of these cards. Knowing where your data came from is still the skill.</li>
+      </ol>
+
+      <p class="demo-caption">Back to the game. One number through six agents. <a href="../8th-inning/">8th inning &rarr;</a></p>
+    </section>
+
+    <!-- Block 5 — Footer / nav -->
+    <footer class="bit-footer">
+      <p>[LINK &mdash; <code>box_score.py</code>, when it has a public home] &middot; <a href="https://github.com/nobodybeatstheviz/wax-baseball-dbt">the 178, modeled</a></p>
+      <p>&larr; <a href="../6th-inning/">6th inning</a> &middot; <a href="../../#the-lineup">the lineup</a> &middot; <a href="../8th-inning/">8th inning</a> &rarr;</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>
