@@ -17,6 +17,10 @@ Presentation:  two spans in index.html, between stable markers:
     <!-- NEXT:START --> ... <!-- NEXT:END -->   the on-deck line (next piece's question)
     <!-- NAV:START -->  ... <!-- NAV:END -->    prev · the lineup · next
 
+               and, on the game notes (bits/wax-baseball/), the roster and the
+               errors table from bits/game-notes.json between
+               <!-- ROSTER:START/END --> and <!-- ERRORS:START/END -->;
+
                and the Retrosheet credit + required notice between
                <!-- RETROSHEET:START/END --> on the homepage, the game notes,
                and every lineup page (one copy of the text, below).
