@@ -19,7 +19,7 @@
       "slug": "bar-chart",
       "question": "Can you trust the number on the chart?",
       "title": "The bar chart an agent made",
-      "tools": ["Tableau Cloud", "Claude Code", "Tableau MCP"],
+      "tools": ["Tableau Cloud", "Tableau MCP", "Claude Code", "BigQuery"],
       "status": "wip",
       "url": "",
       "date": ""
@@ -30,7 +30,7 @@
       "slug": "the-contract",
       "question": "What is a home run?",
       "title": "The contract",
-      "tools": ["dbt", "BigQuery", "Looker Studio"],
+      "tools": ["dbt", "BigQuery", "MetricFlow", "Retrosheet", "Looker Studio"],
       "status": "wip",
       "url": "",
       "date": ""
@@ -41,7 +41,7 @@
       "slug": "who-am-i",
       "question": "Who am I?",
       "title": "Confident zeros",
-      "tools": ["Tableau Next", "Tableau Agent"],
+      "tools": ["Tableau Next", "Tableau Agent", "Data 360", "Hosted MCP", "Tableau Cloud"],
       "status": "wip",
       "url": "",
       "date": ""
@@ -52,7 +52,7 @@
       "slug": "the-trace",
       "question": "Is the trace the new dashboard QA?",
       "title": "Nine. Zero percent.",
-      "tools": ["Agentforce", "Agent Script"],
+      "tools": ["Agentforce", "Agent Script", "Apex", "Data 360"],
       "status": "wip",
       "url": "",
       "date": ""
@@ -63,7 +63,7 @@
       "slug": "six-agents",
       "question": "Six agents said 400. Which one can you check?",
       "title": "Six traces",
-      "tools": ["Claude SDK", "Hosted MCP", "Agentforce", "Tableau Next"],
+      "tools": ["Agentforce", "Claude Agent SDK", "BigQuery", "Databricks Genie", "Snowflake Cortex", "Tableau Agent", "Hosted MCP"],
       "status": "wip",
       "url": "",
       "date": ""
@@ -74,7 +74,7 @@
       "slug": "fan-out",
       "question": "Where does the fan-out hide?",
       "title": "281, then 35, then 44",
-      "tools": ["Data 360"],
+      "tools": ["Data 360", "Snowflake", "Databricks", "Google Cloud Storage", "Salesforce CLI"],
       "status": "wip",
       "url": "",
       "date": ""
@@ -85,7 +85,7 @@
       "slug": "two-front-doors",
       "question": "Do the numbers survive the move?",
       "title": "Two front doors",
-      "tools": ["Snowflake Cortex", "Databricks Genie", "Streamlit", "AI/BI"],
+      "tools": ["Snowflake", "Snowflake Cortex", "Streamlit", "Databricks", "Databricks Genie", "AI/BI"],
       "status": "wip",
       "url": "",
       "date": ""
@@ -96,7 +96,7 @@
       "slug": "george-george",
       "question": "Does the card match the record?",
       "title": "GEORGE GEORGE",
-      "tools": ["The archive", "box_score.py", "Retrosheet"],
+      "tools": ["The archive", "Retrosheet", "box_score.py", "BigQuery"],
       "status": "wip",
       "url": "",
       "date": ""
@@ -107,7 +107,7 @@
       "slug": "why-keep-score",
       "question": "Why do people like us keep score?",
       "title": "Pencil and JSON",
-      "tools": ["The 1984 card", "The 2026 trace"],
+      "tools": ["The 1984 card", "The 2026 trace", "Same questions", "New tools"],
       "status": "wip",
       "url": "",
       "date": ""

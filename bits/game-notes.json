@@ -1,0 +1,105 @@
+{
+  "_readme": "Source for the game notes' two generated sections (build_bits.py renders them on bits/wax-baseball/ between the ROSTER and ERRORS markers). roster: one card-back per tool, in this order; name/position/url/what/did are hand-authored copy; tags are the tool names as they appear in pieces.json `tools`, and the generator matches them to compute 'Bats in' (the lineup) and 'Also played' (the away games), so that line is never typed. errors: every wrong answer in the run; `slug` is the piece it bats in, and the generator renders the link with that piece's current slot label. Every number here comes from the receipts sheet (wax-system: wax-baseball/narration/99-receipts.md) or the piece's own page.",
+  "errors": [
+    {"said": "9 games at Yankee Stadium", "truth": "100", "who": "Agentforce", "kind": "Grounding. Never called its tool.", "slug": "the-trace"},
+    {"said": "0% Yankees games", "truth": "80.3%", "who": "Agentforce", "kind": "Data logic. “Yankees” isn’t “New York Yankees.”", "slug": "the-trace"},
+    {"said": "No highlights found", "truth": "it never looked", "who": "Agentforce", "kind": "Instruction. Skipped the step it was told it must take.", "slug": "the-trace"},
+    {"said": "58 games in 27 stadiums", "truth": "178 in 22", "who": "Agentforce", "kind": "Grounding. Invented, no tool call. Still open.", "slug": "the-trace", "open": true},
+    {"said": "0 home runs", "truth": "400", "who": "Tableau Agent", "kind": "Context. Decided “I” meant the logged-in user.", "slug": "who-am-i"},
+    {"said": "21 different stadiums", "truth": "the tool returned 22", "who": "Agentforce", "kind": "Counting. Grounded, then miscounted.", "slug": "six-agents"},
+    {"said": "281 Hall of Famers", "truth": "44", "who": "Data 360", "kind": "Path. The join never ran through my games.", "slug": "fan-out"},
+    {"said": "35 Hall of Famers", "truth": "44", "who": "Data 360", "kind": "Path. Batters only; pitchers never entered.", "slug": "fan-out"},
+    {"said": "24", "truth": "35", "who": "Data 360, Google Cloud leg", "kind": "Load. Kept one Hall of Fame ballot per player.", "slug": "fan-out"},
+    {"said": "Couldn't query at all", "truth": "7 for 7, once fixed", "who": "Snowflake Cortex", "kind": "Validation. The agent path rejected column names the SQL path accepted.", "slug": "two-front-doors"}
+  ],
+  "roster": [
+    {
+      "name": "dbt on BigQuery",
+      "position": "The contract",
+      "url": "https://www.getdbt.com",
+      "tags": ["dbt", "MetricFlow"],
+      "what": "SQL that runs inside the warehouse and turns raw tables into tested, documented ones. Its semantic layer is where each metric gets written once.",
+      "did": "16 models, 104 tests green, 7 governed metrics. Every other engine is measured against it."
+    },
+    {
+      "name": "BigQuery",
+      "position": "The ballpark",
+      "url": "https://cloud.google.com/bigquery",
+      "tags": ["BigQuery"],
+      "what": "Google's warehouse. Where the 178 games and their 14,406 plays live, and where the whole thing started as a spreadsheet upload.",
+      "did": "Its own agent narrated in plain English and handed over a job id you can look up. 9.5 seconds, 0 bytes billed."
+    },
+    {
+      "name": "Tableau Cloud",
+      "position": "Door",
+      "url": "https://www.tableau.com",
+      "tags": ["Tableau Cloud", "Tableau MCP"],
+      "what": "Classic Tableau, hosted. You know it. This time an agent wrote the workbook as XML and published it through the Tableau MCP server.",
+      "did": "34 bars, 400 home runs, no browser open. 7 for 7 through the query service."
+    },
+    {
+      "name": "Tableau Next",
+      "position": "Door + agent",
+      "url": "https://www.salesforce.com/analytics/tableau-next/",
+      "tags": ["Tableau Next", "Tableau Agent"],
+      "what": "Tableau on Salesforce's platform. It reads the Data 360 semantic model directly, and Tableau Agent answers questions over it.",
+      "did": "First answer: zero home runs, confidently. After the model learned who “I” is: 4 for 4."
+    },
+    {
+      "name": "Data 360",
+      "position": "Engine",
+      "url": "https://www.salesforce.com/data/",
+      "tags": ["Data 360", "Data Cloud"],
+      "what": "Salesforce's data layer. It reads Snowflake and Databricks where they sit, copies from Google Cloud, and holds the semantic model Salesforce's agents stand on.",
+      "did": "7 for 7 through the semantic engine. Said 281 Hall of Famers before it said 44."
+    },
+    {
+      "name": "Agentforce",
+      "position": "Agent",
+      "url": "https://www.salesforce.com/agentforce/",
+      "tags": ["Agentforce", "Agent Script", "Apex"],
+      "what": "Salesforce's agent platform. Baseball Scout is written in Agent Script: the agent as code, not clicks.",
+      "did": "3 golden cases, 3 for 3, three runs straight. Also committed the 9 and the 0%."
+    },
+    {
+      "name": "Snowflake",
+      "position": "Engine + agent",
+      "url": "https://www.snowflake.com",
+      "tags": ["Snowflake", "Snowflake Cortex"],
+      "what": "A cloud warehouse. The seven metrics live in a semantic view, and Cortex is the agent that answers from it.",
+      "did": "7 for 7. The agent got to 400 by rewriting the home run definition by hand instead of asking for it by name."
+    },
+    {
+      "name": "Databricks",
+      "position": "Engine + agent",
+      "url": "https://www.databricks.com",
+      "tags": ["Databricks", "Databricks Genie", "AI/BI"],
+      "what": "A lakehouse. The metrics live in Unity Catalog metric views. Genie is its agent, AI/BI draws its charts.",
+      "did": "7 for 7. Genie asked for the measure by name, then volunteered its own assumption."
+    },
+    {
+      "name": "Claude",
+      "position": "Agent",
+      "url": "https://docs.claude.com/en/docs/agent-sdk/overview",
+      "tags": ["Claude Agent SDK"],
+      "what": "Anthropic's agent SDK. This agent has no SQL tool. The only thing it can do with your data is ask for a metric by name.",
+      "did": "4 tool calls to the right answer. A twin with raw SQL needed 9. $0.18 for the turn."
+    },
+    {
+      "name": "Streamlit",
+      "position": "Door",
+      "url": "https://streamlit.io",
+      "tags": ["Streamlit"],
+      "what": "Python apps that live inside Snowflake. The chart reads the same semantic view the agent does.",
+      "did": "The same 400 by year, deployed from the command line."
+    },
+    {
+      "name": "Looker Studio",
+      "position": "Door",
+      "url": "https://lookerstudio.google.com",
+      "tags": ["Looker Studio"],
+      "what": "Google's free BI tool, reading the same BigQuery view.",
+      "did": "The one chart drawn by hand. No authoring API, and the page says so."
+    }
+  ]
+}

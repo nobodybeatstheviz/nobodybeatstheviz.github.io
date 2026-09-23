@@ -609,6 +609,29 @@ footer h3 .hash {
   line-height: 1.55;
 }
 
+/* ---------------- Tables (six-agents, the game notes) ---------------- */
+.matrix { width: 100%; border-collapse: collapse; font-size: 0.92rem; margin: 1.5rem 0; }
+.matrix th, .matrix td { text-align: left; vertical-align: top; padding: 0.6rem 0.7rem; border-bottom: 1px solid var(--cream); }
+.matrix th { font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.04em; color: var(--muted); font-weight: 400; }
+.matrix td:first-child { font-weight: 700; }
+@media (max-width: 540px) { .matrix { font-size: 0.82rem; } .matrix th, .matrix td { padding: 0.45rem 0.4rem; } }
+
+/* ---------------- The game notes: notes, roster (card-backs) ---------------- */
+.notes { list-style: none; padding: 0; margin: 1.25rem 0; }
+.notes li { margin: 0 0 0.9rem; }
+.notes strong { font-family: var(--mono); color: var(--red); letter-spacing: 0.03em; }
+
+.roster { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+.roster-card { background: var(--cream); border: 2px solid var(--ink); border-radius: 6px; padding: 0.9rem 1.1rem; font-size: 0.92rem; }
+.roster-card p { margin: 0.45rem 0; }
+.roster-head { display: flex; justify-content: space-between; align-items: baseline; gap: 0.75rem;
+  border-bottom: 2px solid var(--red); padding-bottom: 0.4rem; margin-bottom: 0.5rem; }
+.roster-name { font-family: var(--mono); font-weight: 700; color: var(--ink); text-decoration: none; text-transform: uppercase; }
+.roster-name:hover { color: var(--red); }
+.roster-pos { font-family: var(--mono); font-size: 0.72rem; color: var(--red); text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
+.roster-bats { font-family: var(--mono); font-size: 0.78rem; }
+.roster-bats a { color: var(--red); }
+
 /* ---------------- Responsive ---------------- */
 
 @media (max-width: 540px) {

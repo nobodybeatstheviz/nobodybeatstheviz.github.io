@@ -4,16 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>KEEPING SCORE — The game notes · Nobody Beats the Viz</title>
-  <meta name="description" content="The game notes for Keeping Score: 178 games I was in the stands for, seven questions a fan asks, one governed definition each, proved on six surfaces. How to keep score on the agentic turn." />
+  <meta name="description" content="The game notes for Keeping Score: 178 games, seven questions, every tool on the roster, every error in the run, and how to review the tape." />
 
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://nobodybeatstheviz.com/bits/wax-baseball/" />
   <meta property="og:title" content="KEEPING SCORE — The game notes" />
-  <meta property="og:description" content="178 games, seven questions, one definition each, proved on six surfaces. What this is, the tools and why, and how to keep score." />
+  <meta property="og:description" content="178 games, seven questions, the roster, the errors, the standings. Read these before first pitch." />
   <meta property="og:image" content="https://nobodybeatstheviz.com/assets/keeping-score-hr-by-year-strip.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="KEEPING SCORE — The game notes" />
-  <meta name="twitter:description" content="178 games, seven questions, one definition each, proved on six surfaces. What this is, the tools and why, and how to keep score." />
+  <meta name="twitter:description" content="178 games, seven questions, the roster, the errors, the standings. Read these before first pitch." />
   <meta name="twitter:image" content="https://nobodybeatstheviz.com/assets/keeping-score-hr-by-year-strip.png" />
 
   <link rel="icon" type="image/png" href="../../assets/favicon.png" />
@@ -35,7 +35,7 @@
       <span class="status-tag on-wax">on wax</span>
       <h1>KEEPING SCORE</h1>
       <p class="hook">The game notes. Read these before first pitch.</p>
-      <p>My grandfather taught me to keep score by hand. The card that came out of it was the clean record &mdash; who was at the game, what happened, memories that held because they were written down. That was accurate data before I had a word for it. I kept the spreadsheet next. This year I asked the same seven questions through every tool you're being told about, and made each one show its work.</p>
+      <p>Same 178 games. Same seven questions. Same way of checking every answer. Here's the setup, so nothing in the lineup has to stop and explain it.</p>
       <div class="stack">
         <span>dbt</span>
         <span>BigQuery</span>
@@ -60,65 +60,201 @@
       <p><a class="docs-cta" href="../../wax-baseball-dbt/">Explore the live dbt docs &rarr;</a></p>
     </section>
 
-    <!-- Block 2 — What this is -->
+    <!-- Block 2 — The matchup -->
     <section class="bit-section">
-      <h2><span class="hash">#</span>What this is</h2>
+      <h2><span class="hash">#</span>The matchup</h2>
 
-      <p>178 major-league games I was in the stands for, 1984 to 2025, every one verified against the record. Each game joins to Retrosheet, the official play-by-play, on one clean key &mdash; no fuzzy matching. That single join is the reason any of this works.</p>
+      <p>178 major-league games I sat through, 1984 to 2025. Every one joins to Retrosheet's play-by-play on one clean key. No fuzzy matching. That one join is why any of this works.</p>
 
-      <p>On top of the games sit seven questions a fan asks. How many games. How many home runs did I see. Who I went with. My win rate when I go. Which Hall of Famers I saw. Each one is written down once, as a governed definition, and every tool in the stack has to answer through that definition instead of writing its own.</p>
+      <p>On top of the games sit seven questions a fan would ask. How many games. How many home runs. Who I went with. How the Yankees do when I'm there. Each one is written down once, as a definition, and every tool has to answer through it. No tool gets to write its own.</p>
 
-      <p>Then the lineup on the front page takes one question through one door at a time &mdash; a chart an agent made, an agent that guessed, a join graph with the fan-out showing &mdash; and every trace is kept. The lineup is the box score of the agentic turn, kept by someone who was in the stands for it.</p>
+      <p>The lineup on the front page takes those questions through one tool at a time and keeps every trace. Read together, it's the box score: what the tools actually did, kept by somebody who was there.</p>
     </section>
 
-    <!-- Block 3 — The tools, and why -->
+    <!-- Block 3 — Notes -->
     <section class="bit-section">
-      <h2><span class="hash">#</span>The tools, and why</h2>
+      <h2><span class="hash">#</span>Notes</h2>
 
-      <p>Because these are the tools you're being told about. One dataset, one set of definitions, and each tool asked to show what it does with them.</p>
-
-      <ul>
-        <li><strong>dbt on BigQuery &mdash; the contract.</strong> 16 models, tested, documented, lineage published on every push. Five semantic models, nine metrics, seven of them the governed questions. This is the reference. Every other engine is measured against what dbt says.</li>
-        <li><strong>Snowflake, Databricks, Data 360 &mdash; the engines.</strong> The same corpus ported to each, and the seven metrics expressed in each one's native semantic layer: a Snowflake semantic view, Databricks metric views, a Data 360 semantic data model federated zero-copy from the other two clouds.</li>
-        <li><strong>Agentforce, Claude, Tableau Agent &mdash; the agents.</strong> Each answers through the definitions, never through its own SQL. Baseball Scout is Agentforce written as code. The Claude agent has no SQL tool at all &mdash; its only path is the metric names. Tableau's agent answers through the same Salesforce model.</li>
-        <li><strong>Tableau Cloud, Tableau Next, Streamlit, Looker Studio &mdash; the doors.</strong> The surfaces a Tableau practitioner is being cut over to. The same chart, 400 home runs by year, made on each one; that's the strip up top.</li>
-        <li><strong>Claude Code &mdash; the one that kept the card with me.</strong> The models, the harness, the workbook XML, the agents, and this site were built in it. The Viz is on the mic. Eric B. is on the cut.</li>
+      <ul class="notes">
+        <li><strong>IN THE YEAR TWO THOUSAND.</strong> Had the Marlins rainout been made up, the 2000 Yankees would have played 178 games, October included. They played 177. I've seen 178.</li>
+        <li><strong>OVER THE KALINE.</strong> 400 home runs witnessed. One more than HOFer Al Kaline.</li>
+        <li><strong>MO OF JACKIE.</strong> 42 of 42. The harness asked every question everywhere, and every answer matched. Mo himself: 56 games.</li>
+        <li><strong>MICKEY MANTLE.</strong> 7 questions. Each one written down once.</li>
+        <li><strong>REGGIE.</strong> 44 Hall of Famers seen. Reggie isn't one of them.</li>
+        <li><strong>OCTOBERFEST.</strong> 30 playoff games. Eight from 2001, every home game that October but one. The one I missed was Jeter's.</li>
+        <li><strong>(UNCLE) ROGER.</strong> Maris. #9. 9 in the lineup. The patron saint of the asterisk.</li>
+        <li><strong>WAX ON TOUR.</strong> 22 ballparks.</li>
+        <li><strong>MELISSA LEADS THE LEAGUE.</strong> 57 games. Bergan 27, Al 26, solo 16, Poppa 14.</li>
+        <li><strong>GOOD LUCK CHARM.</strong> The Yankees are 90&ndash;53 with me in the building. .629. Correlation, not causation. Probably.</li>
+        <li><strong>A PLAY A DAY.</strong> 14,406 plays in the games I've seen. One a day would take 39 years.</li>
+        <li><strong>TESTED POSITIVE.</strong> 1,872 duplicate game ids in the raw Retrosheet file. No suspension. The test did its job.</li>
       </ul>
     </section>
 
-    <!-- Block 4 — The family archive -->
+    <!-- Block 4 — The roster: card-backs generated from bits/game-notes.json -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>The roster</h2>
+
+      <p>Every tool in the game, one card-back each: where it bats, what it is, what it did when it got up.</p>
+
+      <!-- ROSTER:START -->
+      <div class="roster">
+        <div class="roster-card">
+          <div class="roster-head"><a class="roster-name" href="https://www.getdbt.com">dbt on BigQuery</a><span class="roster-pos">The contract</span></div>
+          <p class="roster-bats">Bats in: <a href="../the-contract/">batting 2nd</a></p>
+          <p><strong>What it is.</strong> SQL that runs inside the warehouse and turns raw tables into tested, documented ones. Its semantic layer is where each metric gets written once.</p>
+          <p><strong>In this game.</strong> 16 models, 104 tests green, 7 governed metrics. Every other engine is measured against it.</p>
+        </div>
+        <div class="roster-card">
+          <div class="roster-head"><a class="roster-name" href="https://cloud.google.com/bigquery">BigQuery</a><span class="roster-pos">The ballpark</span></div>
+          <p class="roster-bats">Bats in: <a href="../bar-chart/">leading off</a> &middot; <a href="../the-contract/">batting 2nd</a> &middot; <a href="../six-agents/">batting 5th</a> &middot; <a href="../george-george/">batting 8th</a></p>
+          <p><strong>What it is.</strong> Google's warehouse. Where the 178 games and their 14,406 plays live, and where the whole thing started as a spreadsheet upload.</p>
+          <p><strong>In this game.</strong> Its own agent narrated in plain English and handed over a job id you can look up. 9.5 seconds, 0 bytes billed.</p>
+        </div>
+        <div class="roster-card">
+          <div class="roster-head"><a class="roster-name" href="https://www.tableau.com">Tableau Cloud</a><span class="roster-pos">Door</span></div>
+          <p class="roster-bats">Bats in: <a href="../bar-chart/">leading off</a> &middot; <a href="../who-am-i/">batting 3rd</a></p>
+          <p><strong>What it is.</strong> Classic Tableau, hosted. You know it. This time an agent wrote the workbook as XML and published it through the Tableau MCP server.</p>
+          <p><strong>In this game.</strong> 34 bars, 400 home runs, no browser open. 7 for 7 through the query service.</p>
+        </div>
+        <div class="roster-card">
+          <div class="roster-head"><a class="roster-name" href="https://www.salesforce.com/analytics/tableau-next/">Tableau Next</a><span class="roster-pos">Door + agent</span></div>
+          <p class="roster-bats">Bats in: <a href="../who-am-i/">batting 3rd</a> &middot; <a href="../six-agents/">batting 5th</a></p>
+          <p class="roster-bats">Also played: <a href="../superstore-007/">SUPERSTORE 007</a></p>
+          <p><strong>What it is.</strong> Tableau on Salesforce's platform. It reads the Data 360 semantic model directly, and Tableau Agent answers questions over it.</p>
+          <p><strong>In this game.</strong> First answer: zero home runs, confidently. After the model learned who “I” is: 4 for 4.</p>
+        </div>
+        <div class="roster-card">
+          <div class="roster-head"><a class="roster-name" href="https://www.salesforce.com/data/">Data 360</a><span class="roster-pos">Engine</span></div>
+          <p class="roster-bats">Bats in: <a href="../who-am-i/">batting 3rd</a> &middot; <a href="../the-trace/">batting cleanup</a> &middot; <a href="../fan-out/">batting 6th</a></p>
+          <p class="roster-bats">Also played: <a href="../superstore-49/">SUPERSTORE FORTY-NINE</a> &middot; <a href="../superstore-007/">SUPERSTORE 007</a></p>
+          <p><strong>What it is.</strong> Salesforce's data layer. It reads Snowflake and Databricks where they sit, copies from Google Cloud, and holds the semantic model Salesforce's agents stand on.</p>
+          <p><strong>In this game.</strong> 7 for 7 through the semantic engine. Said 281 Hall of Famers before it said 44.</p>
+        </div>
+        <div class="roster-card">
+          <div class="roster-head"><a class="roster-name" href="https://www.salesforce.com/agentforce/">Agentforce</a><span class="roster-pos">Agent</span></div>
+          <p class="roster-bats">Bats in: <a href="../the-trace/">batting cleanup</a> &middot; <a href="../six-agents/">batting 5th</a></p>
+          <p class="roster-bats">Also played: <a href="../superstore-49/">SUPERSTORE FORTY-NINE</a> &middot; <a href="../superstore-007/">SUPERSTORE 007</a></p>
+          <p><strong>What it is.</strong> Salesforce's agent platform. Baseball Scout is written in Agent Script: the agent as code, not clicks.</p>
+          <p><strong>In this game.</strong> 3 golden cases, 3 for 3, three runs straight. Also committed the 9 and the 0%.</p>
+        </div>
+        <div class="roster-card">
+          <div class="roster-head"><a class="roster-name" href="https://www.snowflake.com">Snowflake</a><span class="roster-pos">Engine + agent</span></div>
+          <p class="roster-bats">Bats in: <a href="../six-agents/">batting 5th</a> &middot; <a href="../fan-out/">batting 6th</a> &middot; <a href="../two-front-doors/">batting 7th</a></p>
+          <p><strong>What it is.</strong> A cloud warehouse. The seven metrics live in a semantic view, and Cortex is the agent that answers from it.</p>
+          <p><strong>In this game.</strong> 7 for 7. The agent got to 400 by rewriting the home run definition by hand instead of asking for it by name.</p>
+        </div>
+        <div class="roster-card">
+          <div class="roster-head"><a class="roster-name" href="https://www.databricks.com">Databricks</a><span class="roster-pos">Engine + agent</span></div>
+          <p class="roster-bats">Bats in: <a href="../six-agents/">batting 5th</a> &middot; <a href="../fan-out/">batting 6th</a> &middot; <a href="../two-front-doors/">batting 7th</a></p>
+          <p class="roster-bats">Also played: <a href="../superstore-49/">SUPERSTORE FORTY-NINE</a></p>
+          <p><strong>What it is.</strong> A lakehouse. The metrics live in Unity Catalog metric views. Genie is its agent, AI/BI draws its charts.</p>
+          <p><strong>In this game.</strong> 7 for 7. Genie asked for the measure by name, then volunteered its own assumption.</p>
+        </div>
+        <div class="roster-card">
+          <div class="roster-head"><a class="roster-name" href="https://docs.claude.com/en/docs/agent-sdk/overview">Claude</a><span class="roster-pos">Agent</span></div>
+          <p class="roster-bats">Bats in: <a href="../six-agents/">batting 5th</a></p>
+          <p><strong>What it is.</strong> Anthropic's agent SDK. This agent has no SQL tool. The only thing it can do with your data is ask for a metric by name.</p>
+          <p><strong>In this game.</strong> 4 tool calls to the right answer. A twin with raw SQL needed 9. $0.18 for the turn.</p>
+        </div>
+        <div class="roster-card">
+          <div class="roster-head"><a class="roster-name" href="https://streamlit.io">Streamlit</a><span class="roster-pos">Door</span></div>
+          <p class="roster-bats">Bats in: <a href="../two-front-doors/">batting 7th</a></p>
+          <p><strong>What it is.</strong> Python apps that live inside Snowflake. The chart reads the same semantic view the agent does.</p>
+          <p><strong>In this game.</strong> The same 400 by year, deployed from the command line.</p>
+        </div>
+        <div class="roster-card">
+          <div class="roster-head"><a class="roster-name" href="https://lookerstudio.google.com">Looker Studio</a><span class="roster-pos">Door</span></div>
+          <p class="roster-bats">Bats in: <a href="../the-contract/">batting 2nd</a></p>
+          <p><strong>What it is.</strong> Google's free BI tool, reading the same BigQuery view.</p>
+          <p><strong>In this game.</strong> The one chart drawn by hand. No authoring API, and the page says so.</p>
+        </div>
+      </div>
+      <!-- ROSTER:END -->
+    </section>
+
+    <!-- Block 5 — The good seats -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>The good seats</h2>
+
+      <p>Scorekeepers make calls. Hit or error, earned or unearned: the scorer rules, and nobody else gets to. Every call on this card is mine.</p>
+
+      <p>Claude Code had the seat next to me: the models, the harness, the workbook XML, the agents, this site. The Viz is on the mic. Eric B. is on the cut.</p>
+
+      <p>The card is kept in three layers &mdash; source, analysis, presentation &mdash; and the presentation is regenerated, never patched. The one time I broke that rule is <a href="../three-layer-lesson/">its own lesson</a>.</p>
+    </section>
+
+    <!-- Block 6 — Errors: generated from bits/game-notes.json -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>Errors</h2>
+
+      <p>Every wrong answer in the run, who made it, and where it bats.</p>
+
+      <!-- ERRORS:START -->
+      <table class="matrix errors">
+        <thead><tr><th>It said</th><th>The truth</th><th>Who</th><th>What kind</th><th>Where it bats</th></tr></thead>
+        <tbody>
+          <tr><td>&ldquo;9 games at Yankee Stadium&rdquo;</td><td>100</td><td>Agentforce</td><td>Grounding. Never called its tool.</td><td><a href="../the-trace/">batting cleanup</a></td></tr>
+          <tr><td>&ldquo;0% Yankees games&rdquo;</td><td>80.3%</td><td>Agentforce</td><td>Data logic. “Yankees” isn’t “New York Yankees.”</td><td><a href="../the-trace/">batting cleanup</a></td></tr>
+          <tr><td>&ldquo;No highlights found&rdquo;</td><td>it never looked</td><td>Agentforce</td><td>Instruction. Skipped the step it was told it must take.</td><td><a href="../the-trace/">batting cleanup</a></td></tr>
+          <tr><td>&ldquo;58 games in 27 stadiums&rdquo;</td><td>178 in 22</td><td>Agentforce</td><td>Grounding. Invented, no tool call. Still open.</td><td><a href="../the-trace/">batting cleanup</a></td></tr>
+          <tr><td>&ldquo;0 home runs&rdquo;</td><td>400</td><td>Tableau Agent</td><td>Context. Decided “I” meant the logged-in user.</td><td><a href="../who-am-i/">batting 3rd</a></td></tr>
+          <tr><td>&ldquo;21 different stadiums&rdquo;</td><td>the tool returned 22</td><td>Agentforce</td><td>Counting. Grounded, then miscounted.</td><td><a href="../six-agents/">batting 5th</a></td></tr>
+          <tr><td>&ldquo;281 Hall of Famers&rdquo;</td><td>44</td><td>Data 360</td><td>Path. The join never ran through my games.</td><td><a href="../fan-out/">batting 6th</a></td></tr>
+          <tr><td>&ldquo;35 Hall of Famers&rdquo;</td><td>44</td><td>Data 360</td><td>Path. Batters only; pitchers never entered.</td><td><a href="../fan-out/">batting 6th</a></td></tr>
+          <tr><td>&ldquo;24&rdquo;</td><td>35</td><td>Data 360, Google Cloud leg</td><td>Load. Kept one Hall of Fame ballot per player.</td><td><a href="../fan-out/">batting 6th</a></td></tr>
+          <tr><td>&ldquo;Couldn't query at all&rdquo;</td><td>7 for 7, once fixed</td><td>Snowflake Cortex</td><td>Validation. The agent path rejected column names the SQL path accepted.</td><td><a href="../two-front-doors/">batting 7th</a></td></tr>
+        </tbody>
+      </table>
+      <p class="demo-caption">10 errors. 9 fixed, 1 still open. None of them fixed by a better model.</p>
+      <!-- ERRORS:END -->
+    </section>
+
+    <!-- Block 7 — The standings -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>The standings</h2>
+
+      <p>Seven questions, one definition each, and the answer dbt gives. A harness asks every question of six surfaces &mdash; dbt on BigQuery, Snowflake, Databricks, Data 360, Tableau Next, and Data 360 again over Google Cloud &mdash; and diffs every answer against dbt.</p>
+
+      <table class="matrix standings">
+        <thead><tr><th>Question</th><th>Answer</th><th>Matched</th></tr></thead>
+        <tbody>
+          <tr><td>Games, and in how many ballparks</td><td>178 in 22</td><td>6 of 6</td></tr>
+          <tr><td>Runs witnessed</td><td>1,706</td><td>6 of 6</td></tr>
+          <tr><td>Games by year</td><td>34 seasons; peaks of 17 in 2001 and 2003</td><td>6 of 6</td></tr>
+          <tr><td>Home runs witnessed</td><td>400</td><td>6 of 6</td></tr>
+          <tr><td>Who I went with, top five</td><td>Melissa 57, Bergan 27, Al 26, solo 16, Poppa 14</td><td>6 of 6</td></tr>
+          <tr><td>The Yankees when I'm there</td><td>90&ndash;53 in 143 decided</td><td>6 of 6</td></tr>
+          <tr><td>Hall of Famers seen</td><td>44</td><td>6 of 6</td></tr>
+        </tbody>
+      </table>
+
+      <p class="demo-caption">42 of 42, 2026-09-05. The receipts are generated by the harness, not typed.</p>
+    </section>
+
+    <!-- Block 8 — Replay review -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>Replay review</h2>
+
+      <p>When an agent hands you a number, go to the tape. Three things to check, in order.</p>
+
+      <ol>
+        <li><strong>Did it call a tool?</strong> No tool call in the trace means the answer came from nowhere. That's the 9.</li>
+        <li><strong>What query did it run?</strong> Read the query, not the sentence on top of it. That's how the confident zero got caught.</li>
+        <li><strong>What did it name as its source?</strong> The metric, the model, the table. If it can't say, you can't check it.</li>
+      </ol>
+
+      <p>The lineup scores six agents on exactly this. Some show all three. None show everything.</p>
+    </section>
+
+    <!-- Block 9 — The family archive -->
     <section class="bit-section">
       <h2><span class="hash">#</span>The family archive</h2>
 
-      <p>Poppa kept score at the ballpark with a pencil and a card, and taught me the marks &mdash; the little diamond you fill in when someone reaches, 5-3 for a groundout to third. He's on the card fourteen times. My first game is 1984, and the scorecard from it still reads clean forty years later. The hand-kept cards, his and mine, are the seed. Everything below is what happens when you point the current tools at a shoebox of them and refuse to let any of them invent a play.</p>
+      <p>Poppa kept score at the ballpark with a pencil and a card, and taught me the marks &mdash; the little diamond you fill in when someone reaches, 5-3 for a groundout to third. He's on the card fourteen times. My first game is 1984, and the scorecard from it still reads clean. The hand-kept cards, his and mine, are the seed. Everything on this site is what happens when you point the current tools at a shoebox of them and refuse to let any of them invent a play.</p>
     </section>
 
-    <!-- Block 5 — How to keep score -->
-    <section class="bit-section">
-      <h2><span class="hash">#</span>How to keep score</h2>
-
-      <p>How to read a scorecard here. Three things: the questions, the harness, and the trace.</p>
-
-      <p><strong>The seven questions.</strong> One definition each, and the reference answer dbt gives:</p>
-
-      <ul>
-        <li>Games attended, and in how many stadiums &mdash; <strong>178 in 22</strong></li>
-        <li>Runs witnessed &mdash; <strong>1,706</strong></li>
-        <li>Games attended by year &mdash; <strong>34 seasons</strong>, peaks of 17 in 2001 and 2003</li>
-        <li>Home runs witnessed &mdash; <strong>400</strong></li>
-        <li>Who I went with, top five &mdash; <strong>Melissa 57, Bergan 27, Al 26, solo 16, Poppa 14</strong></li>
-        <li>My win rate when I go, Yankees &mdash; <strong>90&ndash;53</strong> in 143 decided</li>
-        <li>Hall of Famers seen &mdash; <strong>44</strong></li>
-      </ul>
-
-      <p><strong>The parity harness.</strong> A script asks the seven questions of every surface and diffs each answer against dbt. Four engines matched on 2026-09-01, 28 of 28. Six surfaces matched by 2026-09-05, <strong>42 of 42</strong>. When a piece in the lineup says a number, the harness is what says it's the same number everywhere else.</p>
-
-      <p><strong>How to read a trace.</strong> Two bugs, and they failed in opposite directions. Baseball Scout's first answer to "how many games at Yankee Stadium" was <strong>9</strong> &mdash; a number from nowhere. The trace showed it never called its action; it guessed. Later, asked what share of games were Yankees games, it said <strong>0%</strong> &mdash; and the trace showed it doing everything right: action called, result reported faithfully. The bug lived a layer down, an exact-match filter where "Yankees" isn't "New York Yankees." One fix: <strong>143 of 178, 80.3%</strong>. A grounding failure and a data-logic failure look identical in chat and need opposite fixes. The trace is how you tell which side broke.</p>
-
-      <p>The card is kept in three layers &mdash; source, analysis, presentation &mdash; and the presentation layer is regenerated, never patched. The one time I broke that rule in my own system is <a href="../three-layer-lesson/">its own lesson</a>.</p>
-
-      <p class="demo-caption"><a href="../../#the-lineup">Back to the lineup &rarr;</a></p>
-    </section>
+    <p class="demo-caption"><a href="../../#the-lineup">Back to the lineup &rarr;</a></p>
 
     <!-- Block 6 — Footer / nav back -->
     <footer class="bit-footer">

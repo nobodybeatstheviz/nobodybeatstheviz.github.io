@@ -161,6 +161,66 @@ def stamp_credit(text: str, where: Path) -> str:
     return splice(text, "<!-- RETROSHEET:START -->", "<!-- RETROSHEET:END -->", credit_block(indent), where)
 
 
+# ---- the game notes: roster + errors -------------------------------------------
+# Source: bits/game-notes.json. 'Bats in' / 'Also played' are computed by matching
+# each tool's tags against pieces.json `tools`; error rows link to their piece by
+# slug and show its current slot label -- neither is ever typed.
+
+GAME_NOTES = HERE / "bits" / "game-notes.json"
+
+
+def plain(s: str) -> str:
+    return re.sub(r"\[\[(.*?)\]\]", r"\1", s)
+
+
+def slot_link(p: dict) -> str:
+    return f'<a href="../{p["slug"]}/">{esc(lower_first(label(p)))}</a>'
+
+
+def render_roster(gn: dict, pieces: list, indent: str) -> str:
+    lineup = sorted((p for p in pieces if p["kind"] == "lineup"), key=lambda p: p["n"])
+    away = sorted((p for p in pieces if p["kind"] == "away"), key=lambda p: p["n"])
+    out = [f'{indent}<div class="roster">']
+    for t in gn["roster"]:
+        tags = set(t["tags"])
+        bats = [p for p in lineup if tags & set(p["tools"])]
+        also = [p for p in away if tags & set(p["tools"])]
+        if not bats:
+            sys.exit(f"roster: {t['name']} bats nowhere -- its tags match no lineup piece's tools")
+        out.append(f'{indent}  <div class="roster-card">')
+        out.append(f'{indent}    <div class="roster-head"><a class="roster-name" href="{esc(t["url"])}">{esc(t["name"])}</a>'
+                   f'<span class="roster-pos">{esc(t["position"])}</span></div>')
+        out.append(f'{indent}    <p class="roster-bats">Bats in: ' + " &middot; ".join(slot_link(p) for p in bats) + "</p>")
+        if also:
+            out.append(f'{indent}    <p class="roster-bats">Also played: '
+                       + " &middot; ".join(f'<a href="../{p["slug"]}/">{esc(plain(p["question"]))}</a>' for p in also) + "</p>")
+        out.append(f'{indent}    <p><strong>What it is.</strong> {esc(t["what"])}</p>')
+        out.append(f'{indent}    <p><strong>In this game.</strong> {esc(t["did"])}</p>')
+        out.append(f"{indent}  </div>")
+    out.append(f"{indent}</div>")
+    return "\n".join(out)
+
+
+def render_errors(gn: dict, pieces: list, indent: str) -> str:
+    by_slug = {p["slug"]: p for p in pieces}
+    out = [f'{indent}<table class="matrix errors">',
+           f"{indent}  <thead><tr><th>It said</th><th>The truth</th><th>Who</th><th>What kind</th><th>Where it bats</th></tr></thead>",
+           f"{indent}  <tbody>"]
+    for e in gn["errors"]:
+        p = by_slug.get(e["slug"])
+        if p is None:
+            sys.exit(f"errors: no piece with slug {e['slug']!r}")
+        out.append(f"{indent}    <tr><td>&ldquo;{esc(e['said'])}&rdquo;</td><td>{esc(e['truth'])}</td><td>{esc(e['who'])}</td>"
+                   f"<td>{esc(e['kind'])}</td><td>{slot_link(p)}</td></tr>")
+    out.append(f"{indent}  </tbody>")
+    out.append(f"{indent}</table>")
+    n_open = sum(1 for e in gn["errors"] if e.get("open"))
+    n = len(gn["errors"])
+    tail = f"{n - n_open} fixed, {n_open} still open" if n_open else "every one fixed"
+    out.append(f'{indent}<p class="demo-caption">{n} errors. {tail}. None of them fixed by a better model.</p>')
+    return "\n".join(out)
+
+
 # ---- lineup pages: the slot chrome -------------------------------------------
 
 NOTES_HREF = "../wax-baseball/"
@@ -197,6 +257,10 @@ def stamp_page(text: str, p: dict, prev: dict | None, nxt: dict | None, where: P
     # the marquee: H1 is the title in caps, the hook is the card question
     text = re.sub(r"(<h1>)[^<]*(</h1>)", lambda m: m.group(1) + title.upper() + m.group(2), text, count=1)
     text = re.sub(r'(<p class="hook">)[^<]*(</p>)', lambda m: m.group(1) + esc(p["question"]) + m.group(2), text, count=1)
+    # the marquee's tool list is the piece's `tools` -- the same list the card and the roster read
+    spans = "\n".join(f"        <span>{esc(t)}</span>" for t in p["tools"])
+    text = re.sub(r'(<div class="stack">).*?(</div>)', lambda m: f"{m.group(1)}\n{spans}\n      {m.group(2)}",
+                  text, count=1, flags=re.S)
     ind = INDENT
     text = splice(text, "<!-- NEXT:START -->", "<!-- NEXT:END -->", next_line(p, nxt, ind), where)
     text = splice(text, "<!-- NAV:START -->", "<!-- NAV:END -->", nav_line(prev, nxt, ind), where)
@@ -232,8 +296,12 @@ def main() -> None:
     stale |= write_or_check(PAGE, old, new, args.check, "card spans")
 
     notes = HERE / RETROSHEET_PAGES[1]
+    gn = json.loads(GAME_NOTES.read_text(encoding="utf-8"))
     old = notes.read_text(encoding="utf-8")
-    stale |= write_or_check(notes, old, stamp_credit(old, notes), args.check, "Retrosheet credit")
+    new = stamp_credit(old, notes)
+    new = splice(new, "<!-- ROSTER:START -->", "<!-- ROSTER:END -->", render_roster(gn, pieces, INDENT), notes)
+    new = splice(new, "<!-- ERRORS:START -->", "<!-- ERRORS:END -->", render_errors(gn, pieces, INDENT), notes)
+    stale |= write_or_check(notes, old, new, args.check, "game notes (roster, errors, credit)")
 
     lineup = sorted((p for p in pieces if p["kind"] == "lineup"), key=lambda p: p["n"])
     if [p["n"] for p in lineup] != list(range(1, len(lineup) + 1)):
