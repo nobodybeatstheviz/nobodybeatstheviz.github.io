@@ -17,6 +17,10 @@ Presentation:  two spans in index.html, between stable markers:
     <!-- NEXT:START --> ... <!-- NEXT:END -->   the on-deck line (next piece's question)
     <!-- NAV:START -->  ... <!-- NAV:END -->    prev · the lineup · next
 
+               and the Retrosheet credit + required notice between
+               <!-- RETROSHEET:START/END --> on the homepage, the game notes,
+               and every lineup page (one copy of the text, below).
+
     py build_bits.py            # rewrite the spans in place
     py build_bits.py --check    # exit 1 if any page would change (CI / pre-push)
 
@@ -135,6 +139,28 @@ def splice(text: str, start: str, end: str, block: str, where: Path = PAGE) -> s
     return text[: i + len(start)] + "\n" + block + "\n" + indent + text[j:]
 
 
+# ---- the Retrosheet credit -----------------------------------------------------
+# Retrosheet's terms require the second sentence, verbatim, wherever its data is
+# published. One copy here; stamped between RETROSHEET markers on the homepage,
+# the game notes, and every lineup page.
+
+RETROSHEET_PAGES = ["index.html", "bits/wax-baseball/index.html"]  # + every lineup page
+
+
+def credit_block(indent: str) -> str:
+    # Credit line: Retrosheet's own words (retrosheet.org, 2026-09-23) -- "an all-volunteer
+    # organization", founded 1989. Notice: verbatim from retrosheet.org/notice.txt, quotes included.
+    return (f'{indent}<p class="data-credit">Baseball data from Retrosheet, an all-volunteer outfit that has been keeping score on the game&rsquo;s history since 1989.<br />\n'
+            f"{indent}The information used here was obtained free of charge from and is copyrighted by Retrosheet. "
+            f'Interested parties may contact Retrosheet at &quot;<a href="https://www.retrosheet.org">www.retrosheet.org</a>&quot;.</p>')
+
+
+def stamp_credit(text: str, where: Path) -> str:
+    i = text.find("<!-- RETROSHEET:START -->")
+    indent = text[text.rfind("\n", 0, i) + 1 : i] if i >= 0 else INDENT
+    return splice(text, "<!-- RETROSHEET:START -->", "<!-- RETROSHEET:END -->", credit_block(indent), where)
+
+
 # ---- lineup pages: the slot chrome -------------------------------------------
 
 NOTES_HREF = "../wax-baseball/"
@@ -174,7 +200,7 @@ def stamp_page(text: str, p: dict, prev: dict | None, nxt: dict | None, where: P
     ind = INDENT
     text = splice(text, "<!-- NEXT:START -->", "<!-- NEXT:END -->", next_line(p, nxt, ind), where)
     text = splice(text, "<!-- NAV:START -->", "<!-- NAV:END -->", nav_line(prev, nxt, ind), where)
-    return text
+    return stamp_credit(text, where)
 
 
 def write_or_check(path: Path, old: str, new: str, check: bool, what: str) -> bool:
@@ -202,7 +228,12 @@ def main() -> None:
     new = old
     for kind, (start, end) in SPANS.items():
         new = splice(new, start, end, render_span(kind, pieces))
+    new = stamp_credit(new, PAGE)
     stale |= write_or_check(PAGE, old, new, args.check, "card spans")
+
+    notes = HERE / RETROSHEET_PAGES[1]
+    old = notes.read_text(encoding="utf-8")
+    stale |= write_or_check(notes, old, stamp_credit(old, notes), args.check, "Retrosheet credit")
 
     lineup = sorted((p for p in pieces if p["kind"] == "lineup"), key=lambda p: p["n"])
     if [p["n"] for p in lineup] != list(range(1, len(lineup) + 1)):

@@ -600,6 +600,15 @@ footer h3 .hash {
 
 .bit-footer a { color: var(--red); }
 
+/* The Retrosheet credit + required notice -- generated (build_bits.py). Small, but full
+   text color: Retrosheet's terms ask for the notice to appear "prominently". */
+.data-credit {
+  margin-top: 1.25rem;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  line-height: 1.55;
+}
+
 /* ---------------- Responsive ---------------- */
 
 @media (max-width: 540px) {
