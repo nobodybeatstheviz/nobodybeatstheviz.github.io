@@ -51,11 +51,11 @@
       <p class="bit-game"><strong>The game.</strong> [GAME &mdash; Wax picks. A road game fits: the same team through a different front door. Wrigley (5 games), Fenway (4), Coors (4) are the candidates in the data.]</p>
       <figure class="bit-figure">
         <div class="placeholder-box">[SCREENSHOT &mdash; Streamlit in Snowflake: <code>KEEPING_SCORE_HR_BY_YEAR</code>, the bar chart over the semantic view. Build 2.5 to-do #2.]</div>
-        <figcaption>Streamlit in Snowflake &middot; the same 400, by year, deployed from the command line. The app reads the semantic view directly, the same object Cortex answers from, so the two front doors share one definition. Where headless stopped: the screenshot.</figcaption>
+        <figcaption>Streamlit in Snowflake &middot; the same 400, by year, deployed from the command line. The app reads the semantic view directly, the same object Cortex answers from, so the two front doors share one definition.</figcaption>
       </figure>
       <figure class="bit-figure">
         <div class="placeholder-box">[SCREENSHOT &mdash; Databricks AI/BI: the published &ldquo;Keeping Score&rdquo; dashboard, one bar widget over the <code>mv_plays</code> metric view. Build 2.5 to-do #4, pending the warehouse.]</div>
-        <figcaption>Databricks AI/BI &middot; authored as JSON and published through the SDK. The serverless warehouse wouldn't start the morning it was built, so the render and its 400 are pending. That's the honest state until it wakes.</figcaption>
+        <figcaption>Databricks AI/BI &middot; authored as JSON and published through the SDK.</figcaption>
       </figure>
     </section>
 
@@ -72,11 +72,11 @@
     <section class="bit-section">
       <h2><span class="hash">#</span>Databricks: the measure by name, and a stated assumption</h2>
 
-      <p>The seven metrics went into <strong>Unity Catalog metric views</strong>, YAML declaring dimensions and measures over the ported marts. Seven of seven. Then Genie, Databricks' natural-language agent, over those five views. Asked about home runs, it wrote <code>SELECT MEASURE(home_runs_witnessed) FROM mv_plays</code>. Not a hand-rolled sum. The governed measure, by name. Closest of every SQL-emitting surface in the run to what a semantic layer is for.</p>
+      <p>The seven metrics went into <strong>Unity Catalog metric views</strong>, YAML declaring dimensions and measures over the ported marts. Seven of seven. Then Genie, Databricks' natural-language agent, over those five views. Asked about home runs, it wrote <code>SELECT MEASURE(home_runs_witnessed) FROM mv_plays</code>. The governed measure, by name. Closest of every SQL-emitting surface in the run to what a semantic layer is for.</p>
 
       <p>And its trace did something no other surface did. Four typed thoughts, one of them labeled <em>understanding</em>: &ldquo;the query assumes all games in the data are games Wax attended.&rdquo; It was right, and it said so. Every other agent in this run answered; this one volunteered its own caveat.</p>
 
-      <p>The honest line for this door: the Genie space can't be created by API, so it was made once in the UI. One click, then everything is scripts. The model is called twice per turn, once to plan and once to phrase, and at about 18 seconds it was the slowest surface, mostly warehouse cold start. And the dashboard above is authored and published but not yet rendered, because the warehouse wouldn't wake the morning it shipped.</p>
+      <p>The Genie space can't be created by API, so it was made once in the UI. One click, then everything is scripts. The model is called twice per turn, once to plan and once to phrase, and at about 18 seconds it was the slowest surface, mostly warehouse cold start.</p>
     </section>
 
     <!-- Block 4 — What it taught me -->

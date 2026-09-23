@@ -53,7 +53,7 @@
     <section class="bit-demo">
       <figure class="bit-figure">
         <a href="../../assets/keeping-score-hr-by-year-strip.png"><img src="../../assets/keeping-score-hr-by-year-strip.png" alt="The same bar chart, 400 home runs witnessed by year, rendered on each door of the stack side by side" /></a>
-        <figcaption>The lineup card: 400 home runs witnessed, by year &mdash; the same chart on every door the run walks through. Two of six doors captured; the strip regenerates as the rest land.</figcaption>
+        <figcaption>The lineup card: 400 home runs witnessed, by year &mdash; the same chart on every door the run walks through.</figcaption>
       </figure>
       <!-- Family archive slot — the 1984-06-10 box score beside Poppa's card (Wax's image, Drive). Drop it in as a second .bit-figure when ready. -->
       <p class="demo-caption">The whole contract is live and browsable &mdash; models, tests, and the full lineage graph.</p>
@@ -68,21 +68,21 @@
 
       <p>On top of the games sit seven questions a fan asks. How many games. How many home runs did I see. Who I went with. My win rate when I go. Which Hall of Famers I saw. Each one is written down once, as a governed definition, and every tool in the stack has to answer through that definition instead of writing its own.</p>
 
-      <p>Then the nine innings on the front page take one question through one door at a time &mdash; a chart an agent made, an agent that guessed, a join graph with the fan-out showing &mdash; and every trace is kept. The innings are the box score of the agentic turn, kept by someone who was in the stands for it.</p>
+      <p>Then the lineup on the front page takes one question through one door at a time &mdash; a chart an agent made, an agent that guessed, a join graph with the fan-out showing &mdash; and every trace is kept. The lineup is the box score of the agentic turn, kept by someone who was in the stands for it.</p>
     </section>
 
     <!-- Block 3 — The tools, and why -->
     <section class="bit-section">
       <h2><span class="hash">#</span>The tools, and why</h2>
 
-      <p>Because these are the tools you're being told about. Not a bake-off &mdash; one dataset, one set of definitions, and each tool asked to show what it does with them.</p>
+      <p>Because these are the tools you're being told about. One dataset, one set of definitions, and each tool asked to show what it does with them.</p>
 
       <ul>
         <li><strong>dbt on BigQuery &mdash; the contract.</strong> 16 models, tested, documented, lineage published on every push. Five semantic models, nine metrics, seven of them the governed questions. This is the reference. Every other engine is measured against what dbt says.</li>
         <li><strong>Snowflake, Databricks, Data 360 &mdash; the engines.</strong> The same corpus ported to each, and the seven metrics expressed in each one's native semantic layer: a Snowflake semantic view, Databricks metric views, a Data 360 semantic data model federated zero-copy from the other two clouds.</li>
         <li><strong>Agentforce, Claude, Tableau Agent &mdash; the agents.</strong> Each answers through the definitions, never through its own SQL. Baseball Scout is Agentforce written as code. The Claude agent has no SQL tool at all &mdash; its only path is the metric names. Tableau's agent answers through the same Salesforce model.</li>
         <li><strong>Tableau Cloud, Tableau Next, Streamlit, Looker Studio &mdash; the doors.</strong> The surfaces a Tableau practitioner is being cut over to. The same chart, 400 home runs by year, made on each one; that's the strip up top.</li>
-        <li><strong>Claude Code &mdash; the one that kept the card with me.</strong> The models, the harness, the workbook XML, the agents, and this site were built in it. Show the trace is the whole thesis, so here's mine: The Viz is on the mic. Eric B. is on the cut.</li>
+        <li><strong>Claude Code &mdash; the one that kept the card with me.</strong> The models, the harness, the workbook XML, the agents, and this site were built in it. The Viz is on the mic. Eric B. is on the cut.</li>
       </ul>
     </section>
 
@@ -90,7 +90,7 @@
     <section class="bit-section">
       <h2><span class="hash">#</span>The family archive</h2>
 
-      <p>Poppa kept score at the ballpark with a pencil and a card, and taught me the marks &mdash; the little diamond you fill in when someone reaches, 5-3 for a groundout to third. He's on the card fourteen times. My first game is 1984, and the scorecard from it still reads clean forty years later, which is the whole argument for writing things down. The hand-kept cards, his and mine, are the seed. Everything below is what happens when you point the current tools at a shoebox of them and refuse to let any of them invent a play.</p>
+      <p>Poppa kept score at the ballpark with a pencil and a card, and taught me the marks &mdash; the little diamond you fill in when someone reaches, 5-3 for a groundout to third. He's on the card fourteen times. My first game is 1984, and the scorecard from it still reads clean forty years later. The hand-kept cards, his and mine, are the seed. Everything below is what happens when you point the current tools at a shoebox of them and refuse to let any of them invent a play.</p>
     </section>
 
     <!-- Block 5 — How to keep score -->
@@ -111,13 +111,13 @@
         <li>Hall of Famers seen &mdash; <strong>44</strong></li>
       </ul>
 
-      <p><strong>The parity harness.</strong> A script asks the seven questions of every surface and diffs each answer against dbt. Four engines matched on 2026-09-01, 28 of 28. Six surfaces matched by 2026-09-05, <strong>42 of 42</strong>. When an inning says a number, that's the harness that says the number is the same number everywhere else. The receipts are generated, not typed.</p>
+      <p><strong>The parity harness.</strong> A script asks the seven questions of every surface and diffs each answer against dbt. Four engines matched on 2026-09-01, 28 of 28. Six surfaces matched by 2026-09-05, <strong>42 of 42</strong>. When a piece in the lineup says a number, the harness is what says it's the same number everywhere else.</p>
 
-      <p><strong>How to read a trace.</strong> Two bugs, and they failed in opposite directions. Baseball Scout's first answer to "how many games at Yankee Stadium" was <strong>9</strong> &mdash; a number from nowhere. The trace showed it never called its action; it guessed. Later, asked what share of games were Yankees games, it said <strong>0%</strong> &mdash; and the trace showed it doing everything right: action called, result reported faithfully. The bug lived a layer down, an exact-match filter where "Yankees" isn't "New York Yankees." One fix: <strong>143 of 178, 80.3%</strong>. A grounding failure and a data-logic failure look identical in chat and need opposite fixes. The trace is how you tell which side broke. That's the new dashboard QA, and an instruction is not a gate &mdash; gate structurally.</p>
+      <p><strong>How to read a trace.</strong> Two bugs, and they failed in opposite directions. Baseball Scout's first answer to "how many games at Yankee Stadium" was <strong>9</strong> &mdash; a number from nowhere. The trace showed it never called its action; it guessed. Later, asked what share of games were Yankees games, it said <strong>0%</strong> &mdash; and the trace showed it doing everything right: action called, result reported faithfully. The bug lived a layer down, an exact-match filter where "Yankees" isn't "New York Yankees." One fix: <strong>143 of 178, 80.3%</strong>. A grounding failure and a data-logic failure look identical in chat and need opposite fixes. The trace is how you tell which side broke.</p>
 
       <p>The card is kept in three layers &mdash; source, analysis, presentation &mdash; and the presentation layer is regenerated, never patched. The one time I broke that rule in my own system is <a href="../three-layer-lesson/">its own lesson</a>.</p>
 
-      <p class="demo-caption">Now the innings. <a href="../../#the-lineup">Back to the lineup &rarr;</a></p>
+      <p class="demo-caption"><a href="../../#the-lineup">Back to the lineup &rarr;</a></p>
     </section>
 
     <!-- Block 6 — Footer / nav back -->

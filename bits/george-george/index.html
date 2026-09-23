@@ -35,7 +35,7 @@
       <span class="status-tag on-wax">Batting 8th</span>
       <h1>GEORGE GEORGE</h1>
       <p class="hook">What's in the system?</p>
-      <p>Stand up. Stretch. This one has no agent in it. June 10, 1984, Bat Day at Yankee Stadium, Blue Jays in town. Across the top of the scorecard, in my grandfather's hand: <em>1st</em>, circled. Then the names. Georgie. George. Roger. And me. Three generations of Georges on one card, and the card is the first row in everything the other eight innings query.</p>
+      <p>This one has no agent in it. June 10, 1984, Bat Day at Yankee Stadium, Blue Jays in town. Across the top of the scorecard, in my grandfather's hand: <em>1st</em>, circled. Then the names. Georgie. George. Roger. And me. Three generations of Georges on one card, and the card is the first row in everything the rest of the lineup queries.</p>
       <div class="stack">
         <span>The archive</span>
         <span>Retrosheet</span>
@@ -46,10 +46,10 @@
 
     <!-- Block 1.5 — The game (fixed), and the picture -->
     <section class="bit-demo">
-      <p class="bit-game"><strong>The game.</strong> 1984-06-10, Toronto at New York. Yankees 5, Blue Jays 3. Rawley started; Christiansen, circled, got the win; Righetti closed. Mattingly homered in the third. That's the card, and that's the record. They agree.</p>
+      <p class="bit-game"><strong>The game.</strong> 1984-06-10, Toronto at New York. Yankees 5, Blue Jays 3. Rawley started; Christiansen, circled, got the win; Righetti closed. Mattingly homered in the third.</p>
       <figure class="bit-figure">
         <div class="placeholder-box">[IMAGE &mdash; Poppa's 1984-06-10 scorecard beside the generated box score, <code>boxscore-NYA198406100.png</code>. Wax's image, from Drive. The family-archive figure the game notes are also waiting on.]</div>
-        <figcaption>Left: the card, pencil, 1984. Right: the box score a script drew from Retrosheet's play-by-play in 2026, in the AP agate style the newspaper would have printed the next morning. Poppa's Rawley line and the generator's agree to the digit. The box score beside the card <em>is</em> the viz for this inning.</figcaption>
+        <figcaption>Left: the card, pencil, 1984. Right: the box score a script drew from Retrosheet's play-by-play in 2026, in the AP agate style the newspaper would have printed the next morning. Poppa's Rawley line and the generator's agree to the digit. The box score beside the card <em>is</em> the viz here.</figcaption>
       </figure>
     </section>
 
@@ -72,7 +72,7 @@
 
       <p>The box score above is generated. <code>box_score.py</code> takes any of the 178 game ids, pulls the play-by-play from Retrosheet, and renders the agate the way the AP wire would have. Batting lines, pitching lines, the line score. Set it beside the card and you're looking at two records of the same afternoon kept forty-two years apart by two different methods, and they agree. That agreement is the whole argument for writing things down.</p>
 
-      <p>The playoff cuts ride here, since it's October. Of the 30 playoff games, most of the 2001 postseason is in the set: every home game of the Division Series and the League Championship Series, and World Series Games 3 and 5. So the President's first pitch in Game 3 and Brosius's ninth-inning home run in Game 5, in person. Jeter's &ldquo;Mr. November&rdquo; walk-off was Game 4. I watched that one on TV like everyone else. The data knows the difference, and so does the card.</p>
+      <p>Of the 30 playoff games, most of the 2001 postseason is in the set: every home game of the Division Series and the League Championship Series, and World Series Games 3 and 5. So the President's first pitch in Game 3 and Brosius's ninth-inning home run in Game 5, in person. Jeter's &ldquo;Mr. November&rdquo; walk-off was Game 4. I watched that one on TV like everyone else. The data knows the difference, and so does the card.</p>
     </section>
 
     <!-- Block 4 — What it taught me -->
@@ -80,7 +80,7 @@
       <h2><span class="hash">#</span>What it taught me</h2>
 
       <ol>
-        <li><strong>The hand-kept card was the first clean dataset.</strong> One row per game, one hand, one method, kept in real time by someone who cared whether it was right. Every governed definition in the 2nd inning is trying to be what that card already was.</li>
+        <li><strong>The hand-kept card was the first clean dataset.</strong> One row per game, one hand, one method, kept in real time by someone who cared whether it was right. Every governed definition in <a href="../the-contract/">the contract</a> is trying to be what that card already was.</li>
         <li><strong>Provenance, not source.</strong> The cards don't feed the data; Retrosheet does. The cards are how you know the data is about something that happened to someone. An OCR pass would be low priority for exactly that reason.</li>
         <li><strong>When a value looks odd, suspect a 1980s pencil before a mystery person.</strong> Some of the attendee names in the raw file are machine transcription of these cards. Knowing where your data came from is still the skill.</li>
       </ol>

@@ -35,7 +35,7 @@
       <span class="status-tag on-wax">Batting 2nd</span>
       <h1>THE CONTRACT</h1>
       <p class="hook">What is a home run?</p>
-      <p>You know the calculated field. <code>IF [Event Code] = 23 THEN 1 END</code>, or whatever it was called at your shop, written into a workbook, copied into the next one, drifting a little each time until two dashboards disagree and a VP asks which one is right. The 400 on the 1st-inning chart doesn't come from a calc. It comes from one definition, written once, in a place every tool has to read. This inning is where that definition lives, and why the test that failed was the best thing that happened here.</p>
+      <p>You know the calculated field. <code>IF [Event Code] = 23 THEN 1 END</code>, or whatever it was called at your shop, written into a workbook, copied into the next one, drifting a little each time until two dashboards disagree and a VP asks which one is right. The 400 on <a href="../bar-chart/">the bar chart</a> doesn't come from a calc. It comes from one definition, written once, in a place every tool has to read. This is where that definition lives, and why the test that failed was the best thing that happened here.</p>
       <div class="stack">
         <span>dbt</span>
         <span>BigQuery</span>
@@ -50,7 +50,7 @@
       <p class="bit-game"><strong>The game.</strong> [GAME &mdash; Wax picks. Suggestion: 1992-05-24, Brewers at Yankees. Poppa's card scored the 1st inning and then just the highlights: &ldquo;Yanks win 8-7 &middot; Mattingly 3 doubles &middot; Nokes + Hayes HRs.&rdquo; A partial record, and every one of those facts checks against the play-by-play. What counts is what's written down.]</p>
       <figure class="bit-figure">
         <div class="placeholder-box">[SCREENSHOT &mdash; Looker Studio: one bar chart, Dimension <code>yr</code>, Metric <code>hr</code>, over the BigQuery view <code>v_hr_by_year</code>. Build 2.5 to-do #3.]</div>
-        <figcaption>Looker Studio on BigQuery &middot; the same 400, by year. The view and the report link were built headlessly; the chart itself was drawn in the GUI, because Looker Studio has no authoring API. That's where headless stops on this door, and this page says so.</figcaption>
+        <figcaption>Looker Studio on BigQuery &middot; the same 400, by year. The view and the report link were built headlessly; the chart itself was drawn in the GUI, because Looker Studio has no authoring API.</figcaption>
       </figure>
       <p class="demo-caption">The contract is live and browsable &mdash; every model, every test, the full lineage graph.</p>
       <p><a class="docs-cta" href="../../wax-baseball-dbt/">Explore the live dbt docs &rarr;</a></p>
@@ -62,7 +62,7 @@
 
       <p>dbt runs SQL inside the warehouse, here BigQuery, and turns raw tables into tested, documented, reusable ones. The 178 games join to Retrosheet, the official play-by-play, on one clean key. From there: <strong>16 models</strong>, seven staging views that rename and cast and filter, eight marts that join and add meaning, one calendar table the metric engine needs. One fact table with 178 rows, one per game, carrying pre-computed answers like whether it was a Yankees game and who won.</p>
 
-      <p>On top of the marts sits the semantic layer, shipped 2026-08-31: <strong>five semantic models and nine metrics</strong>. Seven of the nine are the governed questions. Games attended. Unique stadiums. Home runs witnessed. Runs witnessed. Win rate when I'm there. Games per companion. Hall of Famers seen. Each is a few lines of YAML naming a measure and how to aggregate it. <code>home_runs_witnessed</code> is a count of plays where the event code is 23, filtered to games I attended. That's the whole definition, and it appears in exactly one file.</p>
+      <p>On top of the marts sits the semantic layer, shipped 2026-08-31: <strong>five semantic models and nine metrics</strong>. Seven of the nine are the governed questions. Games attended. Unique stadiums. Home runs witnessed. Runs witnessed. Win rate when I'm there. Games per companion. Hall of Famers seen. Each is a few lines of YAML naming a measure and how to aggregate it. <code>home_runs_witnessed</code> is a count of plays where the event code is 23, filtered to games I attended. It lives in exactly one file.</p>
 
       <p>This is the reference. Every other engine in the run, Snowflake and Databricks and Data 360 and Tableau Next, is measured against what this layer says. The reference answers were recorded 2026-08-31: 178 games in 22 stadiums, 400 home runs, 1,706 runs, 44 Hall of Famers, Yankees 90&ndash;53 in the 143 decided games I sat through.</p>
     </section>
@@ -83,7 +83,7 @@
       <h2><span class="hash">#</span>What it taught me</h2>
 
       <ol>
-        <li><strong>The calculated field didn't go away. It got a home.</strong> Everything you know about what a home run is, what a decided game is, who counts as a companion, is exactly the knowledge the semantic layer is for. It moves upstream of the workbook and every tool reads it. Your fifteen years of knowing what the field means is the asset here, not the deprecated part.</li>
+        <li><strong>The calculated field didn't go away. It got a home.</strong> Everything you know about what a home run is, what a decided game is, who counts as a companion, is exactly the knowledge the semantic layer is for. It moves upstream of the workbook and every tool reads it. Your fifteen years of knowing what the field means is the asset here.</li>
         <li><strong>Filter early.</strong> Keeping only my 178 games in staging cuts each run to about 34 MB of scan instead of all of baseball history. The same push-down instinct you have with an extract filter, one layer earlier.</li>
         <li><strong>The reference has to exist before parity means anything.</strong> Six engines agreeing is only interesting if one of them is the contract. This is the one.</li>
       </ol>

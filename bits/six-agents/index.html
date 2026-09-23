@@ -26,7 +26,7 @@
   <!-- Cloudflare Web Analytics (privacy-first, no cookies). -->
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "0766fadf140d4e1f95096f0bf3a6f10d"}'></script>
   <style>
-    /* This inning's one table. Scoped here; the site has no table style yet. */
+    /* This piece's one table. Scoped here; the site has no table style yet. */
     .matrix { width: 100%; border-collapse: collapse; font-size: 0.92rem; margin: 1.5rem 0; }
     .matrix th, .matrix td { text-align: left; vertical-align: top; padding: 0.6rem 0.7rem; border-bottom: 1px solid var(--cream); }
     .matrix th { font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.04em; color: var(--muted); font-weight: 400; }
@@ -57,10 +57,10 @@
 
     <!-- Block 1.5 — The game, and the picture -->
     <section class="bit-demo">
-      <p class="bit-game"><strong>The game.</strong> [GAME &mdash; Wax picks. Suggestion: 2022-07-30, the last game Al and I saw together. The Claude agent's one action in this inning was a reminder to him about it, staged as a draft with no recipient and never sent. I'm the send button.]</p>
+      <p class="bit-game"><strong>The game.</strong> [GAME &mdash; Wax picks. Suggestion: 2022-07-30, the last game Al and I saw together. The Claude agent's one action in this piece was a reminder to him about it, staged as a draft with no recipient and never sent. I'm the send button.]</p>
       <figure class="bit-figure">
         <a href="../../assets/keeping-score-hr-by-year-artifact.png"><img src="../../assets/keeping-score-hr-by-year-artifact.png" alt="A plain web page: bar chart of home runs witnessed by year, 34 bars, one direct label on the maximum, light theme" /></a>
-        <figcaption>The Claude door &middot; the same 400, by year, as one self-contained page with inline SVG and no chart library, generated from the same spec and token file as every other door. Where headless stopped: nowhere. The only human step was saying &ldquo;publish.&rdquo;</figcaption>
+        <figcaption>The Claude door &middot; the same 400, by year, as one self-contained page with inline SVG and no chart library, generated from the same spec and token file as every other door. Nothing needed a browser. The only human step was saying &ldquo;publish.&rdquo;</figcaption>
       </figure>
     </section>
 
@@ -84,18 +84,18 @@
         </tbody>
       </table>
 
-      <p>The 3rd inning's confident zero was diagnosable <em>only</em> because Tableau Agent shows the query. The 4th inning's 9 was diagnosable only because Agentforce writes <code>tool_invocations: null</code> to a file. Genie was the one agent that volunteered a caveat. Cortex was the one that walked past the definition it was handed and rebuilt it. BigQuery narrated in English and gave a job id you can look up. Each surface's strength is another's blind spot.</p>
+      <p>Tableau Agent's <a href="../who-is-i/">confident zero</a> was diagnosable <em>only</em> because it shows the query. Baseball Scout's <a href="../the-trace/">9</a> was diagnosable only because Agentforce writes <code>tool_invocations: null</code> to a file. Genie was the one agent that volunteered a caveat. Cortex was the one that walked past the definition it was handed and rebuilt it. BigQuery narrated in English and gave a job id you can look up.</p>
     </section>
 
     <!-- Block 3 — Four calls, nine calls -->
     <section class="bit-section">
       <h2><span class="hash">#</span>Four calls, nine calls, and where the time went</h2>
 
-      <p>The Claude agent has <strong>no SQL tool</strong>. Its whole world is list the metrics, query a metric by name, draft an email. Asked about home runs and the Yankees' win rate, it listed the metrics, asked for two by name, done: <strong>4 tool calls</strong>. A twin with a raw read-only SQL tool instead spelunked the schema, rediscovered that a home run is event code 23, found the team-grain table, and got the same right answers in <strong>9</strong>. Honest reading: good modeling narrows the gap, because the marts are clean. The governed path still answered in under half the moves with zero rediscovery, and the metric name is right there in the trace. A smaller model got 400 through the same path too, after fumbling seven tool-loading calls first. Correctness survived the small model.</p>
+      <p>The Claude agent has <strong>no SQL tool</strong>. Its whole world is list the metrics, query a metric by name, draft an email. Asked about home runs and the Yankees' win rate, it listed the metrics, asked for two by name, done: <strong>4 tool calls</strong>. A twin with a raw read-only SQL tool instead spelunked the schema, rediscovered that a home run is event code 23, found the team-grain table, and got the same right answers in <strong>9</strong>. Good modeling narrows the gap, because the marts are clean. The governed path still answered in under half the moves with zero rediscovery, and the metric name is right there in the trace. A smaller model got 400 through the same path too, after fumbling seven tool-loading calls first. Correctness survived the small model.</p>
 
       <p>Then the clock. That one turn cost $0.18 and took 38.7 seconds. The model's share was 5.7 seconds. <strong>21.7 seconds was the local metric engine starting up.</strong> The bottleneck was not the model, and if you'd only had the chat window you'd have blamed it.</p>
 
-      <p>One more from the same family, from the 4th inning's agent: an action returned 22 venue groups and the prose said &ldquo;21 different stadiums.&rdquo; Grounded, and miscounted. The tool did its job; the sentence didn't. That's a column the rubric doesn't have yet.</p>
+      <p>One more from the same family, from Baseball Scout: an action returned 22 venue groups and the prose said &ldquo;21 different stadiums.&rdquo; Grounded, and miscounted. The tool did its job; the sentence didn't. That's a column the rubric doesn't have yet.</p>
     </section>
 
     <!-- Block 4 — What it taught me -->
@@ -104,7 +104,7 @@
 
       <ol>
         <li><strong>Right answers are the floor. Legible answers are the job.</strong> Six agents said 400. The one you can defend in a meeting is the one whose trace shows the query and names the model it ran against. Ask that of any agent you're handed before you ask whether it's accurate.</li>
-        <li><strong>The tool set is the policy.</strong> An agent with no SQL tool cannot go ungoverned. Not because you told it not to; because there's no door. This is the 4th inning's &ldquo;gate structurally&rdquo; applied to reads.</li>
+        <li><strong>The tool set is the policy.</strong> An agent with no SQL tool cannot go ungoverned. This is <a href="../the-trace/">Baseball Scout's</a> &ldquo;gate structurally&rdquo; applied to reads.</li>
         <li><strong>Measure the whole turn, not the model.</strong> 33 of 39 seconds wasn't inference. In the age of the agent, you're going to be asked why it's slow, and the answer is going to be in the trace, not the prompt.</li>
       </ol>
 
@@ -115,7 +115,7 @@
 
     <!-- Block 5 — Footer / nav -->
     <footer class="bit-footer">
-      <p><a href="https://github.com/nobodybeatstheviz/wax-baseball-dbt">The two Claude agents, in the dbt repo under <code>agents/</code></a> &middot; [LINK &mdash; the parity repo with the six captures and the extractor, when it goes public] &middot; [LINK &mdash; the live Claude artifact, if the inning wants it]</p>
+      <p><a href="https://github.com/nobodybeatstheviz/wax-baseball-dbt">The two Claude agents, in the dbt repo under <code>agents/</code></a> &middot; [LINK &mdash; the parity repo with the six captures and the extractor, when it goes public] &middot; [LINK &mdash; the live Claude artifact, if the piece wants it]</p>
       <!-- NAV:START -->
       <p>&larr; <a href="../the-trace/">batting cleanup</a> &middot; <a href="../../#the-lineup">the lineup</a> &middot; <a href="../fan-out/">batting 6th</a> &rarr;</p>
       <!-- NAV:END -->

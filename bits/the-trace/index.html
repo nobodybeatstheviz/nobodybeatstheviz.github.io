@@ -72,11 +72,11 @@
     <section class="bit-section">
       <h2><span class="hash">#</span>How it works</h2>
 
-      <p>Baseball Scout is written in Agent Script, Salesforce's text format for an agent as code, not clicked together in a builder. It versions, it reviews, it's in a public repo. A router sends attended-game questions to one subagent with two Apex actions over the 178 rows, governed-metric questions to another that calls the Data 360 semantic model from the 5th inning, and everything vague or off-topic to two guardrail subagents. Scope is enforced structurally: the actions can only return attended-games data, so the agent physically cannot answer a question about Derek Jeter's career. It declines, honestly.</p>
+      <p>Baseball Scout is written in Agent Script, Salesforce's text format for an agent as code, not clicked together in a builder. It versions, it reviews, it's in a public repo. A router sends attended-game questions to one subagent with two Apex actions over the 178 rows, governed-metric questions to another that calls the Data 360 semantic model, and everything vague or off-topic to two guardrail subagents. Scope is enforced structurally: the actions can only return attended-games data, so the agent physically cannot answer a question about Derek Jeter's career. It declines, honestly.</p>
 
-      <p>Version 1.2 answers the governed metrics through the same definitions as every other engine in the run, and its three golden cases, 400 home runs, 44 Hall of Famers, Yankees 90 of 143, passed topic, action, and output on three consecutive test runs. Then the observability pass measured the trace itself: 3 model calls, 21 plan steps, one action returning <code>homeRunsWitnessed: 400</code>, 4.7 seconds. And <strong>zero token fields in 85 KB of trace</strong>. That absence is a measured fact too; it's in the 8th inning.</p>
+      <p>Version 1.2 answers the governed metrics through the same definitions as every other engine in the run, and its three golden cases, 400 home runs, 44 Hall of Famers, Yankees 90 of 143, passed topic, action, and output on three consecutive test runs. Then the observability pass measured the trace itself: 3 model calls, 21 plan steps, one action returning <code>homeRunsWitnessed: 400</code>, 4.7 seconds. And <strong>zero token fields in 85 KB of trace</strong>. That absence is a measured fact too; it's in <a href="../six-agents/">the six-agent matrix</a>.</p>
 
-      <p>The honest line: retrieval agents with one action each, on my own data, in a dev org's preview. No production channel, no customers. The customer engagement adds the channel, the identity model, and the evaluation suite. And one more: the test runner reported &ldquo;no results&rdquo; on an agent whose live preview passed the same utterance. A test runner's verdict is one surface, not the truth. Read the trace, not the score.</p>
+      <p>These are retrieval agents with one action each, on my own data, in a dev org's preview. No production channel, no customers. The customer engagement adds the channel, the identity model, and the evaluation suite. And one more: the test runner reported &ldquo;no results&rdquo; on an agent whose live preview passed the same utterance. Read the trace, not the score.</p>
     </section>
 
     <!-- Block 4 — What it taught me -->
@@ -86,7 +86,7 @@
       <ol>
         <li><strong>Yes, the trace is the new dashboard QA.</strong> It's the workbook you open when the sentence is wrong. Grounding failure, data-logic failure, instruction failure: same chat window, opposite fixes. The trace is the only thing that tells you which side broke, and a platform that hides it is asking you to QA blind.</li>
         <li><strong>The 0% was the good one.</strong> The agent was honest and the data was wrong. That's the failure you already know how to fix, because it's the one you've been fixing in calcs and joins for years. The 9 is the new one.</li>
-        <li><strong>Gate structurally.</strong> Where a rule kept getting skipped, better wording never fixed it. Making the step something that runs or doesn't could not fail the same way. Convert prescription into mechanism.</li>
+        <li><strong>Gate structurally.</strong> Where a rule kept getting skipped, better wording never fixed it.</li>
       </ol>
 
       <!-- NEXT:START -->
