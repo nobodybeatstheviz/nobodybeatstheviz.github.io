@@ -242,7 +242,7 @@ code, .pill {
   color: #93a8c2;
 }
 
-/* A slot — an inning not yet played. Not a link; no hover lift. */
+/* A slot — a piece still on deck. Not a link; no hover lift. */
 .bit-card.wip {
   cursor: default;
   border-style: dashed;
@@ -582,7 +582,7 @@ footer h3 .hash {
   letter-spacing: 0.02em;
 }
 
-/* The game each inning leads with — Wax's pick. */
+/* The game each piece in the lineup leads with — Wax's pick. */
 .bit-game {
   font-family: var(--mono);
   font-size: 0.95rem;
