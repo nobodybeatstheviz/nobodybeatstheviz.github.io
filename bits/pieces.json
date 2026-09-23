@@ -60,6 +60,17 @@
     {
       "kind": "lineup",
       "n": 5,
+      "slug": "six-agents",
+      "question": "One number, six agents. What does each trace hide?",
+      "title": "The matrix",
+      "tools": ["Claude SDK", "Hosted MCP", "Agentforce", "Tableau Next"],
+      "status": "wip",
+      "url": "",
+      "date": ""
+    },
+    {
+      "kind": "lineup",
+      "n": 6,
       "slug": "fan-out",
       "question": "Where does the fan-out hide?",
       "title": "Three clouds, one org",
@@ -70,7 +81,7 @@
     },
     {
       "kind": "lineup",
-      "n": 6,
+      "n": 7,
       "slug": "two-front-doors",
       "question": "Same seven answers. Which door?",
       "title": "Two front doors",
@@ -81,22 +92,11 @@
     },
     {
       "kind": "lineup",
-      "n": 7,
+      "n": 8,
       "slug": "george-george",
       "question": "What’s in the system?",
       "title": "GEORGE GEORGE",
       "tools": ["The archive", "box_score.py", "Retrosheet"],
-      "status": "wip",
-      "url": "",
-      "date": ""
-    },
-    {
-      "kind": "lineup",
-      "n": 8,
-      "slug": "six-agents",
-      "question": "One number, six agents. What does each trace hide?",
-      "title": "The matrix",
-      "tools": ["Claude SDK", "Hosted MCP", "Agentforce", "Tableau Next"],
       "status": "wip",
       "url": "",
       "date": ""

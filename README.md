@@ -13,8 +13,8 @@ Static HTML/CSS, deployed via GitHub Pages from `main`.
 The site has one generated span. Everything else is hand-authored HTML.
 
 - **Source:** [`bits/pieces.json`](bits/pieces.json) — one row per piece (the lineup, away games, the notes): slot `n`, question, working title, tools, status, url, date. Lineup rows carry no label — the generator derives it from `n` (Leading off, Batting 2nd … Batting cleanup …).
-- **Generator:** [`build_bits.py`](build_bits.py) — renders the lineup and away-games card grids into `index.html` between `<!-- LINEUP:START/END -->` and `<!-- AWAY:START/END -->`. Stdlib only, idempotent.
-- **When to run:** after any edit to `pieces.json` — a piece lands (set `url`, `date`, `status: on-wax`), the order changes (`n`), a question is reworded, a tool row changes. Never hand-edit inside the markers; the next run overwrites it.
+- **Generator:** [`build_bits.py`](build_bits.py) — renders the lineup and away-games card grids into `index.html` between `<!-- LINEUP:START/END -->` and `<!-- AWAY:START/END -->`, and stamps each lineup page's slot chrome: the label in `<title>`/og/twitter and the status tag, the on-deck line (`<!-- NEXT:START/END -->` — the next piece's card question), and the prev/next nav (`<!-- NAV:START/END -->`). A reorder is changing `n`; the generator refuses slots with gaps or repeats. Stdlib only, idempotent.
+- **When to run:** after any edit to `pieces.json` — a piece lands (set `url`, `date`, `status: on-wax`), the order changes (`n`), a question is reworded, a tool row changes. Never hand-edit inside the markers or the slot labels; the next run overwrites them. The on-deck teaser *is* the next piece's `question` — reword it there.
 
 ```
 py build_bits.py            # rewrite the spans
