@@ -632,6 +632,11 @@ footer h3 .hash {
 .roster-bats { font-family: var(--mono); font-size: 0.78rem; }
 .roster-bats a { color: var(--red); }
 
+/* ---------------- Code blocks (a definition shown whole) ---------------- */
+.code-block { background: var(--ink); color: var(--cream); font-family: var(--mono); font-size: 0.85rem;
+  line-height: 1.55; padding: 1rem 1.2rem; border-radius: 4px; overflow-x: auto; margin: 1.25rem 0; }
+.code-block code { font-size: inherit; }
+
 /* ---------------- Responsive ---------------- */
 
 @media (max-width: 540px) {
