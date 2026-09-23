@@ -116,10 +116,11 @@ def render_span(kind: str, pieces: list) -> str:
     out = [f'{INDENT}<div class="bit-grid">', body, f"{INDENT}</div>"]
     if kind == "lineup":
         played = sum(1 for p in rows if p.get("status") == "on-wax")
-        out.append(
-            f'{INDENT}<p class="bit-grid-empty">{played} of {len(rows)} on wax. '
-            f"The rest are on deck.</p>"
-        )
+        if played < len(rows):  # a full lineup needs no scoreboard line
+            out.append(
+                f'{INDENT}<p class="bit-grid-empty">{played} of {len(rows)} on wax. '
+                f"The rest are on deck.</p>"
+            )
     return "\n".join(out)
 
 
