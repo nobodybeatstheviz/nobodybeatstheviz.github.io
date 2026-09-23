@@ -11,8 +11,9 @@ Presentation:  two spans in index.html, between stable markers:
                that depends on the slot -- so a reorder is changing `n` and
                nothing else:
 
-    KEEPING SCORE · <label> --  in <title>, og:title, twitter:title
+    KEEPING SCORE · <label> — <title>   in <title>, og:title, twitter:title
     <span class="status-tag ..."> the marquee label
+    <h1> the title in caps · <p class="hook"> the card question
     <!-- NEXT:START --> ... <!-- NEXT:END -->   the on-deck line (next piece's question)
     <!-- NAV:START -->  ... <!-- NAV:END -->    prev · the lineup · next
 
@@ -162,8 +163,14 @@ def nav_line(prev: dict | None, nxt: dict | None, indent: str) -> str:
 
 def stamp_page(text: str, p: dict, prev: dict | None, nxt: dict | None, where: Path) -> str:
     lab = esc(label(p))
-    text = re.sub(r"(KEEPING SCORE · )[^—<\"]*?( —)", rf"\g<1>{lab}\g<2>", text)
+    title = esc(p["title"])
+    # <title>, og:title, twitter:title -- "KEEPING SCORE · <label> — <title>"
+    head = f"KEEPING SCORE · {lab} — {title}".replace("\\", "\\\\")
+    text = re.sub(r"KEEPING SCORE · [^—<\"]*? — [^<\"]*?(?= · Nobody Beats|\")", head, text)
     text = re.sub(r'(<span class="status-tag [^"]*">)[^<]*(</span>)', rf"\g<1>{lab}\g<2>", text, count=1)
+    # the marquee: H1 is the title in caps, the hook is the card question
+    text = re.sub(r"(<h1>)[^<]*(</h1>)", lambda m: m.group(1) + title.upper() + m.group(2), text, count=1)
+    text = re.sub(r'(<p class="hook">)[^<]*(</p>)', lambda m: m.group(1) + esc(p["question"]) + m.group(2), text, count=1)
     ind = INDENT
     text = splice(text, "<!-- NEXT:START -->", "<!-- NEXT:END -->", next_line(p, nxt, ind), where)
     text = splice(text, "<!-- NAV:START -->", "<!-- NAV:END -->", nav_line(prev, nxt, ind), where)
