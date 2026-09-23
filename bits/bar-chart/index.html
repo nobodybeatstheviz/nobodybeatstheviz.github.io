@@ -35,7 +35,9 @@
       <span class="status-tag on-wax">Leading off</span>
       <h1>THE BAR CHART AN AGENT MADE</h1>
       <p class="hook">Can you trust the number on the chart?</p>
-      <p>You have made this chart a thousand times. Years across the bottom, a count up the side, sort by year, done before the coffee cools. This one you didn't make. An agent wrote the workbook as XML, a server checked it line by line, and it published to Tableau Cloud without a browser being open. The bars say 400. The only question worth asking is the one you'd ask of anyone else's chart: how do I know that's right?</p>
+      <p>You've made this chart a thousand times. Years across the horizontal axis. A count on the vertical. Done before the coffee cools.</p>
+      <p>You didn't make this one. An agent did. It wrote the workbook as XML, Tableau's MCP server checked it line by line, and it published to Tableau Cloud without anyone opening a browser.</p>
+      <p>The bars say 400. So ask what you'd ask of anybody's chart: how do I know that's right?</p>
       <div class="stack">
         <span>Tableau Cloud</span>
         <span>Tableau MCP</span>
@@ -46,7 +48,7 @@
 
     <!-- Block 1.5 — The game, and the picture -->
     <section class="bit-demo">
-      <p class="bit-game"><strong>The game.</strong> [GAME &mdash; Wax picks. Suggestion: 1988-08-07, Twins at Yankees. Poppa wrote four attendance guesses on the card &mdash; 49,000 / 48,000 / 54,875 / 51,500 &mdash; then the actual, 53,176, circled. Can you trust the number? He checked.]</p>
+      <p class="bit-game"><strong>The game.</strong> Sunday, August 7, 1988. Twins at Yankees, 5&ndash;1. At the top of his card Poppa wrote four guesses at the crowd: 49,000. 48,000. 54,875. 51,500. Then the real number, 53,176, circled. Can you trust the number? He checked.</p>
       <figure class="bit-figure">
         <a href="../../assets/keeping-score-hr-by-year-tableau-cloud.png"><img src="../../assets/keeping-score-hr-by-year-tableau-cloud.png" alt="Tableau Cloud bar chart: home runs witnessed by year, 1984 to 2025, 34 red bars summing to 400" /></a>
         <figcaption>Tableau Cloud &middot; <em>Keeping Score - HR by Year</em> &middot; 34 bars, 400 home runs. Authored as XML, validated and published through the Tableau MCP, 2026-09-10. Restyled to the mark color 2026-09-17.</figcaption>
@@ -57,32 +59,51 @@
     <section class="bit-section">
       <h2><span class="hash">#</span>What happened</h2>
 
-      <p>The spec was five lines: measure, by what, sort, title rule, color. From it the agent emitted a <code>.twb</code>, which is a workbook as XML, the same file Tableau Desktop writes when you hit save. The Tableau MCP server took the file, <strong>validated it server-side and returned line-level errors</strong> when it was wrong, and published it when it wasn't. The receipt is a PNG and a CSV that sums to 400. If the CSV doesn't sum to 400, the script exits and nothing publishes.</p>
+      <p>The spec was five lines: the measure, what to slice it by, the sort, the title, the color. The agent turned that into a <code>.twb</code>, the same file Desktop saves. The server sent back errors by line number until it was right, then published it. The proof is a PNG and a CSV, and if the CSV doesn't sum to 400, nothing publishes.</p>
 
-      <p>Two eras of the grammar showed up on the way. Tableau's newest strict workbook schema is blocked by two errors in Tableau's own published schema, and no content fixes them. The generator writes the older grammar instead, which is the one Tableau 2026.1 itself still writes when you download a workbook.</p>
+      <p>One snag worth knowing: Tableau's newest strict schema won't validate, because of two errors in Tableau's own published schema. So the agent writes the older grammar, the one Tableau 2026.1 still writes when you download a workbook, and the server takes it.</p>
 
-      <p>Nothing needed a browser. The red bars took. The font rule was accepted by the server and didn't show in the render. The number and the sort held.</p>
+      <p>The red bars took. The font didn't show up in the render. The number and the sort held.</p>
     </section>
 
     <!-- Block 3 — How you know it's right -->
     <section class="bit-section">
       <h2><span class="hash">#</span>How you know it's right</h2>
 
-      <p>The 400 on this chart is <strong>home runs witnessed</strong>, one governed definition written down once in dbt: a play in a game I attended whose event code is 23. Every bar is that definition grouped by year. And the same definition, asked of five other engines through each one's own semantic layer, comes back 400 every time. A harness asks the question of all six and diffs the answers. On 2026-09-06 it read <strong>42 of 42</strong>.</p>
+      <p>The 400 is <strong>home runs witnessed</strong>, written down once in dbt: a play in a game I attended with event code 23. Every bar is that definition by year. Five other engines answer the same question through their own semantic layers and say 400 too. That's in <a href="../wax-baseball/#the-standings">the standings</a>.</p>
 
-      <p>The chart is the photo. The definition is the contract. The harness is the scorecard that says the number on the photo is the same number everywhere else. That's why the lineup starts with a bar chart and not an agent: this is where you're standing, and the question is the one you already know how to ask.</p>
+      <p>The chart is the photo. The definition is the contract. That's why the lineup leads off with a bar chart and not an agent: it's where you're standing, and it's a question you already know how to ask.</p>
 
-      <p>It's one workbook, one sheet, personal data at demo scale. No dashboards were built.</p>
+      <p>One workbook, one sheet, my data at demo scale. No dashboards.</p>
     </section>
 
-    <!-- Block 4 — What it taught me -->
+    <!-- Block 4 — Try this (sources: CODING/wax_baseball_w5_datasource build_workbook.py + README; the /tableau-viz skill; measured 2026-09-09/10) -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>Try this</h2>
+
+      <p>You need a Tableau Cloud site you can publish to, a personal access token, Node, and Claude Code or any agent that speaks MCP.</p>
+
+      <ol>
+        <li><strong>Install Tableau's MCP server.</strong> <code>npm install @tableau/mcp-server</code>. Point it at your site with four environment variables: <code>SERVER</code>, <code>SITE_NAME</code>, <code>PAT_NAME</code>, <code>PAT_VALUE</code>.</li>
+        <li><strong>Turn publishing on.</strong> The <code>publish-workbook</code> tool ships switched off. In the version I used, 4.8.1, it's a flag called <code>authoring-tools</code> in the package's <code>build/features.json</code>. Set it to true. While you're there, expose only what you need: <code>INCLUDE_TOOLS=list-projects,publish-workbook</code>.</li>
+        <li><strong>Publish the data source first.</strong> The workbook points at a published source, so there's no connection to embed and nothing to break.</li>
+        <li><strong>Write the spec, not the XML.</strong> Five lines: measure, by what, sort, title, color. Give it to the agent and let it write the <code>.twb</code>.</li>
+        <li><strong>Tell it which grammar.</strong> Workbook version 18.1, classic manifest. The newer strict grammar won't pass, for the reason above.</li>
+        <li><strong>Let the server grade it.</strong> Call <code>publish-workbook</code>. If the file is wrong you get errors by line number and nothing publishes. Hand them back to the agent and go again.</li>
+        <li><strong>Check the number.</strong> Pull the view's image and data back through the REST API and make sure the data adds up to what your definition says. Mine: 400.</li>
+      </ol>
+
+      <p class="demo-caption">As of September 2026, on version 4.8.1. The MCP server moves fast; check its README for the current switch.</p>
+    </section>
+
+    <!-- Block 5 — What it taught me -->
     <section class="bit-section">
       <h2><span class="hash">#</span>What it taught me</h2>
 
       <ol>
-        <li><strong>The chart was never the hard part.</strong> An agent can make it in one pass from five lines. What it can't do is decide what a home run is, and that decision is the only thing on this page that took judgment. It lives upstream of every tool, in <a href="../the-contract/">the contract</a>.</li>
-        <li><strong>Validation belongs to the server, not the author.</strong> A local schema said the strict grammar was fine. The server said no, with a line number. Trust the door you're publishing through, not the file you're holding.</li>
-        <li><strong>Next to Tableau, never instead of.</strong> The same chart gets remade on every door the rest of the run walks through, Tableau Next and Streamlit and Databricks and Looker Studio and a plain Claude page. Tableau made it first, and the run measures the rest against it.</li>
+        <li><strong>The chart was never the hard part.</strong> An agent made it from five lines. It can't decide what a home run is. That call lives upstream of every tool, in <a href="../the-contract/">the contract</a>.</li>
+        <li><strong>Trust the server, not the file.</strong> A local schema said the strict grammar was fine. The server said no, with a line number.</li>
+        <li><strong>Next to Tableau, never instead of.</strong> Every door in the lineup redraws this chart. Tableau drew it first.</li>
       </ol>
 
       <!-- NEXT:START -->
