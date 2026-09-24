@@ -60,6 +60,10 @@
 }</code></pre>
         <figcaption>Two Agentforce traces. The 9 never called anything. The 400 called one action and reported what came back. No chart on this door, by nature: the trace is the picture.</figcaption>
       </figure>
+      <figure class="bit-figure">
+        <a href="../../assets/baseball-scout-trace-400.png"><img src="../../assets/baseball-scout-trace-400.png" alt="Agentforce Builder preview: the question, the answer 400, and the trace timeline with the query keeping score action, its input and its output" /></a>
+        <figcaption>The same at-bat in Agentforce Builder. The route, the one action, its input (<code>homeRuns</code>) and its output. 6.41 seconds, 4.11 of them inside the action.</figcaption>
+      </figure>
     </section>
 
     <!-- Block 2 — The three -->
@@ -79,7 +83,14 @@
     <section class="bit-section">
       <h2><span class="hash">#</span>How it works</h2>
 
-      <p>Baseball Scout is written in Agent Script, not clicked together in a builder. It versions, it reviews, it's in a public repo. A router sends attended-game questions to one subagent with two Apex actions over the 178 rows, governed-metric questions to another that calls the Data 360 semantic model, and everything vague or off-topic to two guardrail subagents. Scope is enforced structurally: the actions can only return attended-games data, so the agent physically cannot answer a question about Derek Jeter's career. It declines, honestly.</p>
+      <p>Baseball Scout is written in Agent Script, not clicked together in a builder. It versions, it reviews, it's in a public repo. A router sends attended-game questions to one subagent with two Apex actions over the 178 rows, governed-metric questions to another that calls the Data 360 semantic model, and everything vague or off-topic to two guardrail subagents.</p>
+
+      <figure class="bit-figure">
+        <a href="../../assets/baseball-scout-agent-summary.png"><img src="../../assets/baseball-scout-agent-summary.png" alt="Agentforce Builder agent summary: Baseball Scout, a topic selector, and four subagents" /></a>
+        <figcaption>Baseball Scout's shape. A topic selector routes every question to one of four subagents. Two hold actions. Two exist to ask a better question or say no.</figcaption>
+      </figure>
+
+      <p> Scope is enforced structurally: the actions can only return attended-games data, so the agent physically cannot answer a question about Derek Jeter's career. It declines, honestly.</p>
 
       <p>Version 1.2 answers the governed metrics through the same definitions as every other engine in the run, and its three golden cases, 400 home runs, 44 Hall of Famers, Yankees 90 of 143, passed topic, action, and output on three consecutive test runs. Then the observability pass measured the trace itself: 3 model calls, 21 plan steps, one action returning <code>homeRunsWitnessed: 400</code>, 4.7 seconds. And <strong>zero token fields in 85 KB of trace</strong>. That absence is a measured fact too; it's in <a href="../six-agents/">the six-agent matrix</a>.</p>
 
