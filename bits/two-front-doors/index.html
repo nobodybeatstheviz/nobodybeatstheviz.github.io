@@ -35,7 +35,9 @@
       <span class="status-tag on-wax">Batting 7th</span>
       <h1>TWO FRONT DOORS</h1>
       <p class="hook">Do the numbers survive the move?</p>
-      <p>If your org is moving, it's moving toward one of these two. Snowflake with Cortex and Streamlit. Databricks with Genie and AI/BI. You've been told both are where the chart goes next. So I put the same corpus in each, expressed the same seven definitions in each one's native semantic layer, asked each one's agent the same question, and drew the same bar chart on each one's front porch. Seven of seven, both. The interesting part is what each one did on the way to the right answer.</p>
+      <p>If your org is moving, it's moving toward one of these two. Snowflake, with Cortex and Streamlit. Databricks, with Genie and AI/BI. You've been told both are where the chart goes next.</p>
+      <p>So I put the same data in each. Wrote the same seven definitions in each one's own semantic layer. Asked each one's agent the same question. Drew the same bar chart on each one's front porch.</p>
+      <p>Seven for seven, both. The interesting part is what each one did on the way to the right answer.</p>
       <div class="stack">
         <span>Snowflake</span>
         <span>Snowflake Cortex</span>
@@ -48,14 +50,14 @@
 
     <!-- Block 1.5 — The game, and the pictures -->
     <section class="bit-demo">
-      <p class="bit-game"><strong>The game.</strong> [GAME &mdash; Wax picks. A road game fits: the same team through a different front door. Wrigley (5 games), Fenway (4), Coors (4) are the candidates in the data.]</p>
+      <p class="bit-game"><strong>The game.</strong> Saturday, July 8, 2000. The Mets and Yankees played twice in one day in two ballparks: an afternoon at Shea and a night in the Bronx. I was at both. Yankees 4, Mets 2, both times, and Rivera saved both. Doc Gooden, the old Met, won the first one at Shea. Clemens won the second one, the night he hit Piazza. Same two teams. Same answer. Two front doors.</p>
       <figure class="bit-figure">
-        <div class="placeholder-box">[SCREENSHOT &mdash; Streamlit in Snowflake: <code>KEEPING_SCORE_HR_BY_YEAR</code>, the bar chart over the semantic view. Build 2.5 to-do #2.]</div>
+        <a href="../../assets/keeping-score-hr-by-year-streamlit.png"><img src="../../assets/keeping-score-hr-by-year-streamlit.png" alt="Streamlit in Snowflake: home runs witnessed by year, over the Keeping Score semantic view" /></a>
         <figcaption>Streamlit in Snowflake &middot; the same 400, by year, deployed from the command line. The app reads the semantic view directly, the same object Cortex answers from, so the two front doors share one definition.</figcaption>
       </figure>
       <figure class="bit-figure">
-        <div class="placeholder-box">[SCREENSHOT &mdash; Databricks AI/BI: the published &ldquo;Keeping Score&rdquo; dashboard, one bar widget over the <code>mv_plays</code> metric view. Build 2.5 to-do #4, pending the warehouse.]</div>
-        <figcaption>Databricks AI/BI &middot; authored as JSON and published through the SDK.</figcaption>
+        <a href="../../assets/keeping-score-hr-by-year-databricks.png"><img src="../../assets/keeping-score-hr-by-year-databricks.png" alt="Databricks AI/BI dashboard: home runs witnessed by year, over the mv_plays metric view" /></a>
+        <figcaption>Databricks AI/BI &middot; the same 400, by year, authored as JSON and published through the SDK. The widget reads the metric view Genie answers from.</figcaption>
       </figure>
     </section>
 
@@ -79,7 +81,23 @@
       <p>The Genie space can't be created by API, so it was made once in the UI. One click, then everything is scripts. The model is called twice per turn, once to plan and once to phrase, and at about 18 seconds it was the slowest surface, mostly warehouse cold start.</p>
     </section>
 
-    <!-- Block 4 — What it taught me -->
+    <!-- Block 4 — My own two doors -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>My own two doors</h2>
+
+      <p>The record I kept had those two games swapped. My spreadsheet put the day game in the Bronx and the night game at Shea. Retrosheet says otherwise, and Retrosheet is right. They're the only two games of 178 where my ballpark and theirs disagree. Somewhere between entering them by hand and the concatenation formula I built for the joins, a key made of the date and the two teams couldn't tell one game from the other. Retrosheet's id carries the game number. Mine didn't.</p>
+
+      <p>No total moved. A swap nets out: each park gains a game and loses one. Every count on this site stayed right, and every parity check stayed green. Nothing that adds things up could have caught it. A row-by-row check did. The numbers survived. The doors didn't.</p>
+    </section>
+
+    <!-- Block 5 — Try this -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>Try this</h2>
+
+      <p>Pick the one definition your team would fight over. Ask both doors for it. Then check one row by hand.</p>
+    </section>
+
+    <!-- Block 6 — What it taught me -->
     <section class="bit-section">
       <h2><span class="hash">#</span>What it taught me</h2>
 
