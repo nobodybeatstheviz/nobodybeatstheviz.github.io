@@ -35,7 +35,8 @@
       <span class="status-tag on-wax">Batting 8th</span>
       <h1>GEORGE GEORGE</h1>
       <p class="hook">Does the card match the record?</p>
-      <p>This one has no agent in it. June 10, 1984, Bat Day at Yankee Stadium, Blue Jays in town. Across the top of the scorecard, in my grandfather's hand: <em>1st</em>, circled. Then the names. Georgie. George. Roger. And me. Three generations of Georges on one card, and the card is the first row in everything the rest of the lineup queries.</p>
+      <p>The eighth spot often goes to the catcher. Glove first. The one guy who sees the whole field and keeps the book on every hitter.</p>
+      <p>This one has no agent in it. Across the top of the scorecard, in my grandfather's hand: <strong>GEORGE GEORGE.</strong> Then <em>1st</em>, circled. Then the names: Georgie. George. Roger. And me. Three generations of Georges on one card, and the card is the first row in everything the rest of the lineup queries.</p>
       <div class="stack">
         <span>The archive</span>
         <span>Retrosheet</span>
@@ -46,7 +47,7 @@
 
     <!-- Block 1.5 — The game (fixed), and the picture -->
     <section class="bit-demo">
-      <p class="bit-game"><strong>The game.</strong> 1984-06-10, Toronto at New York. Yankees 5, Blue Jays 3. Rawley started; Christiansen, circled, got the win; Righetti closed. Mattingly homered in the third.</p>
+      <p class="bit-game"><strong>The game.</strong> Sunday, June 10, 1984. Bat Day. Blue Jays at Yankees, 5&ndash;3. My first game. Rawley started, Christiansen got the win (Poppa circled him), Righetti saved it. Mattingly homered in the third, Gamble in the sixth. 41,018 people, and four of them were us. Uncle Roger came along, and as far as the record knows, it's the only game I ever saw with him.</p>
       <figure class="bit-figure">
         <div class="placeholder-box">[IMAGE &mdash; Poppa's 1984-06-10 scorecard beside the generated box score, <code>boxscore-NYA198406100.png</code>. Wax's image, from Drive. The family-archive figure the game notes are also waiting on.]</div>
         <figcaption>Left: the card, pencil, 1984. Right: the box score a script drew from Retrosheet's play-by-play in 2026, in the AP agate style the newspaper would have printed the next morning. Poppa's Rawley line and the generator's agree to the digit. The box score beside the card <em>is</em> the viz here.</figcaption>
@@ -57,7 +58,7 @@
     <section class="bit-section">
       <h2><span class="hash">#</span>What's in the system</h2>
 
-      <p><strong>178 games</strong>, 1984 to 2025, every one verified against the record. <strong>34 seasons</strong> with a game in them; the peaks are 2001 and 2003 at 17 each. <strong>22 stadiums.</strong> <strong>1,706 runs</strong> scored in front of me and <strong>400 home runs</strong>, which is the bar chart the run keeps redrawing. <strong>44 Hall of Famers</strong> seen playing. The Yankees are <strong>90&ndash;53</strong> when I'm in the building, .629, and the team is a dimension, not a hardcoded filter, so ask about anyone. <strong>30 playoff games</strong>, 16.9% of the total.</p>
+      <p><strong>178 games, 22 ballparks, 400 home runs.</strong> The full stat sheet is in <a href="../wax-baseball/#the-standings">the game notes</a>.</p>
 
       <p>Who I went with, top five: <strong>Melissa 57, Bergan 27, Al 26, alone 16, Poppa 14</strong>. First names only, by rule. Poppa is on fourteen of the cards and kept score at most of them. The names were 101 different spellings before a cleanup pass made them 84 people. And a simple check, two values in one row can't be one person, caught six wrong game ids that had survived 41 years of copying. That check became the model for every gate an agent has to pass later.</p>
 
@@ -68,14 +69,21 @@
     <section class="bit-section">
       <h2><span class="hash">#</span>The card and the record</h2>
 
-      <p>Thirteen cards are scanned so far, from a shoebox of fifty to a hundred. Eleven of them match a game in the 178. Two don't, and the rule for those is simple: if Poppa's card has a date that isn't in my games, it's a game he went to without me, because he'd surely have written &ldquo;Georgie.&rdquo; One of the two is July 7, 1991. &ldquo;Williams CF&rdquo; is scored in the Yankees lineup. Bernie Williams's major-league debut, in my grandfather's pencil, at a game I wasn't at. It stays in the archive and out of the data.</p>
+      <p>Thirteen cards are scanned so far, from a shoebox of fifty to a hundred. Eleven of them match a game in the 178. Two don't, and the rule for those is simple: if Poppa's card has a date that isn't in my games, it's a game he went to without me, because he'd surely have written &ldquo;Georgie.&rdquo; One of the two is July 7, 1991. &ldquo;Williams CF&rdquo; is scored in the Yankees lineup. Bernie Williams's major-league debut, in my grandfather's pencil, at a game I wasn't at. That one mattered to us. The Albany-Colonie Yankees, Double-A, were our local team, and we'd watched a lot of kids come up through there. Bernie played for them in '89 and '90, with Buck Showalter managing. It stays in the archive and out of the data.</p>
 
       <p>The box score above is generated. <code>box_score.py</code> takes any of the 178 game ids, pulls the play-by-play from Retrosheet, and renders the agate the way the AP wire would have. Batting lines, pitching lines, the line score. Set it beside the card and you're looking at two records of the same afternoon kept forty-two years apart by two different methods, and they agree. That agreement is the whole argument for writing things down.</p>
 
       <p>Of the 30 playoff games, eight are from 2001: every home game of the Division Series and the League Championship Series, and World Series Games 3 and 5. So the President's first pitch in Game 3 and Brosius's ninth-inning home run in Game 5, in person. Jeter's &ldquo;Mr. November&rdquo; walk-off was Game 4. I watched that one on TV like everyone else. The data knows the difference, and so does the card.</p>
     </section>
 
-    <!-- Block 4 — What it taught me -->
+    <!-- Block 4 — Try this -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>Try this</h2>
+
+      <p>Find the oldest record you have of anything you care about. Check one row against the official source. If they agree, you've got a clean dataset. If they don't, you've got a story.</p>
+    </section>
+
+    <!-- Block 5 — What it taught me -->
     <section class="bit-section">
       <h2><span class="hash">#</span>What it taught me</h2>
 
