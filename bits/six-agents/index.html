@@ -35,7 +35,9 @@
       <span class="status-tag on-wax">Batting 5th</span>
       <h1>SIX TRACES</h1>
       <p class="hook">Six agents said 400. Which one can you check?</p>
-      <p>Every vendor you've heard from this year has an agent that will answer a question about your data. I asked six of them the same one. How many home runs have I witnessed in person? Every one said 400, and every one was right. Then I opened each trace and scored it against the same five columns: did it show its plan, its tool or SQL, its grounding source, its tokens and latency, and how you get the trace at all. No surface cleared all five. Each one hides something different, and what it hides is what you'll be QA'ing blind.</p>
+      <p>Every vendor you've heard from this year has an agent that'll answer questions about your data. I asked six of them the same one: how many home runs have I seen in person?</p>
+      <p>All six said 400. All six were right.</p>
+      <p>Then I opened every trace and scored it on five things: does it show its plan, its query, its source, its tokens and time, and can you even get the trace out? No agent went five for five. Each one hides something different, and whatever it hides is what you'll be QA'ing blind.</p>
       <div class="stack">
         <span>Agentforce</span>
         <span>Claude Agent SDK</span>
@@ -49,7 +51,7 @@
 
     <!-- Block 1.5 — The game, and the picture -->
     <section class="bit-demo">
-      <p class="bit-game"><strong>The game.</strong> [GAME &mdash; Wax picks. Suggestion: 2022-07-30, the last game Al and I saw together. The Claude agent's one action in this piece was a reminder to him about it, staged as a draft with no recipient and never sent. I'm the send button.]</p>
+      <p class="bit-game"><strong>The game.</strong> Saturday, July 30, 2022. Old-Timers' Day, the first since 2019. Royals at Yankees, 8&ndash;2. The crew back together: Al, Bergan, Matty, on the Yankee train in. I kept score, and helped the son of one of Matty's friends keep his. Mo was on the field before first pitch. The Claude agent's one action in this piece was a note to Al about this day. It drafted it and stopped. No recipient. I'm the send button.</p>
       <figure class="bit-figure">
         <a href="../../assets/keeping-score-hr-by-year-artifact.png"><img src="../../assets/keeping-score-hr-by-year-artifact.png" alt="A plain web page: bar chart of home runs witnessed by year, 34 bars, one direct label on the maximum, light theme" /></a>
         <figcaption>The Claude door &middot; the same 400, by year, as one self-contained page with inline SVG and no chart library, generated from the same spec and token file as every other door. Nothing needed a browser. The only human step was saying &ldquo;publish.&rdquo;</figcaption>
@@ -64,15 +66,15 @@
 
       <table class="matrix">
         <thead>
-          <tr><th>Agent</th><th>Shows its plan?</th><th>Shows the query?</th><th>Names its grounding?</th><th>Tokens &amp; time?</th></tr>
+          <tr><th>Agent</th><th>Shows its plan?</th><th>Shows the query?</th><th>Names its grounding?</th><th>Tokens &amp; time?</th><th>How you get the trace</th></tr>
         </thead>
         <tbody>
-          <tr><td>Agentforce</td><td>A 21-step sequence, no stated reason</td><td>The action and its input, not the SQL underneath</td><td>Absent. Provable only from the Apex source</td><td>Latency per step. Zero token fields in 85 KB</td></tr>
-          <tr><td>Claude SDK</td><td>Tool sequence, thinking billed but not surfaced</td><td>The metric name; there is no SQL by design</td><td>In the tool's own text: the governed catalog</td><td>Both, fully. $0.18, 5.7 s of model in 38.7 s</td></tr>
-          <tr><td>BigQuery</td><td>Plain sentences, the plainest of the six</td><td>SQL verbatim, twice</td><td>The table and the BigQuery job id</td><td>9.5 s; 0 bytes billed, a cache hit</td></tr>
-          <tr><td>Databricks Genie</td><td>Four typed thoughts; states its own assumption</td><td><code>MEASURE(home_runs_witnessed)</code> by name</td><td>Named and self-qualified</td><td>17.9 s; model called twice per turn</td></tr>
-          <tr><td>Snowflake Cortex</td><td>A status ladder; thinks aloud when it fails</td><td>SQL, and the first attempt failed in the open</td><td>The semantic view, then re-derived by hand</td><td>Richest platform log: 12 rows, per-step tokens</td></tr>
-          <tr><td>Tableau Agent</td><td>No reasoning text</td><td>The structured semantic query, verbatim</td><td>Named: the semantic model, on every answer</td><td>9.1 s; zero token fields</td></tr>
+          <tr><td>Agentforce</td><td>A 21-step sequence, no stated reason</td><td>The action and its input, not the SQL underneath</td><td>Absent. Provable only from the Apex source</td><td>Latency per step. Zero token fields in 85 KB</td><td>The CLI writes a local file. Copy it or lose it</td></tr>
+          <tr><td>Claude SDK</td><td>Tool sequence, thinking billed but not surfaced</td><td>The metric name; there is no SQL by design</td><td>In the tool's own text: the governed catalog</td><td>Both, fully. $0.18, 5.7 s of model in 38.7 s</td><td>Straight from the SDK's own message stream</td></tr>
+          <tr><td>BigQuery</td><td>Plain sentences, the plainest of the six</td><td>SQL verbatim, twice</td><td>The table and the BigQuery job id</td><td>9.5 s; 0 bytes billed, a cache hit</td><td>The official Python client, streamed</td></tr>
+          <tr><td>Databricks Genie</td><td>Four typed thoughts; states its own assumption</td><td><code>MEASURE(home_runs_witnessed)</code> by name</td><td>Named and self-qualified</td><td>17.9 s; model called twice per turn</td><td>The Python SDK, polled. No stream</td></tr>
+          <tr><td>Snowflake Cortex</td><td>A status ladder; thinks aloud when it fails</td><td>SQL, and the first attempt failed in the open</td><td>The semantic view, then re-derived by hand</td><td>Richest platform log: 12 rows, per-step tokens</td><td>A stream, plus an event table you can query with SQL. No setup</td></tr>
+          <tr><td>Tableau Agent</td><td>No reasoning text</td><td>The structured semantic query, verbatim</td><td>Named: the semantic model, on every answer</td><td>9.1 s; zero token fields</td><td>The hosted MCP server, over HTTP. One browser login</td></tr>
         </tbody>
       </table>
 
@@ -90,7 +92,14 @@
       <p>One more from the same family, from Baseball Scout: an action returned 22 venue groups and the prose said &ldquo;21 different stadiums.&rdquo; Grounded, and miscounted. The tool did its job; the sentence didn't. That's a column the rubric doesn't have yet.</p>
     </section>
 
-    <!-- Block 4 — What it taught me -->
+    <!-- Block 4 — Try this -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>Try this</h2>
+
+      <p>Ask your agent one question you already know the answer to. Then find its trace and fill in the five columns. Any column you can't fill is what you'd be QA'ing blind.</p>
+    </section>
+
+    <!-- Block 5 — What it taught me -->
     <section class="bit-section">
       <h2><span class="hash">#</span>What it taught me</h2>
 
