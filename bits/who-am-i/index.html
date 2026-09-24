@@ -35,7 +35,9 @@
       <span class="status-tag on-wax">Batting 3rd</span>
       <h1>CONFIDENT ZEROS</h1>
       <p class="hook">Who am I?</p>
-      <p>On Tableau Cloud, &ldquo;I&rdquo; was never a question. You were the one at the keyboard; the filters were the ones you dragged. On Tableau Next, I asked the agent how many home runs I'd seen and it said none. Then it called that a unique insight. The prose was fluent and wrong, and nothing in it told you why. The query underneath did.</p>
+      <p>There's a talk Jon Kabat-Zinn gave at Google that I've watched more times than I can count. He tells about a Korean Zen master he studied with, who taught with very little English. He'd ask the room, &ldquo;Who am I?&rdquo; Then answer it himself: &ldquo;Don't know.&rdquo;</p>
+      <p>Tableau Agent knew. It said zero.</p>
+      <p>On Tableau Cloud, &ldquo;I&rdquo; was never a question. You were at the keyboard. The filters were the ones you dragged. On Tableau Next, I asked the agent how many home runs I'd seen. It said none, and called that a unique insight. The sentence was fluent and wrong. The query underneath told me why.</p>
       <div class="stack">
         <span>Tableau Next</span>
         <span>Tableau Agent</span>
@@ -47,9 +49,9 @@
 
     <!-- Block 1.5 — The game, and the picture -->
     <section class="bit-demo">
-      <p class="bit-game"><strong>The game.</strong> [GAME &mdash; Wax picks. Suggestion: 1987-06-15, Orioles at Yankees. Poppa's card, bottom margin: &ldquo;Got 2 balls &mdash; 1 from Winfield, 1 from Niedenfuer. Georgie's Birt'day shown on scoreboard.&rdquo; The stadium knew exactly who &ldquo;I&rdquo; was. The agent had to be told.]</p>
+      <p class="bit-game"><strong>The game.</strong> Monday, June 15, 1987. Orioles at Yankees, 9&ndash;2. Bottom margin of Poppa's card: <em>&ldquo;Got 2 balls &mdash; 1 from Winfield, 1 from Niedenfuer. Georgie's Birt'day shown on scoreboard.&rdquo;</em> The day before I turned nine, and Yankee Stadium knew exactly who I was. The agent had to be told.</p>
       <figure class="bit-figure">
-        <div class="placeholder-box">[SCREENSHOT &mdash; Tableau Next: &ldquo;Home runs witnessed, by year&rdquo; in the Keeping Score workspace. Capture before the scratch org expires 2026-10-03. Build 2.5 to-do #1.]</div>
+        <a href="../../assets/keeping-score-hr-by-year-tn.png"><img src="../../assets/keeping-score-hr-by-year-tn.png" alt="Tableau Next visualization: home runs witnessed by year, in the Keeping Score workspace" /></a>
         <figcaption>Tableau Next &middot; the same 400, by year, built through the Beta MCP with no browser: workspace, visualization, sort order. The capture needed a browser (no image API), and no edit operation reaches the mark color, so the tool default ships. The number and the sort hold.</figcaption>
       </figure>
     </section>
@@ -58,25 +60,47 @@
     <section class="bit-section">
       <h2><span class="hash">#</span>What happened</h2>
 
-      <p>Tableau Next reads the Salesforce Data 360 semantic model directly. There was nothing to rebuild: the <code>Keeping_Score</code> model <em>is</em> the Tableau Next semantic model, seven objects, five relationships, the seven governed measures. Tableau Agent came on with one Setup toggle. No template, no wizard.</p>
+      <p>Tableau Next reads the Data 360 model directly, so there was nothing to rebuild. Tableau Agent came on with one Setup toggle.</p>
 
-      <p>First question: how many home runs have I witnessed? <strong>Zero.</strong> &ldquo;You didn't witness any home runs &mdash; a unique insight!&rdquo; The response carries a troubleshooting field, and in it is the exact structured query the agent sent to the semantic engine. That query had a filter I never asked for: <code>attendee_key = &lt;my Salesforce user id&gt;</code>. It had resolved &ldquo;I&rdquo; to the running user's id and filtered the attendee table to it. On a one-person model that is always zero. Confidently.</p>
+      <p>First question: how many home runs have I witnessed? <strong>Zero.</strong> <em>&ldquo;You didn't witness any home runs &mdash; a unique insight!&rdquo;</em> The response carries a troubleshooting field, and in it is the exact query the agent sent. It had a filter I never asked for: <code>attendee_key = &lt;my Salesforce user id&gt;</code>. It decided &ldquo;I&rdquo; meant whoever was logged in. On a one-person model, that's always zero. Confidently.</p>
 
-      <p>The fix is <strong>business preferences on the model</strong>: a short text, stored with the semantic model, saying what &ldquo;I&rdquo; and &ldquo;my&rdquo; mean here. Written headlessly through the hosted MCP, kept as source in git. Asked again: 400 home runs, 178 games. Four of four golden questions after. Seven of seven through the MCP's semantic-query tool, which made Tableau Next the fifth surface in the parity scorecard.</p>
+      <p>The honest answer was the Zen master's: don't know. The agent guessed instead.</p>
     </section>
 
-    <!-- Block 3 — Two eras of Tableau -->
+    <!-- Block 3 — The fix is a paragraph -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>The fix is a paragraph</h2>
+
+      <p>Tableau Next lets you store <strong>business preferences</strong> on the semantic model: plain English that every question passes through. Here's the part that mattered:</p>
+
+<pre class="code-block"><code>Keeping Score is one person's baseball attendance record: George "Wax"
+Weatherwax's 178 attended MLB games, 1984-2025. When the user says I, me,
+my, mine, or we, they mean the ENTIRE model. Never filter by attendee,
+attendee_key, Game_Attendee, or the current Salesforce user unless the
+question names a specific attendee by name.</code></pre>
+
+      <p>Asked again: 400 home runs, 178 games. Four for four on the golden questions. Written headlessly through the hosted MCP and kept in git, never edited in the org.</p>
+    </section>
+
+    <!-- Block 4 — Two eras of Tableau -->
     <section class="bit-section">
       <h2><span class="hash">#</span>Two eras of Tableau</h2>
 
-      <p>On Tableau Cloud, the classic product, the marts were published as five data sources and one relationship model with no GUI, and the seven questions ran through the query service: seven of seven. Visual, descriptive, yours. On Tableau Next, the same model is governed-metric-and-agent: you don't drag a filter, you tell the model what your words mean and the agent binds the question to a governed field.</p>
+      <p>Tableau Cloud answered all seven too, through five published sources and a relationship model. Visual, descriptive, yours. Tableau Next is governed metrics and an agent. You don't drag a filter. You tell the model what your words mean.</p>
 
-      <p>A cross-table row-level formula that Data 360 silently fanned out to 281 rows, Tableau Cloud refused outright: &ldquo;only one upstream base table.&rdquo; Home runs and Hall of Famers in one query worked on Tableau Cloud where Data 360 threw <code>NO_PATH</code>, because the Tableau model has one more edge, not because the semantics differ. Same definitions, different engines, and the differences are in the joins each one is willing to walk.</p>
+      <p>Where the two disagreed, it was about joins: a cross-table formula Data 360 <a href="../fan-out/">fanned out to 281</a>, Tableau Cloud refused outright. Same definitions. Different engines. The difference is in which joins each one is willing to walk.</p>
 
-      <p>This is Tableau Next as a query and agent surface over a Data 360 model, plus the one chart above, built for this run. No dashboards. The org it lives in is a scratch org that expires 2026-10-03, so everything here lives in git or evaporates. That was the forcing function.</p>
+      <p>This is Tableau Next as a query and agent surface over a Data 360 model, plus one chart. No dashboards. It lives in a scratch org with a 30-day life, minted September 3, so everything here lives in git or evaporates. That was the forcing function.</p>
     </section>
 
-    <!-- Block 4 — What it taught me -->
+    <!-- Block 5 — Try this -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>Try this</h2>
+
+      <p>If your model holds anybody's personal data, write the business preferences before you turn the agent on. Say who &ldquo;I&rdquo; is. Then ask it &ldquo;how many do I have?&rdquo; and read the query, not the answer.</p>
+    </section>
+
+    <!-- Block 6 — What it taught me -->
     <section class="bit-section">
       <h2><span class="hash">#</span>What it taught me</h2>
 
