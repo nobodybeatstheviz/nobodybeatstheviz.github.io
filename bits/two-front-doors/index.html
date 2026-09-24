@@ -85,9 +85,9 @@
     <section class="bit-section">
       <h2><span class="hash">#</span>My own two doors</h2>
 
-      <p>The record I kept had those two games swapped. My spreadsheet put the day game in the Bronx and the night game at Shea. Retrosheet says otherwise, and Retrosheet is right. They're the only two games of 178 where my ballpark and theirs disagree. Somewhere between entering them by hand and the concatenation formula I built for the joins, a key made of the date and the two teams couldn't tell one game from the other. Retrosheet's id carries the game number. Mine didn't.</p>
+      <p>The first version of my record had those two games swapped. The spreadsheet I loaded into the warehouse put the day game in the Bronx and the night game at Shea. Retrosheet says otherwise, and Retrosheet is right. They're the only two games of 178 where my ballpark and theirs disagree. Somewhere between entering them by hand and the concatenation formula I built for the joins, a key made of the date and the two teams couldn't tell one game from the other. Retrosheet's id carries the game number. Mine had a zero for both.</p>
 
-      <p>No total moved. A swap nets out: each park gains a game and loses one. Every count on this site stayed right, and every parity check stayed green. Nothing that adds things up could have caught it. A row-by-row check did. The numbers survived. The doors didn't.</p>
+      <p>No total moved. A swap nets out: each park gains a game and loses one. Every count on this site stayed right, and every parity check stayed green. Nothing that adds things up could have caught it. A row-level test did, the first time my ids had to match Retrosheet's. The ids are fixed. The swapped venues are still in the warehouse, on purpose, because nothing downstream reads them wrong. The numbers survived. The doors didn't.</p>
     </section>
 
     <!-- Block 5 — Try this -->
