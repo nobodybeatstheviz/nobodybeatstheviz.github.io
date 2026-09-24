@@ -35,7 +35,8 @@
       <span class="status-tag on-wax">Batting cleanup</span>
       <h1>NINE. ZERO PERCENT.</h1>
       <p class="hook">Is the trace the new dashboard QA?</p>
-      <p>You've QA'd a dashboard. Open the workbook, check the filter, follow the calc back to the field, find the join that doubled the rows. There's a place to look. An agent gives you a sentence in a chat window, and when the sentence is wrong there's nothing to open. Baseball Scout gave me three wrong answers in three months. Nine. Zero percent. &ldquo;No highlights found.&rdquo; They looked identical from the chat. They were three different diseases, and only the trace could tell them apart.</p>
+      <p>You've QA'd a dashboard. Open the workbook. Check the filter. Follow the calc back to the field. Find the join that doubled the rows. There's always a place to look.</p>
+      <p>An agent gives you a sentence. When the sentence is wrong, there's nothing to open. Baseball Scout gave me three wrong answers in three months: nine, zero percent, and &ldquo;no highlights found.&rdquo; All three looked the same in the chat. They were three different diseases, and only the trace could tell them apart.</p>
       <div class="stack">
         <span>Agentforce</span>
         <span>Agent Script</span>
@@ -46,40 +47,53 @@
 
     <!-- Block 1.5 — The game, and the pictures -->
     <section class="bit-demo">
-      <p class="bit-game"><strong>The game.</strong> [GAME &mdash; Wax picks. Suggestion: 2001 World Series Game 5, Yankee Stadium. Down two in the bottom of the 9th, Brosius ties it. The fix arrives late, and the card shows exactly when.]</p>
+      <p class="bit-game"><strong>The game.</strong> Thursday, November 1, 2001. World Series Game 5. Arizona up 2&ndash;0, two outs, bottom of the ninth. If you left then, your sentence was &ldquo;Arizona wins.&rdquo; Brosius homered to left and tied it. Soriano won it in the 12th. I was in the right-field bleachers. No scorecard that night. Biggest home run I've ever seen. Nobody who left early has the right box score.</p>
       <figure class="bit-figure">
-        <div class="placeholder-box">[SCREENSHOT &mdash; Baseball Scout in preview: &ldquo;How many games at Yankee Stadium I?&rdquo; &rarr; the first answer, 9.]</div>
-        <figcaption>Agentforce preview, 2026-06-30. The answer was 9. The trace underneath it: <code>tool_invocations: null</code>. It never looked.</figcaption>
-      </figure>
-      <figure class="bit-figure">
-        <div class="placeholder-box">[SCREENSHOT &mdash; the session trace JSON: the action called, the result returned, the prose reporting 0%.]</div>
-        <figcaption>The 0% trace. Action called, result reported faithfully. The bug was one string comparison a layer down. No chart on this door, by nature: the trace is the picture.</figcaption>
+<pre class="code-block"><code>// June 30 &middot; "How many games at Yankee Stadium I?"  &rarr; 9
+"tool_invocations": null
+
+// September 2 &middot; "How many home runs have I witnessed?"  &rarr; 400
+"function": {
+  "name":   "query_keeping_score",
+  "input":  { "metrics": "homeRuns" },
+  "output": { "__action_execution_status__": "success", "homeRunsWitnessed": 400, &hellip; }
+}</code></pre>
+        <figcaption>Two Agentforce traces. The 9 never called anything. The 400 called one action and reported what came back. No chart on this door, by nature: the trace is the picture.</figcaption>
       </figure>
     </section>
 
     <!-- Block 2 — The three -->
     <section class="bit-section">
-      <h2><span class="hash">#</span>Nine. Zero percent. No highlights found.</h2>
+      <h2><span class="hash">#</span>Three wrong answers</h2>
 
       <p><strong>Nine.</strong> First preview, June 30. &ldquo;How many games at Yankee Stadium I?&rdquo; The agent said 9. The session trace showed <code>tool_invocations: null</code>. It never called its action. It guessed a plausible number and said it with a straight face. A <em>grounding failure</em>: the answer came from nowhere. The fix was in the instructions, you have no knowledge of your own, call an action first. Re-test: <strong>100</strong>, the right answer, and an even hundred at the old Stadium.</p>
 
       <p><strong>Zero percent.</strong> &ldquo;What percentage of my games were Yankees games?&rdquo; 0%. The trace showed the action <em>was</em> called and its result reported honestly. The agent did everything right. The bug was one layer down, an exact-match filter in the Apex where &ldquo;Yankees&rdquo; is never equal to &ldquo;New York Yankees.&rdquo; A <em>data-logic failure</em>: the pipe was clean, the water was wrong. Ground truth first, with direct queries: home contains Yankees 123, away 20, either 143, exact 0. Which also caught that the obvious answer, 123, was wrong too, because the question means home <em>or</em> away. Fixed at both layers, August 4: <strong>143 of 178, 80.3%</strong>.</p>
 
       <p><strong>No highlights found.</strong> A second agent with one job, fetch the YouTube highlights for a game, answered &ldquo;no highlights were found&rdquo; without calling its only action. The instruction said, in the strongest phrasing the platform offers, that it must call the action. It skipped it anyway and fabricated a no-result. An <em>instruction failure</em>, and the lesson that came out of it is the one I'd give any team: <strong>an instruction is not a gate. Gate structurally.</strong> Version 3 fires the search as a procedural step the model doesn't get to skip.</p>
+
+      <p><strong>Still open.</strong> On September 1, Baseball Scout answered &ldquo;58 games in 27 stadiums&rdquo; without calling a thing. Same disease as the 9. It's on <a href="../wax-baseball/#errors">the errors list</a> in the game notes.</p>
     </section>
 
     <!-- Block 3 — How it works -->
     <section class="bit-section">
       <h2><span class="hash">#</span>How it works</h2>
 
-      <p>Baseball Scout is written in Agent Script, Salesforce's text format for an agent as code, not clicked together in a builder. It versions, it reviews, it's in a public repo. A router sends attended-game questions to one subagent with two Apex actions over the 178 rows, governed-metric questions to another that calls the Data 360 semantic model, and everything vague or off-topic to two guardrail subagents. Scope is enforced structurally: the actions can only return attended-games data, so the agent physically cannot answer a question about Derek Jeter's career. It declines, honestly.</p>
+      <p>Baseball Scout is written in Agent Script, not clicked together in a builder. It versions, it reviews, it's in a public repo. A router sends attended-game questions to one subagent with two Apex actions over the 178 rows, governed-metric questions to another that calls the Data 360 semantic model, and everything vague or off-topic to two guardrail subagents. Scope is enforced structurally: the actions can only return attended-games data, so the agent physically cannot answer a question about Derek Jeter's career. It declines, honestly.</p>
 
       <p>Version 1.2 answers the governed metrics through the same definitions as every other engine in the run, and its three golden cases, 400 home runs, 44 Hall of Famers, Yankees 90 of 143, passed topic, action, and output on three consecutive test runs. Then the observability pass measured the trace itself: 3 model calls, 21 plan steps, one action returning <code>homeRunsWitnessed: 400</code>, 4.7 seconds. And <strong>zero token fields in 85 KB of trace</strong>. That absence is a measured fact too; it's in <a href="../six-agents/">the six-agent matrix</a>.</p>
 
       <p>These are retrieval agents with one action each, on my own data, in a dev org's preview. No production channel, no customers. The customer engagement adds the channel, the identity model, and the evaluation suite. And one more: the test runner reported &ldquo;no results&rdquo; on an agent whose live preview passed the same utterance. Read the trace, not the score.</p>
     </section>
 
-    <!-- Block 4 — What it taught me -->
+    <!-- Block 4 — Try this -->
+    <section class="bit-section">
+      <h2><span class="hash">#</span>Try this</h2>
+
+      <p>Next time an agent gives you a wrong answer, find the trace before you touch the prompt. Did it call a tool? If not, it guessed: make the call a step it can't skip. If it did, the agent's fine. Go one layer down, to the data, and fix it like you'd fix a calc.</p>
+    </section>
+
+    <!-- Block 5 — What it taught me -->
     <section class="bit-section">
       <h2><span class="hash">#</span>What it taught me</h2>
 
