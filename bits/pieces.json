@@ -8,7 +8,12 @@
       "label": "The game notes",
       "question": "How to keep score",
       "title": "Keeping Score: the game notes",
-      "tools": ["dbt", "BigQuery", "Retrosheet", "Claude Code"],
+      "tools": [
+        "dbt",
+        "BigQuery",
+        "Retrosheet",
+        "Claude Code"
+      ],
       "status": "on-wax",
       "url": "bits/wax-baseball/",
       "date": ""
@@ -19,10 +24,15 @@
       "slug": "bar-chart",
       "question": "Can you trust the number on the chart?",
       "title": "The bar chart an agent made",
-      "tools": ["Tableau Cloud", "Tableau MCP", "Claude Code", "BigQuery"],
-      "status": "wip",
-      "url": "",
-      "date": ""
+      "tools": [
+        "Tableau Cloud",
+        "Tableau MCP",
+        "Claude Code",
+        "BigQuery"
+      ],
+      "status": "on-wax",
+      "url": "bits/bar-chart/",
+      "date": "2026-09"
     },
     {
       "kind": "lineup",
@@ -30,10 +40,16 @@
       "slug": "the-contract",
       "question": "What is a home run?",
       "title": "The contract",
-      "tools": ["dbt", "BigQuery", "MetricFlow", "Retrosheet", "Looker Studio"],
-      "status": "wip",
-      "url": "",
-      "date": ""
+      "tools": [
+        "dbt",
+        "BigQuery",
+        "MetricFlow",
+        "Retrosheet",
+        "Looker Studio"
+      ],
+      "status": "on-wax",
+      "url": "bits/the-contract/",
+      "date": "2026-09"
     },
     {
       "kind": "lineup",
@@ -41,10 +57,16 @@
       "slug": "who-am-i",
       "question": "Who am I?",
       "title": "Confident zeros",
-      "tools": ["Tableau Next", "Tableau Agent", "Data 360", "Hosted MCP", "Tableau Cloud"],
-      "status": "wip",
-      "url": "",
-      "date": ""
+      "tools": [
+        "Tableau Next",
+        "Tableau Agent",
+        "Data 360",
+        "Hosted MCP",
+        "Tableau Cloud"
+      ],
+      "status": "on-wax",
+      "url": "bits/who-am-i/",
+      "date": "2026-09"
     },
     {
       "kind": "lineup",
@@ -52,10 +74,15 @@
       "slug": "the-trace",
       "question": "Is the trace the new dashboard QA?",
       "title": "Nine. Zero percent.",
-      "tools": ["Agentforce", "Agent Script", "Apex", "Data 360"],
-      "status": "wip",
-      "url": "",
-      "date": ""
+      "tools": [
+        "Agentforce",
+        "Agent Script",
+        "Apex",
+        "Data 360"
+      ],
+      "status": "on-wax",
+      "url": "bits/the-trace/",
+      "date": "2026-09"
     },
     {
       "kind": "lineup",
@@ -63,10 +90,18 @@
       "slug": "six-agents",
       "question": "Six agents said 400. Which one can you check?",
       "title": "Six traces",
-      "tools": ["Agentforce", "Claude Agent SDK", "BigQuery", "Databricks Genie", "Snowflake Cortex", "Tableau Agent", "Hosted MCP"],
-      "status": "wip",
-      "url": "",
-      "date": ""
+      "tools": [
+        "Agentforce",
+        "Claude Agent SDK",
+        "BigQuery",
+        "Databricks Genie",
+        "Snowflake Cortex",
+        "Tableau Agent",
+        "Hosted MCP"
+      ],
+      "status": "on-wax",
+      "url": "bits/six-agents/",
+      "date": "2026-09"
     },
     {
       "kind": "lineup",
@@ -74,10 +109,16 @@
       "slug": "fan-out",
       "question": "Where does the fan-out hide?",
       "title": "281, then 35, then 44",
-      "tools": ["Data 360", "Snowflake", "Databricks", "Google Cloud Storage", "Salesforce CLI"],
-      "status": "wip",
-      "url": "",
-      "date": ""
+      "tools": [
+        "Data 360",
+        "Snowflake",
+        "Databricks",
+        "Google Cloud Storage",
+        "Salesforce CLI"
+      ],
+      "status": "on-wax",
+      "url": "bits/fan-out/",
+      "date": "2026-09"
     },
     {
       "kind": "lineup",
@@ -85,10 +126,17 @@
       "slug": "two-front-doors",
       "question": "Do the numbers survive the move?",
       "title": "Two front doors",
-      "tools": ["Snowflake", "Snowflake Cortex", "Streamlit", "Databricks", "Databricks Genie", "AI/BI"],
-      "status": "wip",
-      "url": "",
-      "date": ""
+      "tools": [
+        "Snowflake",
+        "Snowflake Cortex",
+        "Streamlit",
+        "Databricks",
+        "Databricks Genie",
+        "AI/BI"
+      ],
+      "status": "on-wax",
+      "url": "bits/two-front-doors/",
+      "date": "2026-09"
     },
     {
       "kind": "lineup",
@@ -96,10 +144,15 @@
       "slug": "george-george",
       "question": "Does the card match the record?",
       "title": "GEORGE GEORGE",
-      "tools": ["The archive", "Retrosheet", "box_score.py", "BigQuery"],
-      "status": "wip",
-      "url": "",
-      "date": ""
+      "tools": [
+        "The archive",
+        "Retrosheet",
+        "box_score.py",
+        "BigQuery"
+      ],
+      "status": "on-wax",
+      "url": "bits/george-george/",
+      "date": "2026-09"
     },
     {
       "kind": "lineup",
@@ -107,10 +160,15 @@
       "slug": "why-keep-score",
       "question": "Why do people like us keep score?",
       "title": "Pencil and JSON",
-      "tools": ["The 1984 card", "The 2026 trace", "Same questions", "New tools"],
-      "status": "wip",
-      "url": "",
-      "date": ""
+      "tools": [
+        "The 1984 card",
+        "The 2026 trace",
+        "Same questions",
+        "New tools"
+      ],
+      "status": "on-wax",
+      "url": "bits/why-keep-score/",
+      "date": "2026-09"
     },
     {
       "kind": "away",
@@ -120,7 +178,14 @@
       "question": "[[SUPERSTORE]] FORTY-NINE",
       "title": "Data → Signal → Action",
       "blurb": "An anonymous complaint finds the customer, the order, and the account owner. Then it opens the case. Five sources, 1,041 identities, 804 profiles, and an agent that can only do three things.",
-      "tools": ["Data 360", "Agentforce", "Identity Resolution", "Databricks", "Apex", "Slack"],
+      "tools": [
+        "Data 360",
+        "Agentforce",
+        "Identity Resolution",
+        "Databricks",
+        "Apex",
+        "Slack"
+      ],
       "status": "on-wax",
       "url": "bits/superstore-49/",
       "date": "2026-08"
@@ -133,7 +198,13 @@
       "question": "[[SUPERSTORE]] 007",
       "title": "Licensed to Act",
       "blurb": "Classic Superstore tells you what happened. 007 is Licensed to Act. See the trend, ask why, open the case, never leave Slack.",
-      "tools": ["Tableau Next", "Agentforce", "Data Cloud", "Slack", "Flows"],
+      "tools": [
+        "Tableau Next",
+        "Agentforce",
+        "Data Cloud",
+        "Slack",
+        "Flows"
+      ],
       "status": "on-wax",
       "url": "bits/superstore-007/",
       "date": "2026-04"
